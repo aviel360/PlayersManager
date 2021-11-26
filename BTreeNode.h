@@ -21,6 +21,7 @@ public:
     }
     int getHeight(){
         return height;
+    }
     void setLChild(BTreeNode* _l_child){
         l_child = _l_child;
     }
