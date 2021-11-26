@@ -26,7 +26,7 @@ public:
         l_child = _l_child;
     }
     void setRChild(BTreeNode* _r_child){
-        r_child = r_child;
+        r_child = _r_child;
     }
 };
 
