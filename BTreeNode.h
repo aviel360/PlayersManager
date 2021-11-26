@@ -16,11 +16,23 @@ public:
     BTreeNode* goRight(){
         return r_child;
     }
-    void setHeight(int _height){
-        height = _height;
+    void setHeight(){
+        height = getLHeight() - getRHeight() + 1;
     }
     int getHeight(){
         return height;
+    }
+    int getLHeight(){
+        if (l_child == nullptr){
+            return 0;
+        }
+        return l_child->getHeight();
+    }
+    int getRHeight(){
+        if (r_child == nullptr){
+            return 0;
+        }
+        return r_child->getHeight();
     }
     void setLChild(BTreeNode* _l_child){
         l_child = _l_child;
