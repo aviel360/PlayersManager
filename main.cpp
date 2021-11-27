@@ -2,6 +2,8 @@
 #include "AVLTree.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    AVLTree<int> test;
+
+    test.insert(1);
     return 0;
 }

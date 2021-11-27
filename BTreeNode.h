@@ -4,7 +4,8 @@
 template <class T>
 class BTreeNode{
     T value;
-    BTreeNode* r_child, l_child;
+    BTreeNode<T>* r_child;
+    BTreeNode<T>* l_child;
     int height;
 
     int max(int x, int y){
@@ -24,7 +25,7 @@ public:
         return value;
     }
     void setHeight(){
-        height = max(getHeight(l_child), getRHeight(r_child)) + 1;
+        height = max(getHeight(l_child), getHeight(r_child)) + 1;
     }
     void setLChild(BTreeNode* _l_child){
         l_child = _l_child;

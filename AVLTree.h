@@ -10,7 +10,7 @@ template<class T>
 class AVLTree{
     BTreeNode<T>* source;
 
-    BTreeNode<T>* rightRoll(BTreeNode<T>* _source){} // sofi
+    BTreeNode<T>* rightRoll(BTreeNode<T>* _source); // sofi
     BTreeNode<T>* leftRoll(BTreeNode<T>* _source);
     BTreeNode<T>* LL(BTreeNode<T>* _source);
     BTreeNode<T>* LR(BTreeNode<T>* _source);
@@ -26,10 +26,51 @@ class AVLTree{
     int getBalance(BTreeNode<T>* _source){
         return _source->getHeight(_source->goLeft()) - _source->getHeight(_source->goRight());
     }
+
+    BTreeNode<T>* insert(const T& value, BTreeNode<T>* _source){
+
+        if(_source == nullptr)
+        {
+            return (new BTreeNode<T>(value));
+        }
+        if (value < _source -> getValue())
+        {
+            _source -> setLChild(insert(value, _source -> goLeft())) ;
+        }
+        else {
+            if (value > _source -> getValue()){
+                _source -> setRChild(insert(value, _source -> goRight()));
+            }
+            else {
+                return _source;
+            }
+        }
+        int new_balance = getBalance(_source);
+
+        if (new_balance > 1 && value < _source -> goLeft() -> getValue()) {
+            return rightRoll(_source);
+        }
+        if (new_balance < -1 && value > _source -> goRight() -> getValue()) {
+            return leftRoll(_source);
+        }
+        if (new_balance > 1 && value > _source -> goLeft() -> getValue()) {
+            _source->setLChild(leftRoll(_source->goLeft()));
+            return rightRoll(_source);
+        }
+        if (new_balance < -1 && value < _source -> goRight() -> getValue()) {
+            _source->setRChild(rightRoll(_source->goRight()));
+            return leftRoll(_source);
+        }
+
+        return _source;
+
+
+    }
+
 public:
     BTreeNode<T>* remove(const T& value, BTreeNode<T>* _source);
 
-    void insert(const T& value); // sofi
+    void insert(const T& value);
 
     BTreeNode<T>* find(const T& _value){
         class BTreeNode<T>* _source = source;
@@ -57,11 +98,21 @@ public:
         return _source;
     }
     template<class T>
+    BTreeNode<T>* AVLTree<T>::rightRoll(BTreeNode<T>* _source){
+        BTreeNode<T>* temp = _source;
+        _source = _source->goLeft();
+        temp->setLChild(_source->goRight());
+        _source->setRChild(temp);
+        return _source;
+    }
+    template<class T>
     BTreeNode<T>* AVLTree<T>::LL(BTreeNode<T>* _source){
-
+        return rightRoll(_source);
     } // sofi
     template<class T>
     BTreeNode<T>* AVLTree<T>::LR(BTreeNode<T>* _source){
+        _source = leftRoll(_source);
+        return rightRoll(_source);
     } // sofi
     template<class T>
     BTreeNode<T>* AVLTree<T>::RR(BTreeNode<T>* _source){
@@ -111,4 +162,18 @@ public:
         }
         return _source;
     }
+    template<class T>
+    void AVLTree<T>::insert(const T& value){
+
+        BTreeNode<T>* new_node = new BTreeNode<T>(value);
+
+        if (source == nullptr){
+            source = new_node;
+        }
+        else{
+            insert(value, new_node);
+        }
+
+    }
+
 #endif //PLAYERSMANAGER_AVLTREE_H
