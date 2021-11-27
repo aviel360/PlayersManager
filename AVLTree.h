@@ -11,14 +11,11 @@ class AVLTree{
     BTreeNode<T>* source;
 
     BTreeNode<T>* rightRoll(BTreeNode<T>* _source){} // sofi
-
-    BTreeNode<T>* leftRoll(){
-        BTreeNode<T>* temp = source;
-        source = source->goRight();
-        temp->setRChild(source->goLeft());
-        source->setLChild(temp);
-        return source;
-    }
+    BTreeNode<T>* leftRoll(BTreeNode<T>* _source);
+    BTreeNode<T>* LL(BTreeNode<T>* _source);
+    BTreeNode<T>* LR(BTreeNode<T>* _source);
+    BTreeNode<T>* RR(BTreeNode<T>* _source);
+    BTreeNode<T>* RL(BTreeNode<T>* _source);
 
     BTreeNode<T>* getMinValue(BTreeNode<T>* _source){
         while(_source->goLeft() != nullptr){
@@ -30,9 +27,53 @@ class AVLTree{
         return _source->getHeight(_source->goLeft()) - _source->getHeight(_source->goRight());
     }
 public:
+    BTreeNode<T>* remove(const T& value, BTreeNode<T>* _source);
 
     void insert(const T& value); // sofi
-    BTreeNode<T>* remove(const T& value, BTreeNode<T>* _source){
+
+    BTreeNode<T>* find(const T& _value){
+        class BTreeNode<T>* _source = source;
+        while(_source != nullptr){
+            if(source->value < _value){
+                _source = _source->goRight();
+            }
+            else if(source->value == _value){
+                return source->value;
+            }
+            else{
+                _source = _source->goLeft();
+            }
+        }
+        return nullptr;
+    }
+    void inOrder(); // sofi
+};
+    template<class T>
+    BTreeNode<T>* AVLTree<T>::leftRoll(BTreeNode<T>* _source){
+        BTreeNode<T>* temp = _source;
+        _source = _source->goRight();
+        temp->setRChild(_source->goLeft());
+        _source->setLChild(temp);
+        return _source;
+    }
+    template<class T>
+    BTreeNode<T>* AVLTree<T>::LL(BTreeNode<T>* _source){
+
+    } // sofi
+    template<class T>
+    BTreeNode<T>* AVLTree<T>::LR(BTreeNode<T>* _source){
+    } // sofi
+    template<class T>
+    BTreeNode<T>* AVLTree<T>::RR(BTreeNode<T>* _source){
+        return leftRoll(_source);
+    }
+    template<class T>
+    BTreeNode<T>* AVLTree<T>::RL(BTreeNode<T>* _source){
+        _source = rightRoll(_source);
+        return leftRoll(_source);
+    }
+    template<class T>
+    BTreeNode<T>* AVLTree<T>::remove(const T& value, BTreeNode<T>* _source){
         if(_source == nullptr){
             return nullptr;
         }
@@ -70,22 +111,4 @@ public:
         }
         return _source;
     }
-
-    BTreeNode<T>* find(const T& _value){
-        class BTreeNode<T>* _source = source;
-        while(_source != nullptr){
-            if(source->value < _value){
-                _source = _source->goRight();
-            }
-            else if(source->value == _value){
-                return source->value;
-            }
-            else{
-                _source = _source->goLeft();
-            }
-        }
-        return nullptr;
-    }
-    void inOrder(); // sofi
-};
 #endif //PLAYERSMANAGER_AVLTREE_H
