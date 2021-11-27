@@ -11,7 +11,7 @@ class BTreeNode{
         return x > y ? x : y;
     }
 public:
-    explicit BTreeNode(const T& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0);
+    explicit BTreeNode(const T& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
     BTreeNode* goLeft(){
@@ -20,8 +20,11 @@ public:
     BTreeNode* goRight(){
         return r_child;
     }
+    T getValue(){
+        return value;
+    }
     void setHeight(){
-        height = max(getLHeight(), getRHeight()) + 1;
+        height = max(getHeight(l_child), getRHeight(r_child)) + 1;
     }
     void setLChild(BTreeNode* _l_child){
         l_child = _l_child;
@@ -32,7 +35,7 @@ public:
         setHeight();
     }
     int getHeight() {
-        return node->height;
+        return height;
     }
     int getHeight(BTreeNode* node){
         if (node == nullptr){
@@ -40,6 +43,7 @@ public:
         }
         return node->getHeight();
     }
+    
 };
 
 #endif
