@@ -1,6 +1,8 @@
 #ifndef BTREENODE_H_
 #define BTREENODE_H_
 
+int max(int x, int y);
+
 template <class T>
 class BTreeNode{
     T value;
@@ -8,9 +10,6 @@ class BTreeNode{
     BTreeNode<T>* l_child;
     int height;
 
-    int max(int x, int y){
-        return x > y ? x : y;
-    }
 public:
     explicit BTreeNode(const T& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
@@ -23,6 +22,9 @@ public:
     }
     T getValue(){
         return value;
+    }
+    void setValue(const T& _value){
+        value = _value;
     }
     void setHeight(){
         height = max(getHeight(l_child), getHeight(r_child)) + 1;
@@ -40,11 +42,14 @@ public:
     }
     int getHeight(BTreeNode* node){
         if (node == nullptr){
-            return 0;
+            return -1;
         }
         return node->getHeight();
     }
     
 };
+int max(int x, int y){
+    return x > y ? x : y;
+}
 
 #endif

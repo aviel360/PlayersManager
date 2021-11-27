@@ -5,72 +5,30 @@
 #ifndef PLAYERSMANAGER_AVLTREE_H
 #define PLAYERSMANAGER_AVLTREE_H
 #include "BTreeNode.h"
+template<class T>
+BTreeNode<T>* insert(const T& value, BTreeNode<T>* _source);
 
 template<class T>
 class AVLTree{
     BTreeNode<T>* source;
 
-    BTreeNode<T>* rightRoll(BTreeNode<T>* _source); // sofi
-    BTreeNode<T>* leftRoll(BTreeNode<T>* _source);
-    BTreeNode<T>* LL(BTreeNode<T>* _source);
-    BTreeNode<T>* LR(BTreeNode<T>* _source);
-    BTreeNode<T>* RR(BTreeNode<T>* _source);
-    BTreeNode<T>* RL(BTreeNode<T>* _source);
-
-    BTreeNode<T>* getMinValue(BTreeNode<T>* _source){
-        while(_source->goLeft() != nullptr){
-            _source = _source->goLeft();
-        }
-        return _source;
-    }
-    int getBalance(BTreeNode<T>* _source){
-        return _source->getHeight(_source->goLeft()) - _source->getHeight(_source->goRight());
-    }
-
-    BTreeNode<T>* insert(const T& value, BTreeNode<T>* _source){
-
-        if(_source == nullptr)
-        {
-            return (new BTreeNode<T>(value));
-        }
-        if (value < _source -> getValue())
-        {
-            _source -> setLChild(insert(value, _source -> goLeft())) ;
-        }
-        else {
-            if (value > _source -> getValue()){
-                _source -> setRChild(insert(value, _source -> goRight()));
-            }
-            else {
-                return _source;
-            }
-        }
-        int new_balance = getBalance(_source);
-
-        if (new_balance > 1 && value < _source -> goLeft() -> getValue()) {
-            return rightRoll(_source);
-        }
-        if (new_balance < -1 && value > _source -> goRight() -> getValue()) {
-            return leftRoll(_source);
-        }
-        if (new_balance > 1 && value > _source -> goLeft() -> getValue()) {
-            _source->setLChild(leftRoll(_source->goLeft()));
-            return rightRoll(_source);
-        }
-        if (new_balance < -1 && value < _source -> goRight() -> getValue()) {
-            _source->setRChild(rightRoll(_source->goRight()));
-            return leftRoll(_source);
-        }
-
-        return _source;
-
-
-    }
-
 public:
-    BTreeNode<T>* remove(const T& value, BTreeNode<T>* _source);
+    AVLTree(){
+        source = nullptr;
+    }
+    explicit AVLTree(const T& _value) : source(new BTreeNode<T>(_value)) {}
+    ~AVLTree() = default;
+    AVLTree(const AVLTree& tree); // we need to do this !
+    void insert(const T& value){
+        source = insertRecursive(value, source);
+    }
 
-    void insert(const T& value);
+    void remove(const T& value){
+        source = removeRecursive(value, source);
+    }
+    void inOrder(){
+        inOrderRecursive(source);
+    }
 
     BTreeNode<T>* find(const T& _value){
         class BTreeNode<T>* _source = source;
@@ -87,52 +45,63 @@ public:
         }
         return nullptr;
     }
-    void inOrder(); // sofi
 };
     template<class T>
-    BTreeNode<T>* AVLTree<T>::leftRoll(BTreeNode<T>* _source){
-        BTreeNode<T>* temp = _source;
-        _source = _source->goRight();
-        temp->setRChild(_source->goLeft());
-        _source->setLChild(temp);
+    BTreeNode<T>* getMinValue(BTreeNode<T>* _source){
+        while(_source->goLeft() != nullptr){
+            _source = _source->goLeft();
+        }
         return _source;
     }
     template<class T>
-    BTreeNode<T>* AVLTree<T>::rightRoll(BTreeNode<T>* _source){
-        BTreeNode<T>* temp = _source;
-        _source = _source->goLeft();
-        temp->setLChild(_source->goRight());
-        _source->setRChild(temp);
-        return _source;
+    int getBalance(BTreeNode<T>* _source){
+        if(_source == nullptr){
+            return 0;
+        }
+        return _source->getHeight(_source->goLeft()) - _source->getHeight(_source->goRight());
     }
     template<class T>
-    BTreeNode<T>* AVLTree<T>::LL(BTreeNode<T>* _source){
-        return rightRoll(_source);
-    } // sofi
-    template<class T>
-    BTreeNode<T>* AVLTree<T>::LR(BTreeNode<T>* _source){
-        _source = leftRoll(_source);
-        return rightRoll(_source);
-    } // sofi
-    template<class T>
-    BTreeNode<T>* AVLTree<T>::RR(BTreeNode<T>* _source){
-        return leftRoll(_source);
+    BTreeNode<T>* leftRoll(BTreeNode<T>* _source){
+        BTreeNode<T>* new_root = _source->goRight();
+        _source->setRChild(new_root->goLeft());
+        new_root->setLChild(_source);
+        return new_root;
     }
     template<class T>
-    BTreeNode<T>* AVLTree<T>::RL(BTreeNode<T>* _source){
+    BTreeNode<T>* rightRoll(BTreeNode<T>* _source){
+        BTreeNode<T>* new_root = _source->goLeft();
+        _source->setLChild(new_root->goRight());
+        new_root->setRChild(_source);
+        return new_root;
+    }
+    template<class T>
+    BTreeNode<T>* LL(BTreeNode<T>* _source){
+        return rightRoll(_source);
+    } 
+    template<class T>
+    BTreeNode<T>* LR(BTreeNode<T>* _source){
         _source = rightRoll(_source);
         return leftRoll(_source);
+    } 
+    template<class T>
+    BTreeNode<T>* RR(BTreeNode<T>* _source){
+        return leftRoll(_source);
     }
     template<class T>
-    BTreeNode<T>* AVLTree<T>::remove(const T& value, BTreeNode<T>* _source){
+    BTreeNode<T>* RL(BTreeNode<T>* _source){
+        _source = leftRoll(_source);
+        return rightRoll(_source);
+    }
+    template<class T>
+    BTreeNode<T>* removeRecursive(const T& value, BTreeNode<T>* _source){
         if(_source == nullptr){
             return nullptr;
         }
         else if(value < _source->getValue()){
-            _source->setLChild(remove(value, _source->goLeft()));
+            _source->setLChild(removeRecursive(value, _source->goLeft()));
         }
-        else if(source->getValue() < value){
-            _source->setRChild(remove(value, _source->goRight()));
+        else if(_source->getValue() < value){
+            _source->setRChild(removeRecursive(value, _source->goRight()));
         }
         else{
             if(_source->goRight() == nullptr || _source->goLeft() == nullptr){
@@ -141,39 +110,77 @@ public:
                     temp = _source;
                     _source = nullptr;
                 }
+                else{
+                   *_source = *temp;
+                    _source->setHeight();
+                }
+                delete temp;
             }
             else{
-
+                BTreeNode<T>* temp = getMinValue(_source->goRight());
+                _source->setValue(temp->getValue());
+                _source->setRChild(removeRecursive(temp->getValue(), _source->goRight()));
             }
-            
         }
+        if(_source == nullptr){
+            return _source;
+        }
+        _source->setHeight();
         int balance = getBalance(_source);
         if(balance < -1 && getBalance(_source->goRight()) < 1){
-            RR(_source);
+            return RR(_source);
         }
         if(balance < -1 && getBalance(_source->goRight()) > 0){
-            RL(_source);
+            return RL(_source);
         }
         if(balance > 1 &&  getBalance(_source->goLeft()) > -1){
-            LL(_source);
+            return LL(_source);
         }
         if(balance > 1 && getBalance(_source->goLeft()) < 0){
-            LR(_source);
+            return LR(_source);
         }
         return _source;
     }
     template<class T>
-    void AVLTree<T>::insert(const T& value){
-
-        BTreeNode<T>* new_node = new BTreeNode<T>(value);
-
-        if (source == nullptr){
-            source = new_node;
+    BTreeNode<T>* insertRecursive(const T& value, BTreeNode<T>* _source){
+        if(_source == nullptr)
+        {
+            BTreeNode<T>* node = new BTreeNode<T>(value);
+            _source = node;
+            return _source;
         }
-        else{
-            insert(value, new_node);
+        if (value < _source -> getValue())
+        {
+            _source -> setLChild(insertRecursive(value, _source -> goLeft())) ;
         }
-
+        else if (value > _source -> getValue()){
+            _source -> setRChild(insertRecursive(value, _source -> goRight()));
+        }
+        else {
+            return _source;
+        }
+        int new_balance = getBalance(_source);
+        if(new_balance < -1 && getBalance(_source->goRight()) < 1){
+            return RR(_source);
+        }
+        if(new_balance < -1 && getBalance(_source->goRight()) > 0){
+            return RL(_source);
+        }
+        if(new_balance > 1 &&  getBalance(_source->goLeft()) > -1){
+            return LL(_source);
+        }
+        if(new_balance > 1 && getBalance(_source->goLeft()) < 0){
+            return LR(_source);
+        }
+        return _source;
+    }
+    template<class T>
+    void inOrderRecursive(BTreeNode<T>* _source){
+        if(_source != nullptr){
+            inOrderRecursive(_source->goLeft());
+            std::cout << _source->getValue() << " ";
+            inOrderRecursive(_source->goRight());
+        }
     }
 
 #endif //PLAYERSMANAGER_AVLTREE_H
