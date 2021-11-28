@@ -4,13 +4,13 @@
     void Player::setLevel(int _Level){
         this->Level = _Level;
     }
-    int Player::getLevel(){
+    int Player::getLevel() const{
         return this->Level;
     }
-    int Player::getPlayerID(){
+    int Player::getPlayerID() const{
         return this->PlayerID;
     }
-    int Player::getKey(){
+    int Player::getKey() const{
         return this->key;
     }
     bool operator>(const Player& player_a, const Player& player_b){

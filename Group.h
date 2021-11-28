@@ -17,8 +17,8 @@ public:
 
     void insertPlayer(int key, int PlayerID, int Level);
     void removePlayer(int PlayerID);
-    int getStrongestPlayer();
-    int getNumOfPlayers();
+    int getStrongestPlayer() const;
+    int getNumOfPlayers() const;
 
     friend bool operator==(const Group& group_a, const Group& group_b){
         return group_a.groupID == group_b.groupID;

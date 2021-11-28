@@ -8,10 +8,10 @@
         _player = players.find(_player)->getValue();
         players.remove(_player);
     }
-    int Group::getStrongestPlayer(){
+    int Group::getStrongestPlayer() const{
         return this->strongestPlayer.getPlayerID();
     }
-    int Group::getNumOfPlayers(){
+    int Group::getNumOfPlayers() const{
         return this->numOfPlayers;
     }
     bool operator>(const Group& group_a, const Group& group_b){
@@ -21,7 +21,7 @@
         return !(group_a > group_b);
     }
     bool operator>=(const Group& group_a, const Group& group_b){
-        return !(group_a < group_b)
+        return !(group_a < group_b);
     }
     bool operator!=(const Group& group_a, const Group& group_b){
         return !(group_a == group_b);

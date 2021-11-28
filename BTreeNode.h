@@ -1,8 +1,6 @@
 #ifndef PLAYERSMANAGER_BTREENODE_H_
 #define PLAYERSMANAGER_BTREENODE_H_
 
-int max(int x, int y);
-
 template <class T>
 class BTreeNode{
     T value;
@@ -10,18 +8,22 @@ class BTreeNode{
     BTreeNode<T>* l_child;
     int height;
 
+    int max(const int x, const int y){
+        return x > y ? x : y;
+    }
+
 public:
     explicit BTreeNode(const T& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
-    BTreeNode* goLeft(){
+    BTreeNode* goLeft() const{
         return l_child;
     }
-    BTreeNode* goRight(){
+    BTreeNode* goRight() const{
         return r_child;
     }
-    T& getValue(){
-        return value;
+    T& getValue() const{
+        return this->value;
     }
     void setValue(const T& _value){
         value = _value;
@@ -37,10 +39,10 @@ public:
         r_child = _r_child;
         setHeight();
     }
-    int getHeight() {
+    int getHeight() const{
         return height;
     }
-    int getHeight(BTreeNode* node){
+    int getHeight(BTreeNode const * const node) const{
         if (node == nullptr){
             return -1;
         }
@@ -48,9 +50,6 @@ public:
     }
     
 };
-int max(int x, int y){
-    return x > y ? x : y;
-}
 
 
 #endif
