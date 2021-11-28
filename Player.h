@@ -6,7 +6,7 @@ class Player{
     int PlayerID;
     int Level;
 public:
-    Player(int _PlayerId, int _Level, int _key);
+    Player(int _key, int _PlayerId = 0, int _Level = 0);
     Player(const Player& player) = default;
     Player& operator=(const Player& player) = default;
     ~Player() = default;

@@ -1,6 +1,6 @@
 #include "Player.h"
 
-    Player::Player(int _PlayerId, int _Level, int _key) : PlayerID(_PlayerId), Level(_Level), key(_key) {}
+    Player::Player(int _key, int _PlayerId, int _Level) : key(_key), PlayerID(_PlayerId), Level(_Level) {}
     void Player::setLevel(int _Level){
         this->Level = _Level;
     }
