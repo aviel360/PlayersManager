@@ -1,5 +1,5 @@
-#ifndef BTREENODE_H_
-#define BTREENODE_H_
+#ifndef PLAYERSMANAGER_BTREENODE_H_
+#define PLAYERSMANAGER_BTREENODE_H_
 
 int max(int x, int y);
 

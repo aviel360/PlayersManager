@@ -1,6 +1,8 @@
 #include <iostream>
 #include "AVLTree.h"
 #include "BTreeNode.h"
+#include "Player.h"
+
 int main() {
     AVLTree<int> test(1);
     test.inOrder();
