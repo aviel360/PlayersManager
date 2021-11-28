@@ -20,7 +20,7 @@ public:
     BTreeNode* goRight(){
         return r_child;
     }
-    T getValue(){
+    T& getValue(){
         return value;
     }
     void setValue(const T& _value){
@@ -51,5 +51,6 @@ public:
 int max(int x, int y){
     return x > y ? x : y;
 }
+
 
 #endif

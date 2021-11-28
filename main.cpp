@@ -2,6 +2,12 @@
 #include "AVLTree.h"
 #include "BTreeNode.h"
 #include "Player.h"
+void check(AVLTree<int> tree)
+{
+    printf("hi ");
+    tree.insert(6);
+    tree.inOrder();
+}
 
 int main() {
     AVLTree<int> test(1);
@@ -30,5 +36,6 @@ int main() {
     test.remove(12);
     test.remove(15);
     test.inOrder();
+    check(test);
     return 0;
 }
