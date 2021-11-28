@@ -2,22 +2,39 @@
 #include "AVLTree.h"
 #include "BTreeNode.h"
 #include "Player.h"
+#include "Group.h"
+#include "Exceptions.h"
+
 void check(AVLTree<int> tree)
 {
     printf("hi ");
-    tree.insert(6);
-    tree.inOrder();
+    try{
+        tree.insert(6);
+    }
+    catch(ValueExists& ve){
+        std::cout << ve.what() << std::endl;
+    }
 }
 
 int main() {
     AVLTree<int> test(1);
     test.inOrder();
-    test.insert(1);
+    try{
+        test.insert(1);
+    }
+    catch(ValueExists& ve){
+        std::cout << ve.what() << std::endl;
+    }
     test.insert(2);
     test.insert(3);
     test.insert(4);
     test.inOrder();
-    test.insert(1);
+    try{
+        test.insert(1);
+    }
+    catch(ValueExists& ve){
+        std::cout << ve.what() << std::endl;
+    }
     test.inOrder();
     test.remove(1);
     test.inOrder();
@@ -37,5 +54,8 @@ int main() {
     test.remove(15);
     test.inOrder();
     check(test);
+    
+    Group group1(1);
+    std::cout << group1.getNumOfPlayers() << " " << group1.getStrongestPlayer();
     return 0;
 }
