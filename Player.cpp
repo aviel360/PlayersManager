@@ -1,16 +1,16 @@
 #include "Player.h"
 
-    Player::Player(int _PlayerId, int _Level, int _key) : PlayerID(_PlayerId), Level(_Level), key(_key) {}
+    Player::Player(int _key, int _PlayerId, int _Level) : key(_key), PlayerID(_PlayerId), Level(_Level) {}
     void Player::setLevel(int _Level){
         this->Level = _Level;
     }
-    int Player::getLevel(){
+    int Player::getLevel() const{
         return this->Level;
     }
-    int Player::getPlayerID(){
+    int Player::getPlayerID() const{
         return this->PlayerID;
     }
-    int Player::getKey(){
+    int Player::getKey() const{
         return this->key;
     }
     bool operator>(const Player& player_a, const Player& player_b){
