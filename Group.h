@@ -6,19 +6,20 @@
 class Group{
     int groupID;
     AVLTree<Player> players;
-    Player strongestPlayer;
+    int strongestPlayerID;
+    int strongestPlayerLevel;
     int numOfPlayers;
 
 public:
-    Group(int groupID);
+    Group(int _groupID);
     Group(const Group& _group) = default;
     Group& operator=(const Group& _group) = default;
     ~Group() = default;
 
     void insertPlayer(int key, int PlayerID, int Level);
     void removePlayer(int PlayerID);
-    int getStrongestPlayer() const;
-    int getNumOfPlayers() const;
+    int getStrongestPlayer();
+    int getNumOfPlayers();
 
     friend bool operator==(const Group& group_a, const Group& group_b){
         return group_a.groupID == group_b.groupID;

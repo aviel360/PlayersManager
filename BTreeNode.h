@@ -16,13 +16,13 @@ public:
     explicit BTreeNode(const T& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
-    BTreeNode* goLeft() const{
+    BTreeNode* goLeft(){
         return l_child;
     }
-    BTreeNode* goRight() const{
+    BTreeNode* goRight(){
         return r_child;
     }
-    T& getValue() const{
+    T& getValue(){
         return this->value;
     }
     void setValue(const T& _value){

@@ -6,7 +6,7 @@
 #define PLAYERSMANAGER_AVLTREE_H
 #include "BTreeNode.h"
 #include "Exceptions.h"
-
+#include <iostream>
 
 template<class T>
 class AVLTree{
@@ -287,10 +287,10 @@ public:
     BTreeNode<T>* find(const T& _value){
         class BTreeNode<T>* _source = source;
         while(_source != nullptr){
-            if(source->getValue() < _value){
+            if(_source->getValue() < _value){
                 _source = _source->goRight();
             }
-            else if(source->getValue() == _value){
+            else if(_source->getValue() == _value){
                 return source;
             }
             else{
