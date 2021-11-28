@@ -223,10 +223,19 @@ class AVLTree{
         }
     }
 
-public:
-    AVLTree(){
-        source = nullptr;
+    void preORet(BTreeNode<T>* node)
+    {
+        if (node != nullptr)
+        {
+            this->insert(node->getValue());
+            preORet(node->goLeft());
+            preORet(node->goRight());
+        }
     }
+
+public:
+
+    AVLTree(): source(nullptr){}
 
     explicit AVLTree(const T& _value) : source(new BTreeNode<T>(_value)) {}
 
@@ -243,6 +252,19 @@ public:
 
     }
 
+    AVLTree operator = (const AVLTree& other)
+    {
+        if (this != &other)
+        {
+            if(source != nullptr)
+            {
+                removeBTreeNode(source);
+            }
+            BTreeNode<T>* node = this->source;
+            preORet(node);
+        }
+        return *this;
+    }
     void insert(const T& value){
         if (find(value) != nullptr)
         {
@@ -265,11 +287,11 @@ public:
     BTreeNode<T>* find(const T& _value){
         class BTreeNode<T>* _source = source;
         while(_source != nullptr){
-            if(source->value < _value){
+            if(source->getValue() < _value){
                 _source = _source->goRight();
             }
-            else if(source->value == _value){
-                return source->value;
+            else if(source->getValue() == _value){
+                return source;
             }
             else{
                 _source = _source->goLeft();
