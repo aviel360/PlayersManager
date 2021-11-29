@@ -32,6 +32,6 @@ int main() {
     group1.removePlayer(200);
     assert(group2.getStrongestPlayer() == 200);
     assert(group1.getNumOfPlayers() == 4);
-    assert(group2.getStrongestPlayer() == 221);
+    assert(group1.getStrongestPlayer() == 221);
     assert(group2.getNumOfPlayers() == 5);
 }

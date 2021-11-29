@@ -5,8 +5,8 @@
                                 strongestPlayerID(-1), numOfPlayers(0) {}
     void Group::insertPlayer(int PlayerID, int Level){
         Player _playerID(PlayerID, PlayerID, Level);
-        playersID.insert(_playerID);
         Player _playerLevel(Level, PlayerID, Level);
+        playersID.insert(_playerID);
         playersLevel.insert(_playerLevel);
         updateStrongest(PlayerID, Level);
         numOfPlayers++;
@@ -18,13 +18,15 @@
             throw ValueNotExists();
         }
         _player = player_exists->getValue();
+        Player _playerLevel(_player.getLevel(), PlayerID, _player.getLevel());
         playersID.remove(_player);
-        _player = playersID.find(_player)->getValue();
-        playersLevel.remove(_player);
-        _player = playersLevel.getMaxValue();
+        playersLevel.remove(_playerLevel);
+
         strongestPlayerID = -1;
         strongestPlayerLevel = 0;
+        _player = playersLevel.getMaxValue();
         updateStrongest(_player.getPlayerID(), _player.getLevel());
+
         numOfPlayers--;
     }
     int Group::getStrongestPlayer(){
