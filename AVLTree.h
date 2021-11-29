@@ -321,6 +321,15 @@ public:
         }
         return nullptr;
     }
+
+    T& get(const T& _value){
+        BTreeNode<T>* node = find(_value);
+        if (node == nullptr)
+        {
+            throw ValueNotExists();
+        }
+        return node->getValue();
+    }
         /**
      *
      * @param _source

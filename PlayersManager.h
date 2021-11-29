@@ -25,7 +25,9 @@ class PlayersManager{
 
 public:
 
-    PlayersManager* Init();
+//    static PlayersManager* Init();
+    PlayersManager() = default;
+    ~PlayersManager() = default;
     void addGroup(const int& id); //maybe void?
     void addPlayer(const int& player_id, const int& group_id, const int& level);
     void removePlayer(const int& player_id);
@@ -33,6 +35,6 @@ public:
     void increaseLevel(const int& player_id, const int& new_level);
     void getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers);
     void getGroupsHighestLevel(const int& numOfGroups, int** Players);
-    void Quit();
+//    void Quit();
 };
 #endif //PROJNAME_PLAYERSMANAGER_H

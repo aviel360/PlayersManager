@@ -4,16 +4,10 @@
 
 #include "PlayersManager.h"
 
-PlayersManager* PlayersManager::Init() {
-    try {
-        PlayersManager* DS = new PlayersManager;
-        return DS;
-    }
-    catch (const std::bad_alloc& e)
-    {
-        return nullptr;
-    }
-}
+//PlayersManager* PlayersManager::Init() {
+//    PlayersManager* DS = new PlayersManager;
+//    return DS;
+//}
 
 void PlayersManager::addGroup(const int& id) {
     if (id <= 0)
@@ -31,20 +25,20 @@ void PlayersManager::addPlayer(const int& player_id, const int& group_id, const 
     Group current_group = Group(group_id);
     if (!eGroup.exists(current_group) && !fGroup.exists(current_group))
     {
-        throw Failure();
+        throw ValueNotExists();
     }
     Player current_player = Player(player_id, player_id, level);
-    if (players.find(current_player))
+    if (players.exists(current_player))
     {
-        throw Failure();
+        throw ValueExists();
     }
     if (eGroup.exists(current_group)) //means it's empty
     {
         fGroup.insert(current_group);
         eGroup.remove(current_group);
     }
-    players.insert(current_player);
-    //TODO insert player problem here!
+    players.insert(current_player); //TODO maybe add more tree
+    fGroup.get(current_group).insertPlayer(player_id, level);
 
 }
 void removePlayer(const int& player_id) {
@@ -62,6 +56,6 @@ void getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers)
 void getGroupsHighestLevel(const int& numOfGroups, int** Players) {
 
 }
-void Quit() {
-
-}
+//void Quit() {
+//
+//}
