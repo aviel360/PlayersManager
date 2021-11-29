@@ -297,8 +297,17 @@ public:
         inOrderToArrayRecursive(source, array, 0);
     }
 
+    bool exists(const T& _value){
+        BTreeNode<T>* result = find(_value);
+        if (result == nullptr)
+        {
+            return false;
+        }
+        return true;
+    }
+
     BTreeNode<T>* find(const T& _value){
-        class BTreeNode<T>* _source = source;
+        BTreeNode<T>* _source = source;
         while(_source != nullptr){
             if(_source->getValue() < _value){
                 _source = _source->goRight();
