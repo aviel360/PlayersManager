@@ -18,7 +18,6 @@ void check(AVLTree<int> tree)
 
 int main() {
     AVLTree<int> test(1);
-    test.inOrder();
     try{
         test.insert(1);
     }
@@ -28,18 +27,14 @@ int main() {
     test.insert(2);
     test.insert(3);
     test.insert(4);
-    test.inOrder();
     try{
         test.insert(1);
     }
     catch(ValueExists& ve){
         std::cout << ve.what() << std::endl;
     }
-    test.inOrder();
     test.remove(1);
-    test.inOrder();
     test.remove(4);
-    test.inOrder();
     test.insert(4);
     test.insert(7);
     test.insert(6);
@@ -47,12 +42,10 @@ int main() {
     test.insert(15);
     test.insert(12);
     test.insert(11);
-    test.inOrder();
     test.remove(7);
     test.remove(11);
     test.remove(12);
     test.remove(15);
-    test.inOrder();
     check(test);
     
     Group group1(1);

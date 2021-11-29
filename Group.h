@@ -5,10 +5,13 @@
 
 class Group{
     int groupID;
-    AVLTree<Player> players;
+    AVLTree<Player> playersID;
+    AVLTree<Player> playersLevel;
     int strongestPlayerID;
     int strongestPlayerLevel;
     int numOfPlayers;
+
+    void updateStrongest(int _playerID, int _playerLevel);
 
 public:
     Group(int _groupID);
@@ -16,7 +19,7 @@ public:
     Group& operator=(const Group& _group) = default;
     ~Group() = default;
 
-    void insertPlayer(int key, int PlayerID, int Level);
+    void insertPlayer(int PlayerID, int Level);
     void removePlayer(int PlayerID);
     int getStrongestPlayer();
     int getNumOfPlayers();
