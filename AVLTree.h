@@ -6,12 +6,33 @@
 #define PLAYERSMANAGER_AVLTREE_H
 #include "BTreeNode.h"
 #include "Exceptions.h"
-#include <iostream>
 
 template<class T>
 class AVLTree{
     BTreeNode<T>* source;
 
+        /**
+     *
+     * @param _source
+     * @return
+     */
+    BTreeNode<T>* getMinValue(BTreeNode<T>* _source){
+        while(_source->goLeft() != nullptr){
+            _source = _source->goLeft();
+        }
+        return _source;
+    }
+        /**
+     *
+     * @param _source
+     * @return
+     */
+    BTreeNode<T>* getMaxValue(BTreeNode<T>* _source){
+        while(_source->goRight() != nullptr){
+            _source = _source->goRight();
+        }
+        return _source;
+    }
     /**
      *
      * @param node
@@ -138,17 +159,6 @@ class AVLTree{
      * @param _source
      * @return
      */
-    BTreeNode<T>* getMinValue(BTreeNode<T>* _source){
-        while(_source->goLeft() != nullptr){
-            _source = _source->goLeft();
-        }
-        return _source;
-    }
-    /**
-     *
-     * @param _source
-     * @return
-     */
     int getBalance(BTreeNode<T>* _source){
         if(_source == nullptr){
             return 0;
@@ -215,11 +225,11 @@ class AVLTree{
      *
      * @param _source
      */
-    void inOrderRecursive(BTreeNode<T>* _source){
+    void inOrderToArrayRecursive(BTreeNode<T>* _source, int* array, int i){
         if(_source != nullptr){
-            inOrderRecursive(_source->goLeft());
-            std::cout << _source->getValue() << " ";
-            inOrderRecursive(_source->goRight());
+            inOrderRecursive(_source->goLeft(), array, i);
+            array[i++] = _source->getValue();
+            inOrderRecursive(_source->goRight(), array, i);
         }
     }
 
@@ -280,8 +290,11 @@ public:
         }
         source = removeRecursive(value, source);
     }
-    void inOrder(){
-        inOrderRecursive(source);
+    void inOrderToArray(int* array){
+        if(array == nullptr){
+            throw InvalidInput();
+        }
+        inOrderToArrayRecursive(source, array, 0);
     }
 
     BTreeNode<T>* find(const T& _value){
@@ -298,6 +311,22 @@ public:
             }
         }
         return nullptr;
+    }
+        /**
+     *
+     * @param _source
+     * @return
+     */
+    T& getMinValue(){
+        return getMinValue(source)->getValue();
+    }
+        /**
+     *
+     * @param _source
+     * @return
+     */
+    T& getMaxValue(){
+        return getMaxValue(source)->getValue();
     }
 };
 

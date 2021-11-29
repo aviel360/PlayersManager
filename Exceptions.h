@@ -21,6 +21,12 @@ public:
     const char * what () const noexcept;
 };
 
+class InvalidInput : public Exception
+{
+public:
+    const char * what () const noexcept;
+};
+
 class ValueNotExists : public Exception
 {
 public:
