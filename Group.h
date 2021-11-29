@@ -7,8 +7,8 @@ class Group{
     int groupID;
     AVLTree<Player> playersID;
     AVLTree<Player> playersLevel;
-    int strongestPlayerID;
     int strongestPlayerLevel;
+    int strongestPlayerID;
     int numOfPlayers;
 
     void updateStrongest(int _playerID, int _playerLevel);

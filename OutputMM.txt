@@ -1,0 +1,2 @@
+A game related error has occurred: Value already exists
+A game related error has occurred: Value Doesn't exists
