@@ -1,4 +1,5 @@
 #include "Group.h"
+#include "Exceptions.h"
 
     Group::Group(int _groupID) : groupID(_groupID), playersID(), playersLevel(), strongestPlayerLevel(-1), 
                                 strongestPlayerID(-1), numOfPlayers(0) {}
@@ -11,10 +12,14 @@
         numOfPlayers++;
     }
     void Group::removePlayer(int PlayerID){
-        Player _player(PlayerID);
-        _player = playersID.find(_player)->getValue();
+        Player _player(PlayerID, PlayerID);
+        auto player_exists = playersID.find(_player);
+        if(player_exists == nullptr){
+            throw ValueNotExists();
+        }
+        _player = player_exists->getValue();
         playersID.remove(_player);
-        _player = playersLevel.find(_player)->getValue();
+        _player = playersID.find(_player)->getValue();
         playersLevel.remove(_player);
         _player = playersLevel.getMaxValue();
         strongestPlayerID = -1;
