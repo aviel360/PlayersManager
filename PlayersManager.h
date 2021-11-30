@@ -20,8 +20,12 @@ enum StatusType{
 class PlayersManager{
     AVLTree<Group> eGroup;
     AVLTree<Group> fGroup;
-    AVLTree<Player> players;
+    Group players;
     int strongestPlayerID;
+
+
+    Group& findPlayerGroup(int player_id);
+    Group& groupExists(const int group_id);
 
 public:
 
@@ -33,6 +37,7 @@ public:
     void removePlayer(const int& player_id);
     void replaceGroup(const int& group_id, const int& replace_id);
     void increaseLevel(const int& player_id, const int& new_level);
+    int getHighestLevel(const int group_id, const int player_id);
     void getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers);
     void getGroupsHighestLevel(const int& numOfGroups, int** Players);
 //    void Quit();
