@@ -33,7 +33,7 @@ public:
     const char * what () const noexcept;
 };
 
-class Failure : public Exception
+class Index : public Exception
 {
 public:
     const char * what () const noexcept;

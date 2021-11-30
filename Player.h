@@ -17,6 +17,7 @@ public:
     int getLevel() const;
     int getPlayerID() const;
     int getKey() const;
+    int getGroupID() const;
     friend bool operator==(const Player& player_a, const Player& player_b){ 
         return player_a.PlayerID == player_b.PlayerID;
     }
