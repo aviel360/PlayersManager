@@ -68,7 +68,44 @@ int PlayersManager::getHighestLevel(const int group_id, const int player_id){
     return findPlayerGroup(player_id).getStrongestPlayer();
 }
 
-void getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers) {
+void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers) {
+    if (Players == nullptr || numOfPlayers == nullptr || group_id == 0)
+    {
+        throw InvalidInput();
+    }
+    if (group_id < 0)
+    {
+        int n = players.getNumOfPlayers();
+        if (n==0)
+        {
+            *numOfPlayers = 0;
+            Players = nullptr;
+            return;
+        }
+        array<int> my_array(n);
+        players.getLevelTree().inOrder(add<int> (my_array));
+        *Players = my_array.get();
+        numOfPlayers = &n;
+        return;
+    }
+    if (eGroup.exists(group_id))
+    {
+        *numOfPlayers = 0;
+        Players = nullptr;
+        return;
+    }
+    if (fGroup.exists(group_id))
+    {
+        Group current = Group(group_id);
+        int n = fGroup.get(current).getNumOfPlayers();
+        *numOfPlayers = n;
+        array<int> my_array(n);
+        fGroup.get(current).getLevelTree().inOrder(add<int> (my_array));
+        *Players = my_array.get();
+        return;
+    }
+
+    throw ValueNotExists();
 
 }
 void getGroupsHighestLevel(const int& numOfGroups, int** Players) {

@@ -232,6 +232,16 @@ class AVLTree{
             inOrderRecursive(_source->goRight(), array, i);
         }
     }
+    template <class Func>
+    void inOrderRecursive(BTreeNode<T>* _source, const Func& f)
+    {
+        if(_source != nullptr)
+        {
+            inOrderRecursive(_source->goLeft(), f);
+            f(_source->getValue());
+            inOrderRecursive(_source->goRight(), f);
+        }
+    }
 
     void preORet(BTreeNode<T>* node)
     {
@@ -295,6 +305,10 @@ public:
             throw InvalidInput();
         }
         inOrderToArrayRecursive(source, array, 0);
+    }
+    template <class Func>
+    void inOrder(const Func& f) {
+        inOrderRecursive(source, f);
     }
 
     bool exists(const T& _value){

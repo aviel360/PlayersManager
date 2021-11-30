@@ -57,7 +57,15 @@
         strongestPlayerID = old_level < strongestPlayerLevel ? 
                             PlayerID : PlayerID < strongestPlayerID ? PlayerID : strongestPlayerID;
     }
-    
+
+    int Group::getKey() const {
+        return this->groupID;
+    }
+
+    AVLTree<Player> Group::getLevelTree() {
+        return this->playersLevel;
+    }
+
     bool operator>(const Group& group_a, const Group& group_b){
         return group_b < group_a;
     }

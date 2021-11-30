@@ -80,7 +80,7 @@ public:
     add(array<T> _arr): my_array(_arr) {};
     void operator () (const T& t)
     {
-        my_array.insert(t);
+        my_array.insert(t.getKey());
     }
 };
 

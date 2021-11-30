@@ -25,6 +25,8 @@ public:
     bool playerExists(int PlayerID);
     int getStrongestPlayer();
     int getNumOfPlayers();
+    int getKey() const;
+    AVLTree<Player> getLevelTree();
 
     friend bool operator==(const Group& group_a, const Group& group_b){
         return group_a.groupID == group_b.groupID;
