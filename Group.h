@@ -19,13 +19,13 @@ public:
     Group& operator=(const Group& _group) = default;
     ~Group() = default;
 
-    void insertPlayer(int PlayerID, int _groupID, int Level);
+    void insertPlayer(int PlayerID, int _groupID, int Level = 0);
     void removePlayer(int PlayerID);
     Player getPlayer(int PlayerID);
     bool playerExists(int PlayerID);
     int getStrongestPlayer();
     int getNumOfPlayers();
-    int getKey() const;
+    int getReturn() const;
     AVLTree<Player> getLevelTree();
 
     friend bool operator==(const Group& group_a, const Group& group_b){

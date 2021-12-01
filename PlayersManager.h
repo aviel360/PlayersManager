@@ -74,13 +74,13 @@ public:
     }
 };
 template <class T>
-class add {
-    array<T> my_array;
+class Add {
+    array<int> my_array;
 public:
-    add(array<T> _arr): my_array(_arr) {};
+    Add(array<int> _arr): my_array(_arr) {};
     void operator () (const T& t)
     {
-        my_array.insert(t.getKey());
+        my_array.insert(t.getReturn());
     }
 };
 

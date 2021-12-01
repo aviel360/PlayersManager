@@ -233,13 +233,13 @@ class AVLTree{
         }
     }
     template <class Func>
-    void inOrderRecursive(BTreeNode<T>* _source, const Func& f)
+    void inOrderRecursive(BTreeNode<T>* _source, const Func& func)
     {
         if(_source != nullptr)
         {
-            inOrderRecursive(_source->goLeft(), f);
-            f(_source->getValue());
-            inOrderRecursive(_source->goRight(), f);
+            inOrderRecursive(_source->goLeft(), func);
+            func(_source->getValue());
+            inOrderRecursive(_source->goRight(), func);
         }
     }
 

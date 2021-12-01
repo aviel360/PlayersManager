@@ -83,9 +83,10 @@ void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, in
             return;
         }
         array<int> my_array(n);
-        players.getLevelTree().inOrder(add<int> (my_array));
+        Add<Player> a(my_array);
+        players.getLevelTree().inOrder(a);
         *Players = my_array.get();
-        numOfPlayers = &n;
+        *numOfPlayers = n;
         return;
     }
     if (eGroup.exists(group_id))
@@ -100,7 +101,8 @@ void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, in
         int n = fGroup.get(current).getNumOfPlayers();
         *numOfPlayers = n;
         array<int> my_array(n);
-        fGroup.get(current).getLevelTree().inOrder(add<int> (my_array));
+        Add<int> a(my_array);
+        fGroup.get(current).getLevelTree().inOrder(a);
         *Players = my_array.get();
         return;
     }

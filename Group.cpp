@@ -58,7 +58,7 @@
                             PlayerID : PlayerID < strongestPlayerID ? PlayerID : strongestPlayerID;
     }
 
-    int Group::getKey() const {
+    int Group::getReturn() const {
         return this->groupID;
     }
 

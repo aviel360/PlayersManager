@@ -14,6 +14,9 @@
     int Player::getKey() const{
         return this->key;
     }
+    int Player::getReturn() const {
+        return this->PlayerID;
+    }
     int Player::getGroupID() const{
         return this->groupID;
     }
