@@ -8,7 +8,7 @@
 //    PlayersManager* DS = new PlayersManager;
 //    return DS;
 //}
-
+PlayersManager::PlayersManager() : eGroup(), fGroup(), players(-1), strongestPlayerID(-1){} 
 void PlayersManager::addGroup(const int& id) {
     // if (id <= 0) *** maybe only check in library for values? :O maybe idk
     // {
@@ -61,54 +61,49 @@ void PlayersManager::increaseLevel(const int& player_id, const int& new_level) {
     players.getPlayer(player_id).setLevel(new_level);
     findPlayerGroup(player_id).getPlayer(player_id).setLevel(new_level);
 }
-int PlayersManager::getHighestLevel(const int group_id, const int player_id){
+int PlayersManager::getHighestLevel(const int group_id){
+    int player_id = players.getStrongestPlayer();
     if(group_id < 0){
-        return players.getStrongestPlayer();
+        return player_id;
     }
     return findPlayerGroup(player_id).getStrongestPlayer();
 }
 
+void PlayersManager::arrayMalloc(int size, int* sizePtr, int** arrayPtr){
+    *sizePtr = size;
+    if(size == 0){
+        *arrayPtr = nullptr;
+    }
+    else{
+        *arrayPtr = (int*)malloc(sizeof(int)*size);
+    }
+}
 void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers) {
-    if (Players == nullptr || numOfPlayers == nullptr || group_id == 0)
-    {
+    if (Players == nullptr || numOfPlayers == nullptr || group_id == 0){
         throw InvalidInput();
     }
-    if (group_id < 0)
-    {
-        int n = players.getNumOfPlayers();
-        if (n==0)
-        {
-            *numOfPlayers = 0;
-            Players = nullptr;
-            return;
-        }
-        array my_array(n, Players);
-        players.getLevelTree().inOrder(my_array);
-        *numOfPlayers = n;
-        return;
+    if (group_id < 0 || eGroup.exists(group_id)){   
+        arrayMalloc(players.getNumOfPlayers(), numOfPlayers, Players);
     }
-    if (eGroup.exists(group_id))
-    {
-        *numOfPlayers = 0;
-        Players = nullptr;
-        return;
+    else if (fGroup.exists(group_id)){
+        Group current_group = Group(group_id);
+        arrayMalloc(current_group.getNumOfPlayers(), numOfPlayers, Players);
+        array my_array(*numOfPlayers, Players);
+        fGroup.get(current_group).getLevelTree().inOrder(my_array);
     }
-    if (fGroup.exists(group_id))
-    {
-        Group current = Group(group_id);
-        int n = fGroup.get(current).getNumOfPlayers();
-        *numOfPlayers = n;
-        array my_array(n, Players);
-        fGroup.get(current).getLevelTree().inOrder(my_array);
-        *Players = my_array.get();
-        return;
+    else{
+        throw ValueNotExists();
     }
-
-    throw ValueNotExists();
-
 }
-void getGroupsHighestLevel(const int& numOfGroups, int** Players) {
-
+void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players) {
+    int* size;
+    arrayMalloc(numOfGroups, size, Players);
+    array my_array(*numOfGroups, Players);
+    try{
+        fGroup.inOrder(my_array);
+    }
+    catch(Index& e){
+    }
 }
 //void Quit() {
 //

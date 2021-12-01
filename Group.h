@@ -14,6 +14,7 @@ class Group{
     void updateStrongest(int _playerID, int _playerLevel);
 
 public:
+    Group();
     Group(int _groupID);
     Group(const Group& _group) = default;
     Group& operator=(const Group& _group) = default;

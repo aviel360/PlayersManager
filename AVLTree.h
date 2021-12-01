@@ -243,16 +243,6 @@ class AVLTree{
         }
     }
 
-    void preORet(BTreeNode<T>* node)
-    {
-        if (node != nullptr)
-        {
-            this->insert(node->getValue());
-            preORet(node->goLeft());
-            preORet(node->goRight());
-        }
-    }
-
 public:
 
     AVLTree(): source(nullptr){}
@@ -272,19 +262,16 @@ public:
 
     }
 
-    AVLTree operator = (const AVLTree& other)
+    AVLTree& operator=(const AVLTree& other)
     {
         if (this != &other)
         {
-            if(source != nullptr)
-            {
-                removeBTreeNode(source);
-            }
-            BTreeNode<T>* node = this->source;
-            preORet(node);
+            removeBTreeNode(source);
+            source = copy(other.source);
         }
         return *this;
     }
+
     void insert(const T& value){
         if (find(value) != nullptr)
         {

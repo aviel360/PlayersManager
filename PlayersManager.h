@@ -27,20 +27,21 @@ class PlayersManager{
 
     Group& findPlayerGroup(int player_id);
     bool groupExists(const int group_id);
+    void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
 
 public:
 
 //    static PlayersManager* Init();
-    PlayersManager() = default;
+    PlayersManager();
     ~PlayersManager() = default;
     void addGroup(const int& id); //maybe void?
     void addPlayer(const int& player_id, const int& group_id, const int& level);
     void removePlayer(const int& player_id);
     void replaceGroup(const int& group_id, const int& replace_id);
     void increaseLevel(const int& player_id, const int& new_level);
-    int getHighestLevel(const int group_id, const int player_id);
+    int getHighestLevel(const int group_id);
     void getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers);
-    void getGroupsHighestLevel(const int& numOfGroups, int** Players);
+    void getGroupsHighestLevel(const int numOfGroups, int** Players);
 //    void Quit();
 };
 
@@ -74,6 +75,10 @@ public:
     void operator () (Player& player)
     {
         insert(player.getPlayerID());
+    }
+    void operator () (Group& group)
+    {
+        insert(group.getStrongestPlayer());
     }
 };
 
