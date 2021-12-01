@@ -49,13 +49,13 @@ Group& PlayersManager::findPlayerGroup(int player_id){
     Group _group(groupID);
     return fGroup.get(_group); 
 }
-Group& PlayersManager::groupExists(const int group_id){
+bool PlayersManager::groupExists(const int group_id){
     Group current_group = Group(group_id);
     if (!eGroup.exists(current_group) && !fGroup.exists(current_group))
     {
         throw ValueNotExists();
     }
-    return current_group;
+    return true;
 }
 void PlayersManager::increaseLevel(const int& player_id, const int& new_level) {
     players.getPlayer(player_id).setLevel(new_level);
@@ -82,10 +82,8 @@ void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, in
             Players = nullptr;
             return;
         }
-        array<int> my_array(n);
-        Add<Player> a(my_array);
-        players.getLevelTree().inOrder(a);
-        *Players = my_array.get();
+        array my_array(n, Players);
+        players.getLevelTree().inOrder(my_array);
         *numOfPlayers = n;
         return;
     }
@@ -100,9 +98,8 @@ void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, in
         Group current = Group(group_id);
         int n = fGroup.get(current).getNumOfPlayers();
         *numOfPlayers = n;
-        array<int> my_array(n);
-        Add<int> a(my_array);
-        fGroup.get(current).getLevelTree().inOrder(a);
+        array my_array(n, Players);
+        fGroup.get(current).getLevelTree().inOrder(my_array);
         *Players = my_array.get();
         return;
     }

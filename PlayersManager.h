@@ -26,7 +26,7 @@ class PlayersManager{
 
 
     Group& findPlayerGroup(int player_id);
-    Group& groupExists(const int group_id);
+    bool groupExists(const int group_id);
 
 public:
 
@@ -53,35 +53,39 @@ public:
     }
 };
 
-template <class T>
 class array {
     int size;
-    T* arr;
+    int** arr;
     int iter;
 public:
-    array(const int& s):  size(s), arr(new T[size]), iter(0) {};
-    void insert(const T& t)
+    array(int _size, int** _arr):  size(_size), arr(_arr), iter(0) {};
+    void insert(int player_id)
     {
         if ((iter + 1) >= size)
         {
             throw Index();
         }
-        arr[iter] = t; //maybe new?
+        *arr[iter] = player_id; //maybe new?
         iter ++;
     }
-    T* get() {
-        return arr;
+    int* get() {
+        return *arr;
     }
-};
-template <class T>
-class Add {
-    array<int> my_array;
-public:
-    Add(array<int> _arr): my_array(_arr) {};
-    void operator () (const T& t)
+    void operator () (Player& player)
     {
-        my_array.insert(t.getReturn());
+        insert(player.getPlayerID());
     }
 };
+
+// template <class T>
+// class Add {
+//     array my_array;
+// public:
+//     Add(array<int> _arr): my_array(_arr) {};
+//     void operator () (const T& t)
+//     {
+//         my_array.insert(t.getReturn());
+//     }
+// };
 
 #endif //PROJNAME_PLAYERSMANAGER_H
