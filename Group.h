@@ -35,10 +35,28 @@ public:
     friend bool operator<(const Group& group_a, const Group& group_b){
         return group_a.groupID < group_b.groupID;
     }
+    friend void replace(Group group, Group replace );
 };
     bool operator>(const Group& group_a, const Group& group_b);
     bool operator<=(const Group& group_a, const Group& group_b);
     bool operator>=(const Group& group_a, const Group& group_b);
     bool operator!=(const Group& group_a, const Group& group_b);
+
+class Swap{
+    Group rep;
+public:
+    explicit Swap(Group& g): rep(g) {};
+    void operator () (Player p)
+    {
+        rep.insertPlayer(p.getGroupID(), p.getLevel());
+    }
+};
+    void replace(Group group, Group rep )
+    {
+        Swap s(rep);
+        group.playersID.inOrder(s);
+        group.playersLevel.inOrder(s);
+
+    }
 
 #endif

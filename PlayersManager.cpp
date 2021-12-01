@@ -40,7 +40,41 @@ void PlayersManager::removePlayer(const int& player_id) {
     findPlayerGroup(player_id).removePlayer(player_id);
 }
 
-void replaceGroup(const int& group_id, const int& replace_id) {
+void PlayersManager::replaceGroup(const int& group_id, const int& replace_id) {
+
+    if (replace_id <= 0 || group_id <= 0)
+    {
+        throw InvalidInput();
+    }
+    if (eGroup.exists(group_id)) //if group is empty
+    {
+        if (groupExists(replace_id))
+        {
+            eGroup.remove(group_id);
+            return;
+        }
+        else
+        {
+            throw ValueNotExists();
+        }
+    }
+    else if (fGroup.exists(group_id))
+    {
+        if (eGroup.exists(replace_id))
+        {
+            eGroup.remove(replace_id);
+            fGroup.insert(replace_id);
+        }
+        else if (!fGroup.exists(group_id))
+        {
+            throw InvalidInput();
+        }
+        Group g1 = Group(group_id);
+        g1 = fGroup.get(g1);
+        Group g2 = Group(replace_id);
+        g2 = fGroup.get(g2);
+        replace(g1,g2);
+    }
 
 }
 Group& PlayersManager::findPlayerGroup(int player_id){
@@ -96,13 +130,15 @@ void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, in
     }
 }
 void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players) {
-    int* size;
+    int* size; //dummy pointer
     arrayMalloc(numOfGroups, size, Players);
-    array my_array(*numOfGroups, Players);
+    array my_array(numOfGroups, Players);
     try{
         fGroup.inOrder(my_array);
     }
     catch(Index& e){
+        *Players = my_array.get();
+        return;
     }
 }
 //void Quit() {

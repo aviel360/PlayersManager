@@ -5,7 +5,8 @@
 int main() {
     PlayersManager squid = PlayersManager(); // starting new group
     int** Players;
-    int* size;
+    int temp = 0;
+    int* size = &temp;
     squid.getAllPlayersByLevel(-1, Players, size);
     assert(*Players == NULL && *size == 0);
     assert(squid.getHighestLevel(-1) == -1);
