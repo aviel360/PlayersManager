@@ -51,12 +51,5 @@ public:
         rep.insertPlayer(p.getGroupID(), p.getLevel());
     }
 };
-    void replace(Group group, Group rep )
-    {
-        Swap s(rep);
-        group.playersID.inOrder(s);
-        group.playersLevel.inOrder(s);
-
-    }
 
 #endif

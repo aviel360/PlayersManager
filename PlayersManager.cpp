@@ -74,6 +74,7 @@ void PlayersManager::replaceGroup(const int& group_id, const int& replace_id) {
         Group g2 = Group(replace_id);
         g2 = fGroup.get(g2);
         replace(g1,g2);
+        fGroup.remove(g1);
     }
 
 }
