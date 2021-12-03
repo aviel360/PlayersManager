@@ -8,6 +8,7 @@ class Player{
     int Level;
     
 public:
+    Player();
     Player(int _key, int groupID, int _PlayerId, int _Level = 0);
     Player(const Player& player) = default;
     Player& operator=(const Player& player) = default;

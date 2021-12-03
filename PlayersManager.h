@@ -11,13 +11,6 @@
 #include "Group.h"
 #include "Exceptions.h"
 
-enum StatusType{
-    SUCCESS,
-    ALLOCATION_ERROR,
-    INVALID_INPPUT,
-    FAILURE
-}; // here?
-
 class PlayersManager{
     AVLTree<Group> eGroup;
     AVLTree<Group> fGroup;
@@ -54,12 +47,14 @@ public:
     }
 };
 
+template <class T>
 class array {
     int size;
     int** arr;
     int iter;
+    T* my_array;
 public:
-    array(int _size, int** _arr):  size(_size), arr(_arr), iter(0) {};
+    array<T>(int _size, int** _arr):  size(_size), arr(_arr), iter(0), my_array(new T[size]) {}
     void insert(int player_id)
     {
         if ((iter + 1) >= size)

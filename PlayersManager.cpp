@@ -10,34 +10,31 @@
 //}
 PlayersManager::PlayersManager() : eGroup(), fGroup(), players(-1), strongestPlayerID(-1){} 
 void PlayersManager::addGroup(const int& id) {
-    // if (id <= 0) *** maybe only check in library for values? :O maybe idk
-    // {
-    //     throw InvalidInput();
-    // }
+    if (id <= 0){
+        throw InvalidInput();
+    }
     eGroup.insert(Group(id));
 }
 void PlayersManager::addPlayer(const int& player_id, const int& group_id, const int& level) {
-    // if (player_id <= 0 || group_id <= 0 || level < 0) *** maybe only check in library for values? :O maybe idk
-    // {
-    //     throw InvalidInput();
-    // } 
-    Group current_group = groupExists(group_id);
+    if (player_id <= 0 || group_id <= 0 || level < 0) {
+        throw InvalidInput();
+    } 
+    Group current_group(group_id);
     Player current_player = Player(player_id, player_id, level);
-    // if (players.playerExists(player_id))  ***we already do this in .insert
-    // {
-    //     throw ValueExists();
-    // }
     if (eGroup.exists(current_group)) //means it's empty
     {
         fGroup.insert(current_group);
         eGroup.remove(current_group);
     }
     fGroup.get(current_group).insertPlayer(player_id, group_id, level);
-    players.insertPlayer(player_id, group_id, level);
-
+    players.insertPlayer(fGroup.get(current_group).getPlayer(player_id));
 }
 void PlayersManager::removePlayer(const int& player_id) {
+    if(player_id <= 0){
+        throw InvalidInput();
+    }
     findPlayerGroup(player_id).removePlayer(player_id);
+    players.removePlayer(player_id);
 }
 
 void PlayersManager::replaceGroup(const int& group_id, const int& replace_id) {
@@ -86,15 +83,18 @@ Group& PlayersManager::findPlayerGroup(int player_id){
 }
 bool PlayersManager::groupExists(const int group_id){
     Group current_group = Group(group_id);
-    if (!eGroup.exists(current_group) && !fGroup.exists(current_group))
-    {
-        throw ValueNotExists();
+    if (!eGroup.exists(current_group) && !fGroup.exists(current_group)){
+        return false;
     }
     return true;
 }
-void PlayersManager::increaseLevel(const int& player_id, const int& new_level) {
-    players.getPlayer(player_id).setLevel(new_level);
-    findPlayerGroup(player_id).getPlayer(player_id).setLevel(new_level);
+void PlayersManager::increaseLevel(const int& player_id, const int& level_increase) {
+    if (player_id <= 0 || level_increase <= 0) {
+        throw InvalidInput();
+    }
+    const int level = players.getPlayer(player_id).getLevel();
+    players.getPlayer(player_id).setLevel(level + level_increase);
+    findPlayerGroup(player_id).getPlayer(player_id).setLevel(level + level_increase);
 }
 int PlayersManager::getHighestLevel(const int group_id){
     int player_id = players.getStrongestPlayer();
@@ -123,7 +123,7 @@ void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, in
     else if (fGroup.exists(group_id)){
         Group current_group = Group(group_id);
         arrayMalloc(current_group.getNumOfPlayers(), numOfPlayers, Players);
-        array my_array(*numOfPlayers, Players);
+        array<Player> my_array(*numOfPlayers, Players);
         fGroup.get(current_group).getLevelTree().inOrder(my_array);
     }
     else{
@@ -133,7 +133,7 @@ void PlayersManager::getAllPlayersByLevel(const int& group_id, int** Players, in
 void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players) {
     int* size; //dummy pointer
     arrayMalloc(numOfGroups, size, Players);
-    array my_array(numOfGroups, Players);
+    array<Group> my_array(numOfGroups, Players);
     try{
         fGroup.inOrder(my_array);
     }

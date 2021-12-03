@@ -1,5 +1,7 @@
 #include "Group.h"
 #include "Exceptions.h"
+    Group::Group() : groupID(0), playersID(), playersLevel(), strongestPlayerLevel(-1), 
+                                strongestPlayerID(-1), numOfPlayers(0) {}
     Group::Group(int _groupID) : groupID(_groupID), playersID(), playersLevel(), strongestPlayerLevel(-1), 
                                 strongestPlayerID(-1), numOfPlayers(0) {}
     void Group::insertPlayer(int PlayerID, int _groupID, int Level){
@@ -9,6 +11,11 @@
         playersLevel.insert(_playerLevel);
         updateStrongest(PlayerID, Level);
         numOfPlayers++;
+    }
+    void Group::insertPlayer(Player& player){
+        playersID.insert(player);
+        Player _playerLevel(player.getLevel(), player.getGroupID(), player.getPlayerID(), player.getLevel());
+        playersLevel.insert(_playerLevel);
     }
     void Group::removePlayer(int PlayerID){
         Player _player = getPlayer(PlayerID);
@@ -23,17 +30,13 @@
 
         numOfPlayers--;
     }
-    Player Group::getPlayer(int PlayerID){
+    Player& Group::getPlayer(int PlayerID){
         Player _player(PlayerID, -1, PlayerID);
-        auto player_exists = playersID.find(_player);
-        if(player_exists == nullptr){
-            throw ValueNotExists();
-        }
-        return player_exists->getValue();
+        return playersID.get(_player);
     }
     bool Group::playerExists(int PlayerID){
         try{
-            Player _player = getPlayer(PlayerID);
+            getPlayer(PlayerID);
         }
         catch(ValueNotExists e){
             return false;
@@ -61,7 +64,7 @@
         return this->groupID;
     }
 
-    AVLTree<Player> Group::getLevelTree() {
+    AVLTree<Player>& Group::getLevelTree() {
         return this->playersLevel;
     }
 

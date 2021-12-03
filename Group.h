@@ -21,13 +21,14 @@ public:
     ~Group() = default;
 
     void insertPlayer(int PlayerID, int _groupID, int Level = 0);
+    void insertPlayer(Player& player);
     void removePlayer(int PlayerID);
-    Player getPlayer(int PlayerID);
+    Player& getPlayer(int PlayerID);
     bool playerExists(int PlayerID);
     int getStrongestPlayer();
     int getNumOfPlayers();
     int getReturn() const;
-    AVLTree<Player> getLevelTree();
+    AVLTree<Player>& getLevelTree();
 
     friend bool operator==(const Group& group_a, const Group& group_b){
         return group_a.groupID == group_b.groupID;
