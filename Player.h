@@ -20,6 +20,7 @@ public:
     int getKey() const;
     int getReturn() const;
     int getGroupID() const;
+    void changePlayer();
     friend bool operator==(const Player& player_a, const Player& player_b){ 
         return player_a.PlayerID == player_b.PlayerID;
     }

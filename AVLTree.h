@@ -4,8 +4,10 @@
 
 #ifndef PLAYERSMANAGER_AVLTREE_H
 #define PLAYERSMANAGER_AVLTREE_H
+
 #include "BTreeNode.h"
 #include "Exceptions.h"
+#include <math.h>
 
 template<class T>
 class AVLTree{
@@ -242,6 +244,29 @@ class AVLTree{
             inOrderRecursive(_source->goRight(), func);
         }
     }
+    AVLTree<T> completeTree(const int& h) {
+        if (h < 0)
+        {
+            return;
+        }
+        //TODO
+    }
+
+    int reverseInOrder(BTreeNode<T>* _source, int n)
+    {
+        if(_source != nullptr || n==0)
+        {
+            n = inOrderRecursive(_source->goRight(), n);
+            if ( _source->goLeft() == nullptr)
+            {
+                //remove - source disappears issue
+
+            }
+            inOrderRecursive(_source->goLeft(), n);
+            return n-1;
+        }
+        return n;
+    }
 
 public:
 
@@ -346,6 +371,13 @@ public:
      */
     T& getMaxValue(){
         return getMaxValue(source)->getValue();
+    }
+
+    AVLTree& createEmptyTree(const int& n) {
+        int h = ceil(log2(n+1)) -1;
+        AVLTree<T> empty = completeTree(h);
+        reverseInOrder(empty.source, pow(2,h+1)-1-n);
+        return empty;
     }
 };
 

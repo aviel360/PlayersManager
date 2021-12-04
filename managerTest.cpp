@@ -30,7 +30,7 @@ int main() {
     }
     squid.addGroup(3); // adding group 3, 0 players
     squid.getAllPlayersByLevel(3, Players, size);
-    assert(*Players == NULL && size == 0);
+    assert(*Players == NULL && *size == 0);
     squid.addPlayer(3, 3, 3);
     squid.addPlayer(2,3,3);
     squid.addGroup(2);

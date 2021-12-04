@@ -3,6 +3,8 @@
 //
 
 #include "PlayersManager.h"
+#include "Group.h"
+#include "AVLTree.h"
 
 //PlayersManager* PlayersManager::Init() {
 //    PlayersManager* DS = new PlayersManager;
@@ -70,7 +72,18 @@ void PlayersManager::replaceGroup(const int& group_id, const int& replace_id) {
         g1 = fGroup.get(g1);
         Group g2 = Group(replace_id);
         g2 = fGroup.get(g2);
-        replace(g1,g2);
+        int n1 = g1.getNumOfPlayers();
+        int n2 = g2.getNumOfPlayers();
+        int* dummy1[n1];
+        int* dummy2[n2];
+        array<Player> arr1(n1,dummy1);
+        array<Player> arr2(n2,dummy2);
+        Player joined[n1+n2];
+        mergeArrays(arr1.T_get(),arr2.T_get(),n1,n2,joined);
+        AVLTree<Player> empty = createEmptyTree(n1+n2); //help?
+        Insert ins(joined, n1+n2);
+        empty.inOrder(ins);
+        g2.replacePlayers(empty);
         fGroup.remove(g1);
     }
 

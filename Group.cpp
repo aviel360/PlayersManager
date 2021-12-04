@@ -80,10 +80,3 @@
     bool operator!=(const Group& group_a, const Group& group_b){
         return !(group_a == group_b);
     }
-    void replace(Group group, Group rep )
-    {
-        Swap s(rep);
-        group.playersID.inOrder(s);
-        group.playersLevel.inOrder(s);
-
-}
