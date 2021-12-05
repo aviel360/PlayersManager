@@ -255,7 +255,7 @@ class AVLTree{
         _source.setRChild(tmp2);
         h--;
         completeTree(tmp1, h);
-        completeTree(tmp2, h);
+        completeTree(tmp2, h); //TODO
     }
 
     int reverseInOrder(BTreeNode<T>* _source, int n)

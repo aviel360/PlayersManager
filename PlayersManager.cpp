@@ -84,7 +84,7 @@ void PlayersManager::replaceGroup(const int& group_id, const int& replace_id) {
         empty = empty.createEmptyTree(n1+n2); //help?
         Insert ins(joined, n1+n2);
         empty.inOrder(ins);
-        g2.replacePlayers(empty);
+        g2.replacePlayers(empty); //TODO change group id
         fGroup.remove(g1);
     }
 
