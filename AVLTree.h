@@ -381,7 +381,7 @@ public:
     AVLTree& createEmptyTree(const int& n) {
         int h = ceil(log2(n+1)) -1;
         AVLTree<T> empty;
-        empty = empty.completeTree(empty.source,h);
+        empty = empty.completeTree(empty.source,h); //TODO new!
         reverseInOrder(empty.source, pow(2,h+1)-1-n);
         return empty;
     }
