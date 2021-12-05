@@ -244,15 +244,15 @@ class AVLTree{
             inOrderRecursive(_source->goRight(), func);
         }
     }
-    AVLTree<T> completeTree(BTreeNode<T> _source, int h) {
+    void completeTree(BTreeNode<T>* _source, int h) {
         if (h < 0)
         {
             return;
         }
-        BTreeNode<T>* tmp1 = new BTreeNode<T>;
-        _source.setRChild(tmp1);
-        BTreeNode<T>* tmp2 = new BTreeNode<T>;
-        _source.setRChild(tmp2);
+        BTreeNode<T>* tmp1 = new BTreeNode<T>(T());
+        _source->setRChild(tmp1);
+        BTreeNode<T>* tmp2 = new BTreeNode<T>(T());
+        _source->setRChild(tmp2);
         h--;
         completeTree(tmp1, h);
         completeTree(tmp2, h); //TODO
@@ -265,8 +265,7 @@ class AVLTree{
             n = inOrderRecursive(_source->goRight(), n);
             if ( _source->goLeft() == nullptr)
             {
-                //remove - source disappears issue
-
+                //TODO
             }
             inOrderRecursive(_source->goLeft(), n);
             return n-1;
@@ -382,7 +381,7 @@ public:
     AVLTree& createEmptyTree(const int& n) {
         int h = ceil(log2(n+1)) -1;
         AVLTree<T> empty;
-        empty = empty.completeTree(h);
+        empty = empty.completeTree(empty.source,h);
         reverseInOrder(empty.source, pow(2,h+1)-1-n);
         return empty;
     }
