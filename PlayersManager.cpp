@@ -80,7 +80,8 @@ void PlayersManager::replaceGroup(const int& group_id, const int& replace_id) {
         array<Player> arr2(n2,dummy2);
         Player joined[n1+n2];
         mergeArrays(arr1.T_get(),arr2.T_get(),n1,n2,joined);
-        AVLTree<Player> empty = createEmptyTree(n1+n2); //help?
+        AVLTree<Player> empty;
+        empty = empty.createEmptyTree(n1+n2); //help?
         Insert ins(joined, n1+n2);
         empty.inOrder(ins);
         g2.replacePlayers(empty);

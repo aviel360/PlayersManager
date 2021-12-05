@@ -28,6 +28,7 @@ public:
     int getStrongestPlayer();
     int getNumOfPlayers();
     int getReturn() const;
+    void replacePlayers(AVLTree<Player>& tree);
     AVLTree<Player>& getLevelTree();
 
     friend bool operator==(const Group& group_a, const Group& group_b){

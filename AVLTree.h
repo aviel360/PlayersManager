@@ -244,12 +244,18 @@ class AVLTree{
             inOrderRecursive(_source->goRight(), func);
         }
     }
-    AVLTree<T> completeTree(const int& h) {
+    AVLTree<T> completeTree(BTreeNode<T> _source, int h) {
         if (h < 0)
         {
             return;
         }
-        //TODO
+        BTreeNode<T>* tmp1 = new BTreeNode<T>;
+        _source.setRChild(tmp1);
+        BTreeNode<T>* tmp2 = new BTreeNode<T>;
+        _source.setRChild(tmp2);
+        h--;
+        completeTree(tmp1, h);
+        completeTree(tmp2, h);
     }
 
     int reverseInOrder(BTreeNode<T>* _source, int n)
@@ -375,7 +381,8 @@ public:
 
     AVLTree& createEmptyTree(const int& n) {
         int h = ceil(log2(n+1)) -1;
-        AVLTree<T> empty = completeTree(h);
+        AVLTree<T> empty;
+        empty = empty.completeTree(h);
         reverseInOrder(empty.source, pow(2,h+1)-1-n);
         return empty;
     }

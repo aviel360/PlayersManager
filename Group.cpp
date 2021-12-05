@@ -64,6 +64,14 @@
         return this->groupID;
     }
 
+    void Group::replacePlayers(AVLTree<Player>& tree)
+    {
+    AVLTree<Player>* to_delete = &playersID;
+    this -> playersID = tree;
+    delete to_delete; //??
+
+    }
+
     AVLTree<Player>& Group::getLevelTree() {
         return this->playersLevel;
     }
