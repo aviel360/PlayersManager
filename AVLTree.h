@@ -255,26 +255,26 @@ class AVLTree{
         _source->setRChild(tmp2);
         h--;
         completeTree(tmp1, h);
-        completeTree(tmp2, h); //TODO
+        completeTree(tmp2, h);
     }
 
     int reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int n)
     {
         if(_source != nullptr || n==0)
         {
-            n = inOrderRecursive(_source->goRight(), _source, n);
+            n = reverseInOrder(_source->goRight(), _source, n);
             if ( _source->goLeft() == nullptr)
             {
                 if(dad->goLeft() == _source){
-                    dad->goLeft() = nullptr;
+                    dad->setLChild(nullptr);
                 }
                 else{
-                    dad->goRight()=nullptr;
+                    dad->setRChild(nullptr);
                 }
                 delete _source;
 
             }
-            inOrderRecursive(_source->goLeft(), _source, n);
+            reverseInOrder(_source->goLeft(), _source, n);
             return n-1;
         }
         return n;
@@ -313,7 +313,7 @@ public:
     }
     void setSource(BTreeNode<T>* other){
         removeBTreeNode(source);
-        source = other->source;
+        source = other;
     }
     void insert(const T& value){
         if (find(value) != nullptr)
@@ -391,12 +391,12 @@ public:
         return getMaxValue(source)->getValue();
     }
 
-    AVLTree& createEmptyTree(const int& n) {
+    AVLTree createEmptyTree(const int& n) {
         int h = ceil(log2(n+1)) -1;
         AVLTree<T> empty;
         empty.insert(T());
-        empty = empty.completeTree(empty.source,h);
-        reverseInOrder(empty.source, pow(2,h+1)-1-n);
+        empty.completeTree(empty.source,h);
+        reverseInOrder(empty.source, empty.source, pow(2,h+1)-1-n);
         return empty;
     }
 };

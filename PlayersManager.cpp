@@ -67,26 +67,28 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
         }
         int n1 = g1.getNumOfPlayers();
         int n2 = g2.getNumOfPlayers();
-        g2.setIDTree(createMergeTree(g1.getIDTree(), g2.getIDTree(), n1, n2, replace_id));
-        g2.setLevelTree(createMergeTree(g1.getLevelTree(), g2.getLevelTree(), n1, n2, replace_id));
+        AVLTree<Player> playerIDTree;
+        AVLTree<Player> playerLevelTree;
+        playerIDTree = playerIDTree.createEmptyTree(n1+n2);
+        playerLevelTree = playerLevelTree.createEmptyTree(n1+n2);
+        g2.setIDTree(createMergeTree(g1.getIDTree(), g2.getIDTree(), n1, n2, replace_id, playerIDTree));
+        g2.setLevelTree(createMergeTree(g1.getLevelTree(), g2.getLevelTree(), n1, n2, replace_id, playerLevelTree));
         fGroup.remove(g1);
     }
 }
-AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1, 
-                                            int n2, int replace_id){
+AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
+                                            int n2, int replace_id, AVLTree<Player>& playerTree){
     arrayMerge arr1(n1, replace_id);
     arrayMerge arr2(n2, replace_id);
     Player joined[n1+n2];
     tree1.inOrder(arr1);
     tree2.inOrder(arr2);
     mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
-    AVLTree<Player> playerTree;
-    playerTree = playerTree.createEmptyTree(n1+n2);
     arrayInsert to_insert(joined, n1+n2);
     playerTree.inOrder(to_insert);
     return playerTree;
 }
-void mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3){
+void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3){
     int i = 0, j = 0, k = 0;
     while (i<n1 && j <n2){
         if (arr1[i] < arr2[j])

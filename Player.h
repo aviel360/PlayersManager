@@ -15,6 +15,7 @@ public:
     ~Player() = default;
 
     void setLevel(int _Level);
+    void setGroupID(int _groupID);
     int getLevel() const;
     int getPlayerID() const;
     int getKey() const;

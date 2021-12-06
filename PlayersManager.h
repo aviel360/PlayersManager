@@ -21,8 +21,10 @@ class PlayersManager{
     Group& findPlayerGroup(int player_id);
     bool groupExists(const int group_id);
     void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
-    AVLTree<Player>& createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1, 
-                                            int n2, int replace_id);
+    AVLTree<Player>& createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
+                                                     int n2, int replace_id, AVLTree<Player>& playerTree);
+
+    void mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3);
 
 public:
 
@@ -60,7 +62,7 @@ public:
     virtual ~array<T>(){
         delete[] my_array;
     }
-    void insert(T val)
+    void insertT(T val)
     {
         if ((iter + 1) >= size)
         {
@@ -69,7 +71,7 @@ public:
         my_array[iter] = val;
     }
     virtual void operator()(T& value){
-        insert(value);
+        insertT(value);
         iter++;
     }
     T* getArray(){
@@ -84,41 +86,41 @@ public:
 };
 
 template <class T>
-class arrayPtr : array<T> {
+class arrayPtr : public array<T> {
     int** arr;
 public:
     arrayPtr<T>(int _size, int** _arr) : array<T>(_size), arr(_arr) {}
     ~arrayPtr<T>() = default;
     void insert(int player_id)
     {
-        if ((iter + 1) >= size)
+        if ((this->iter + 1) >= this->size)
         {
             throw Index();
         }
-        *arr[iter] = player_id;
+        *arr[this->iter] = player_id;
     }
     void operator () (Player& player)
     {
         insert(player.getPlayerID());
-        insert(player);
-        iter++;
+        this->insertT(player);
+        this->iter++;
     }
     void operator () (Group& group)
     {
         insert(group.getStrongestPlayer());
-        insert(group);
-        iter++;
+        this->insertT(group);
+        this->iter++;
     }
 };
 
-class arrayMerge : array<Player> {
+class arrayMerge : public array<Player> {
     int groupID;
 public:
     arrayMerge( int _size, int _groupID) : array<Player>(_size), groupID(_groupID) {}
     ~arrayMerge() = default;
     void operator() (Player& player)
     {
-        insert(player);
+        insertT(player);
         player.setGroupID(groupID);
         iter++;
     }
@@ -128,7 +130,7 @@ public:
 };
 
 // template <class T>
- class arrayInsert : array<Player> {
+ class arrayInsert : public array<Player> {
  public:
     arrayInsert(Player* data, const int _size) : array<Player>(_size){
         delete[] my_array;

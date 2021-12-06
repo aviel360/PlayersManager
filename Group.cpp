@@ -65,7 +65,7 @@
     AVLTree<Player>& Group::getLevelTree() {
         return this->playersLevel;
     }
-    AVLTree<Player>& Group::getLevelTree() {
+    AVLTree<Player>& Group::getIDTree() {
         return this->playersID;
     }
     void Group::setLevelTree(AVLTree<Player>& tree) {
