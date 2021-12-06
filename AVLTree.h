@@ -258,16 +258,23 @@ class AVLTree{
         completeTree(tmp2, h); //TODO
     }
 
-    int reverseInOrder(BTreeNode<T>* _source, int n)
+    int reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int n)
     {
         if(_source != nullptr || n==0)
         {
-            n = inOrderRecursive(_source->goRight(), n);
+            n = inOrderRecursive(_source->goRight(), _source, n);
             if ( _source->goLeft() == nullptr)
             {
-                //TODO
+                if(dad->goLeft() == _source){
+                    dad->goLeft() = nullptr;
+                }
+                else{
+                    dad->goRight()=nullptr;
+                }
+                delete _source;
+
             }
-            inOrderRecursive(_source->goLeft(), n);
+            inOrderRecursive(_source->goLeft(), _source, n);
             return n-1;
         }
         return n;
@@ -381,7 +388,8 @@ public:
     AVLTree& createEmptyTree(const int& n) {
         int h = ceil(log2(n+1)) -1;
         AVLTree<T> empty;
-        empty = empty.completeTree(empty.source,h); //TODO new!
+        empty.insert(T());
+        empty = empty.completeTree(empty.source,h);
         reverseInOrder(empty.source, pow(2,h+1)-1-n);
         return empty;
     }
