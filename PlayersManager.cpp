@@ -80,12 +80,13 @@ AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree
                                             int n2, int replace_id, AVLTree<Player>& playerTree){
     arrayMerge arr1(n1, replace_id);
     arrayMerge arr2(n2, replace_id);
-    Player joined[n1+n2];
+    Player* joined = new Player[n1+n2];
     tree1.inOrder(arr1);
     tree2.inOrder(arr2);
     mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
     arrayInsert to_insert(joined, n1+n2);
     playerTree.inOrder(to_insert);
+    delete joined;
     return playerTree;
 }
 void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3){
@@ -165,7 +166,7 @@ void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players)
     if(Players == nullptr || numOfGroups < 0){
         throw InvalidInput();
     }
-    int* size; //dummy pointer
+    int* size = nullptr; //dummy pointer
     arrayMalloc(numOfGroups, size, Players);
     arrayPtr<Group> my_array(numOfGroups, Players);
     try{

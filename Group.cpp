@@ -38,7 +38,7 @@
         try{
             getPlayer(PlayerID);
         }
-        catch(ValueNotExists e){
+        catch(ValueNotExists& e){
             return false;
         }
         return true;

@@ -9,7 +9,7 @@ class Player{
     
 public:
     Player();
-    Player(int _key, int groupID, int _PlayerId, int _Level = 0);
+    Player(int _key, int groupID, int _PlayerID, int _Level = 0);
     Player(const Player& player) = default;
     Player& operator=(const Player& player) = default;
     ~Player() = default;

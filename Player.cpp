@@ -1,7 +1,7 @@
 #include "Player.h"
-    Player::Player() : key(-1), PlayerID(-1), groupID(-1), Level(-1) {}
-    Player::Player(int _key, int _groupID, int _PlayerId, int _Level) : key(_key), PlayerID(_PlayerId), 
-                                                                        groupID(_groupID), Level(_Level) {}
+    Player::Player() : key(-1), groupID(-1), PlayerID(-1), Level(-1) {}
+    Player::Player(int _key, int _groupID, int _PlayerId, int _Level) : key(_key), groupID(_groupID), 
+                                                                        PlayerID(_PlayerId), Level(_Level) {}
     void Player::setLevel(const int _Level){
         this->Level = _Level;
     }
