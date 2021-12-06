@@ -59,23 +59,21 @@
         strongestPlayerID = old_level < strongestPlayerLevel ? 
                             PlayerID : PlayerID < strongestPlayerID ? PlayerID : strongestPlayerID;
     }
-
     int Group::getReturn() const {
         return this->groupID;
     }
-
-    void Group::replacePlayers(AVLTree<Player>& tree)
-    {
-    AVLTree<Player>* to_delete = &playersID;
-    this -> playersID = tree;
-    delete to_delete; //??
-
-    }
-
     AVLTree<Player>& Group::getLevelTree() {
         return this->playersLevel;
     }
-
+    AVLTree<Player>& Group::getLevelTree() {
+        return this->playersID;
+    }
+    void Group::setLevelTree(AVLTree<Player>& tree) {
+        this->playersLevel.setSource(tree.getSource());
+    }
+    void Group::setIDTree(AVLTree<Player>& tree) {
+       this->playersID.setSource(tree.getSource());
+    }
     bool operator>(const Group& group_a, const Group& group_b){
         return group_b < group_a;
     }

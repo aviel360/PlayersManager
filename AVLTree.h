@@ -308,7 +308,13 @@ public:
         }
         return *this;
     }
-
+    BTreeNode<T>* getSource(){
+        return this->source;
+    }
+    void setSource(BTreeNode<T>* other){
+        removeBTreeNode(source);
+        source = other->source;
+    }
     void insert(const T& value){
         if (find(value) != nullptr)
         {

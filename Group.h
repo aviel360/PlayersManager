@@ -19,7 +19,8 @@ public:
     Group(const Group& _group) = default;
     Group& operator=(const Group& _group) = default;
     ~Group() = default;
-
+    void setLevelTree(AVLTree<Player>& tree);
+    void setIDTree(AVLTree<Player>& tree);
     void insertPlayer(int PlayerID, int _groupID, int Level = 0);
     void insertPlayer(Player& player);
     void removePlayer(int PlayerID);
@@ -30,6 +31,7 @@ public:
     int getReturn() const;
     void replacePlayers(AVLTree<Player>& tree);
     AVLTree<Player>& getLevelTree();
+    AVLTree<Player>& getIDTree();
 
     friend bool operator==(const Group& group_a, const Group& group_b){
         return group_a.groupID == group_b.groupID;

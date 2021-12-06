@@ -21,40 +21,21 @@ class PlayersManager{
     Group& findPlayerGroup(int player_id);
     bool groupExists(const int group_id);
     void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
-
-    template <class T>
-    void mergeArrays(T arr1[], T arr2[], int n1,
-                     int n2, T arr3[])
-    {
-        int i = 0, j = 0, k = 0;
-
-        while (i<n1 && j <n2)
-        {
-            if (arr1[i] < arr2[j])
-                arr3[k++] = arr1[i++];
-            else
-                arr3[k++] = arr2[j++];
-        }
-
-        while (i < n1)
-            arr3[k++] = arr1[i++];
-
-        while (j < n2)
-            arr3[k++] = arr2[j++];
-    }
+    AVLTree<Player>& createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1, 
+                                            int n2, int replace_id);
 
 public:
 
 //    static PlayersManager* Init();
     PlayersManager();
     ~PlayersManager() = default;
-    void addGroup(const int& id); //maybe void?
-    void addPlayer(const int& player_id, const int& group_id, const int& level);
-    void removePlayer(const int& player_id);
-    void replaceGroup(const int& group_id, const int& replace_id);
-    void increaseLevel(const int& player_id, const int& new_level);
+    void addGroup(const int id); //maybe void?
+    void addPlayer(const int player_id, const int group_id, const int level);
+    void removePlayer(const int player_id);
+    void replaceGroup(const int group_id, const int replace_id);
+    void increaseLevel(const int player_id, const int new_level);
     int getHighestLevel(const int group_id);
-    void getAllPlayersByLevel(const int& group_id, int** Players, int* numOfPlayers);
+    void getAllPlayersByLevel(const int group_id, int** Players, int* numOfPlayers);
     void getGroupsHighestLevel(const int numOfGroups, int** Players);
 //    void Quit();
 };
@@ -70,70 +51,98 @@ public:
 
 template <class T>
 class array {
+protected:
     int size;
-    int** arr;
     int iter;
     T* my_array;
-    int T_iter;
 public:
-    array<T>(int _size, int** _arr):  size(_size), arr(_arr), iter(0), my_array(new T[size]), T_iter(0) {}
-    ~array()
-    {
-        delete my_array;
+    array<T>(int _size):  size(_size), iter(0), my_array(new T[size]) {}
+    virtual ~array<T>(){
+        delete[] my_array;
     }
+    void insert(T val)
+    {
+        if ((iter + 1) >= size)
+        {
+            throw Index();
+        }
+        my_array[iter] = val;
+    }
+    virtual void operator()(T& value){
+        insert(value);
+        iter++;
+    }
+    T* getArray(){
+        return this->my_array;
+    }
+    void clearArray(){
+        iter = 0;
+    }
+    int getIter(){
+        return this->iter;
+    }
+};
+
+template <class T>
+class arrayPtr : array<T> {
+    int** arr;
+public:
+    arrayPtr<T>(int _size, int** _arr) : array<T>(_size), arr(_arr) {}
+    ~arrayPtr<T>() = default;
     void insert(int player_id)
     {
         if ((iter + 1) >= size)
         {
             throw Index();
         }
-        *arr[iter] = player_id; //maybe new?
-        iter ++;
+        *arr[iter] = player_id;
     }
-    void T_insert(T val)
-    {
-        if ((T_iter + 1) >= size)
-        {
-            throw Index();
-        }
-        my_array[T_iter] = val; //maybe new?
-        T_iter ++;
-    }
-    int* get() {
-        return *arr;
-    }
-
-    T* T_get() {
-        return my_array;
-    }
-
     void operator () (Player& player)
     {
         insert(player.getPlayerID());
-        T_insert(player);
+        insert(player);
+        iter++;
     }
     void operator () (Group& group)
     {
         insert(group.getStrongestPlayer());
+        insert(group);
+        iter++;
+    }
+};
+
+class arrayMerge : array<Player> {
+    int groupID;
+public:
+    arrayMerge( int _size, int _groupID) : array<Player>(_size), groupID(_groupID) {}
+    ~arrayMerge() = default;
+    void operator() (Player& player)
+    {
+        insert(player);
+        player.setGroupID(groupID);
+        iter++;
+    }
+    Player* get(){
+        return getArray();
     }
 };
 
 // template <class T>
- class Insert {
-     Player* my_array;
-     int size;
-     int iter;
+ class arrayInsert : array<Player> {
  public:
-     Insert(Player* data, const int& s): size (s), my_array(data) , iter(0) {};
-     void operator () (Player& p)
-     {
-         if ((iter + 1) >= size)
-         {
-             throw Index();
-         }
-         p = my_array[iter];
-         iter ++;
-     }
+    arrayInsert(Player* data, const int _size) : array<Player>(_size){
+        delete[] my_array;
+        my_array = data;
+    }
+    void operator () (Player& p)
+    {
+        if ((iter + 1) >= size)
+        {
+            throw Index();
+        }
+        p = my_array[iter];
+        iter ++;
+    }
  };
 
 #endif //PROJNAME_PLAYERSMANAGER_H

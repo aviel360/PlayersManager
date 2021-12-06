@@ -20,6 +20,9 @@
     int Player::getGroupID() const{
         return this->groupID;
     }
+    void Player::setGroupID(int _groupID){
+        this->groupID = _groupID;
+    }
     bool operator>(const Player& player_a, const Player& player_b){
         return player_b < player_a;
     }
