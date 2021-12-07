@@ -5,6 +5,7 @@
 #include "PlayersManager.h"
 #include "Group.h"
 #include "AVLTree.h"
+#include <memory>
 
 //PlayersManager* PlayersManager::Init() {
 //    PlayersManager* DS = new PlayersManager;
@@ -70,29 +71,29 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
         }
         int n1 = g1.getNumOfPlayers();
         int n2 = g2.getNumOfPlayers();
-        AVLTree<Player> playerIDTree = AVLTree<Player>();
-        AVLTree<Player> playerLevelTree = AVLTree<Player>();
-        playerIDTree.createEmptyTree(n1+n2);
+        AVLTree<std::shared_ptr<Player>> playerIDTree = AVLTree<std::shared_ptr<Player>>();
+        AVLTree<std::shared_ptr<Player>> playerLevelTree = AVLTree<std::shared_ptr<Player>>();
         playerLevelTree.createEmptyTree(n1+n2);
+        playerIDTree.createEmptyTree(n1+n2);
         g2.setIDTree(createMergeTree(g1.getIDTree(), g2.getIDTree(), n1, n2, replace_id, playerIDTree));
         g2.setLevelTree(createMergeTree(g1.getLevelTree(), g2.getLevelTree(), n1, n2, replace_id, playerLevelTree));
         fGroup.remove(g1);
     }
 }
-AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
-                                            int n2, int replace_id, AVLTree<Player>& playerTree){
+AVLTree<std::shared_ptr<Player>>& PlayersManager::createMergeTree(AVLTree<std::shared_ptr<Player>>& tree1, AVLTree<std::shared_ptr<Player>>& tree2, int n1,
+                                            int n2, int replace_id, AVLTree<std::shared_ptr<Player>>& playerTree){
     arrayMerge arr1(n1, replace_id);
     arrayMerge arr2(n2, replace_id);
-    Player* joined = new Player[n1+n2];
+    std::unique_ptr<std::shared_ptr<Player>*[]> joined(new std::shared_ptr<Player>*[n1+n2]);
     tree1.inOrder(arr1);
     tree2.inOrder(arr2);
-    mergeArrays(*arr1.get(),*arr2.get(),n1,n2,joined);
+    mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
     arrayInsert to_insert(joined, n1+n2);
     playerTree.inOrder(to_insert);
-    delete joined;
     return playerTree;
 }
-void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3){
+void PlayersManager::mergeArrays(std::unique_ptr<std::shared_ptr<Player>*[]>& arr1, std::unique_ptr<std::shared_ptr<Player>*[]>& arr2, 
+                                    int n1, int n2, std::unique_ptr<std::shared_ptr<Player>*[]>& arr3){
     int i = 0, j = 0, k = 0;
     while (i<n1 && j <n2){
         if (arr1[i] < arr2[j])
@@ -107,8 +108,8 @@ void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Pla
         arr3[k++] = arr2[j++];
 }
 Group& PlayersManager::findPlayerGroup(int player_id){
-    Player player = players.getPlayer(player_id);
-    int groupID = player.getGroupID();
+    std::shared_ptr<Player> player = players.getPlayer(player_id);
+    int groupID = (*player).getGroupID();
     Group _group(groupID);
     return fGroup.get(_group); 
 }
@@ -123,9 +124,9 @@ void PlayersManager::increaseLevel(const int player_id, const int level_increase
     if (player_id <= 0 || level_increase <= 0) {
         throw InvalidInput();
     }
-    const int level = players.getPlayer(player_id).getLevel();
-    players.getPlayer(player_id).setLevel(level + level_increase);
-    findPlayerGroup(player_id).getPlayer(player_id).setLevel(level + level_increase);
+    const int level = (*players.getPlayer(player_id)).getLevel();
+    (*players.getPlayer(player_id)).setLevel(level + level_increase);
+    (*findPlayerGroup(player_id).getPlayer(player_id)).setLevel(level + level_increase);
 }
 int PlayersManager::getHighestLevel(const int group_id){
     int player_id = players.getStrongestPlayer();
@@ -158,7 +159,7 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
     }
     else if (fGroup.exists(current_group)){
         arrayMalloc(current_group.getNumOfPlayers(), numOfPlayers, Players);
-        arrayPtr<Player> my_array(*numOfPlayers, Players);
+        arrayPtr<std::shared_ptr<Player>> my_array(*numOfPlayers, Players);
         fGroup.get(current_group).getLevelTree().inOrder(my_array);
     }
     else{
