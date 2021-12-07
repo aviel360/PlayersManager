@@ -56,25 +56,25 @@ class array {
 protected:
     int size;
     int iter;
-    T* my_array;
+    T** my_array;
 public:
-    array<T>(int _size):  size(_size), iter(0), my_array(new T[size]) {}
+    array<T>(int _size):  size(_size), iter(0), my_array(new T*[size]) {}
     virtual ~array<T>(){
         delete[] my_array;
     }
-    void insertT(T val)
+    void insertT(T& val)
     {
-        if ((iter + 1) >= size)
+        if ((iter + 1) > size)
         {
             throw Index();
         }
-        my_array[iter] = val;
+        my_array[iter] = &val;
     }
     virtual void operator()(T& value){
         insertT(value);
         iter++;
     }
-    T* getArray(){
+    T** get(){
         return this->my_array;
     }
     void clearArray(){
@@ -93,11 +93,11 @@ public:
     ~arrayPtr<T>() = default;
     void insert(int player_id)
     {
-        if ((this->iter + 1) >= this->size)
+        if ((this->iter + 1) > this->size)
         {
             throw Index();
         }
-        *arr[this->iter] = player_id;
+        (*arr)[this->iter] = player_id;
     }
     void operator () (Player& player)
     {
@@ -123,10 +123,7 @@ public:
         insertT(player);
         player.setGroupID(groupID);
         iter++;
-    }
-    Player* get(){
-        return getArray();
-    }
+    } 
 };
 
 // template <class T>
@@ -134,7 +131,7 @@ public:
  public:
     arrayInsert(Player* data, const int _size) : array<Player>(_size){
         delete[] my_array;
-        my_array = data;
+        *my_array = data;
     }
     void operator () (Player& p)
     {
@@ -142,7 +139,7 @@ public:
         {
             throw Index();
         }
-        p = my_array[iter];
+        p = (*my_array)[iter];
         iter ++;
     }
  };

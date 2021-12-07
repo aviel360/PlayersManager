@@ -15,6 +15,9 @@ void PlayersManager::addGroup(const int id) {
     if (id <= 0){
         throw InvalidInput();
     }
+    if(groupExists(id)){
+        throw ValueExists();
+    }
     eGroup.insert(Group(id));
 }
 void PlayersManager::addPlayer(const int player_id, const int group_id, const int level) {
@@ -67,10 +70,10 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
         }
         int n1 = g1.getNumOfPlayers();
         int n2 = g2.getNumOfPlayers();
-        AVLTree<Player> playerIDTree;
-        AVLTree<Player> playerLevelTree;
-        playerIDTree = playerIDTree.createEmptyTree(n1+n2);
-        playerLevelTree = playerLevelTree.createEmptyTree(n1+n2);
+        AVLTree<Player> playerIDTree = AVLTree<Player>();
+        AVLTree<Player> playerLevelTree = AVLTree<Player>();
+        playerIDTree.createEmptyTree(n1+n2);
+        playerLevelTree.createEmptyTree(n1+n2);
         g2.setIDTree(createMergeTree(g1.getIDTree(), g2.getIDTree(), n1, n2, replace_id, playerIDTree));
         g2.setLevelTree(createMergeTree(g1.getLevelTree(), g2.getLevelTree(), n1, n2, replace_id, playerLevelTree));
         fGroup.remove(g1);
@@ -83,7 +86,7 @@ AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree
     Player* joined = new Player[n1+n2];
     tree1.inOrder(arr1);
     tree2.inOrder(arr2);
-    mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
+    mergeArrays(*arr1.get(),*arr2.get(),n1,n2,joined);
     arrayInsert to_insert(joined, n1+n2);
     playerTree.inOrder(to_insert);
     delete joined;
@@ -166,7 +169,8 @@ void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players)
     if(Players == nullptr || numOfGroups < 0){
         throw InvalidInput();
     }
-    int* size = nullptr; //dummy pointer
+    int dummy = 0;
+    int* size = &dummy;
     arrayMalloc(numOfGroups, size, Players);
     arrayPtr<Group> my_array(numOfGroups, Players);
     try{
@@ -177,6 +181,3 @@ void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players)
         throw ValueNotExists();
     }
 }
-//void Quit() {
-//
-//}

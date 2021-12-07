@@ -235,7 +235,7 @@ class AVLTree{
         }
     }
     template <class Func>
-    void inOrderRecursive(BTreeNode<T>* _source, Func func)
+    void inOrderRecursive(BTreeNode<T>* _source, Func& func)
     {
         if(_source != nullptr)
         {
@@ -245,14 +245,13 @@ class AVLTree{
         }
     }
     void completeTree(BTreeNode<T>* _source, int h) {
-        if (h < 0)
-        {
+        if (h < 0){
             return;
         }
         BTreeNode<T>* tmp1 = new BTreeNode<T>(T());
         _source->setRChild(tmp1);
         BTreeNode<T>* tmp2 = new BTreeNode<T>(T());
-        _source->setRChild(tmp2);
+        _source->setLChild(tmp2);
         h--;
         completeTree(tmp1, h);
         completeTree(tmp2, h);
@@ -337,7 +336,7 @@ public:
         inOrderToArrayRecursive(source, array, 0);
     }
     template <class Func>
-    void inOrder(const Func& f) {
+    void inOrder(Func& f) {
         inOrderRecursive(source, f);
     }
 
@@ -357,7 +356,7 @@ public:
                 _source = _source->goRight();
             }
             else if(_source->getValue() == _value){
-                return source;
+                return _source;
             }
             else{
                 _source = _source->goLeft();
@@ -391,13 +390,11 @@ public:
         return getMaxValue(source)->getValue();
     }
 
-    AVLTree createEmptyTree(const int& n) {
+    void createEmptyTree(const int n) {
         int h = ceil(log2(n+1)) -1;
-        AVLTree<T> empty;
-        empty.insert(T());
-        empty.completeTree(empty.source,h);
-        reverseInOrder(empty.source, empty.source, pow(2,h+1)-1-n);
-        return empty;
+        insert(T());
+        completeTree(source,h);
+        reverseInOrder(source, source, pow(2,h+1)-1-n);
     }
 };
 
