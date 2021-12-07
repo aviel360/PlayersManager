@@ -19,4 +19,4 @@ set(CMAKE_CPP_FLAGS ${MTM_FLAGS_DEBUG})
 
 # Add the names of your source files here
 
-add_executable(PlayersManager groupTest.cpp Player.cpp Exceptions.cpp Group.cpp)
+add_executable(Manager main.cpp Player.cpp Exceptions.cpp Group.cpp PlayersManager.cpp library1.cpp)

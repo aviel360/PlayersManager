@@ -3,19 +3,25 @@
 
 class Player{
     int key;
+    int groupID;
     int PlayerID;
     int Level;
     
 public:
-    Player(int _key, int _PlayerId, int _Level = 0);
+    Player();
+    Player(int _key, int groupID, int _PlayerID, int _Level = 0);
     Player(const Player& player) = default;
     Player& operator=(const Player& player) = default;
     ~Player() = default;
 
     void setLevel(int _Level);
+    void setGroupID(int _groupID);
     int getLevel() const;
     int getPlayerID() const;
     int getKey() const;
+    int getReturn() const;
+    int getGroupID() const;
+    void changePlayer();
     friend bool operator==(const Player& player_a, const Player& player_b){ 
         return player_a.PlayerID == player_b.PlayerID;
     }

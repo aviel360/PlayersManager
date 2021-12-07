@@ -4,8 +4,10 @@
 
 #ifndef PLAYERSMANAGER_AVLTREE_H
 #define PLAYERSMANAGER_AVLTREE_H
+
 #include "BTreeNode.h"
 #include "Exceptions.h"
+#include <math.h>
 
 template<class T>
 class AVLTree{
@@ -232,15 +234,49 @@ class AVLTree{
             inOrderRecursive(_source->goRight(), array, i);
         }
     }
-
-    void preORet(BTreeNode<T>* node)
+    template <class Func>
+    void inOrderRecursive(BTreeNode<T>* _source, Func& func)
     {
-        if (node != nullptr)
+        if(_source != nullptr)
         {
-            this->insert(node->getValue());
-            preORet(node->goLeft());
-            preORet(node->goRight());
+            inOrderRecursive(_source->goLeft(), func);
+            func(_source->getValue());
+            inOrderRecursive(_source->goRight(), func);
         }
+    }
+    void completeTree(BTreeNode<T>* _source, int h) {
+        if (h < 0){
+            return;
+        }
+        BTreeNode<T>* tmp1 = new BTreeNode<T>(T());
+        _source->setRChild(tmp1);
+        BTreeNode<T>* tmp2 = new BTreeNode<T>(T());
+        _source->setLChild(tmp2);
+        h--;
+        completeTree(tmp1, h);
+        completeTree(tmp2, h);
+    }
+
+    int reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int n)
+    {
+        if(_source != nullptr || n==0)
+        {
+            n = reverseInOrder(_source->goRight(), _source, n);
+            if ( _source->goLeft() == nullptr)
+            {
+                if(dad->goLeft() == _source){
+                    dad->setLChild(nullptr);
+                }
+                else{
+                    dad->setRChild(nullptr);
+                }
+                delete _source;
+
+            }
+            reverseInOrder(_source->goLeft(), _source, n);
+            return n-1;
+        }
+        return n;
     }
 
 public:
@@ -262,18 +298,21 @@ public:
 
     }
 
-    AVLTree operator = (const AVLTree& other)
+    AVLTree& operator=(const AVLTree& other)
     {
         if (this != &other)
         {
-            if(source != nullptr)
-            {
-                removeBTreeNode(source);
-            }
-            BTreeNode<T>* node = this->source;
-            preORet(node);
+            removeBTreeNode(source);
+            source = copy(other.source);
         }
         return *this;
+    }
+    BTreeNode<T>* getSource(){
+        return this->source;
+    }
+    void setSource(BTreeNode<T>* other){
+        removeBTreeNode(source);
+        source = other;
     }
     void insert(const T& value){
         if (find(value) != nullptr)
@@ -296,21 +335,43 @@ public:
         }
         inOrderToArrayRecursive(source, array, 0);
     }
+    template <class Func>
+    void inOrder(Func& f) {
+        inOrderRecursive(source, f);
+    }
+
+    bool exists(const T& _value){
+        BTreeNode<T>* result = find(_value);
+        if (result == nullptr)
+        {
+            return false;
+        }
+        return true;
+    }
 
     BTreeNode<T>* find(const T& _value){
-        class BTreeNode<T>* _source = source;
+        BTreeNode<T>* _source = source;
         while(_source != nullptr){
             if(_source->getValue() < _value){
                 _source = _source->goRight();
             }
             else if(_source->getValue() == _value){
-                return source;
+                return _source;
             }
             else{
                 _source = _source->goLeft();
             }
         }
         return nullptr;
+    }
+
+    T& get(const T& _value){
+        BTreeNode<T>* node = find(_value);
+        if (node == nullptr)
+        {
+            throw ValueNotExists();
+        }
+        return node->getValue();
     }
         /**
      *
@@ -327,6 +388,13 @@ public:
      */
     T& getMaxValue(){
         return getMaxValue(source)->getValue();
+    }
+
+    void createEmptyTree(const int n) {
+        int h = ceil(log2(n+1)) -1;
+        insert(T());
+        completeTree(source,h);
+        reverseInOrder(source, source, pow(2,h+1)-1-n);
     }
 };
 

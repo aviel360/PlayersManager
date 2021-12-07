@@ -32,4 +32,10 @@ class ValueNotExists : public Exception
 public:
     const char * what () const noexcept;
 };
+
+class Index : public Exception
+{
+public:
+    const char * what () const noexcept;
+};
 #endif //PROJNAME_EXCEPTIONS_H

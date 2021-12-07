@@ -6,7 +6,7 @@ int main() {
     Group group1(1);
     Group group2(2);
     Group group3(3);
-
+    
     assert(group1.getStrongestPlayer() == -1);
     group1.insertPlayer(552, 2); // insert 552
     try{

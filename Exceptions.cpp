@@ -32,3 +32,8 @@ const char * InvalidInput::what () const noexcept
 {
     return "A game related error has occurred: Invalid Input";
 }
+
+const char * Index::what () const noexcept
+{
+    return "A game related error has occurred: Index exceeds limits";
+}
