@@ -259,7 +259,7 @@ class AVLTree{
 
     int reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int n)
     {
-        if(_source != nullptr || n==0)
+        if(_source != nullptr && n!=0)
         {
             n = reverseInOrder(_source->goRight(), _source, n);
             if ( _source->goLeft() == nullptr)
