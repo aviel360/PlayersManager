@@ -27,9 +27,9 @@ public:
     T& getValue(){
         return *(this->value);
     }
-    std::shared_ptr<T> getPointer(){
-        return this->value;
-    }
+//    std::shared_ptr<T> getValue(){
+//        return this->value;
+//    }
     void setValue(const T& _value){
         *value = _value;
     }

@@ -81,16 +81,16 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
 }
 AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
                                             int n2, int replace_id, AVLTree<Player>& playerTree){
-    arrayMerge arr1(n1, replace_id);
-    arrayMerge arr2(n2, replace_id);
-    Player* joined = new Player[n1+n2];
-    tree1.inOrder(arr1);
-    tree2.inOrder(arr2);
-    mergeArrays(*arr1.get(),*arr2.get(),n1,n2,joined);
-    arrayInsert to_insert(joined, n1+n2);
-    playerTree.inOrder(to_insert);
-    delete[] joined;
-    return playerTree;
+//    arrayMerge arr1(n1, replace_id);
+//    arrayMerge arr2(n2, replace_id);
+//    Player* joined = new Player[n1+n2];
+//    tree1.inOrder(arr1);
+//    tree2.inOrder(arr2);
+//    mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
+//    arrayInsert to_insert(joined, n1+n2);
+//    playerTree.inOrder(to_insert);
+//    delete[] joined;
+//    return playerTree;
 }
 void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3){
     int i = 0, j = 0, k = 0;
@@ -152,32 +152,45 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
     if (Players == nullptr || numOfPlayers == nullptr || group_id == 0){
         throw InvalidInput();
     }
-    Group current_group = Group(group_id);
-    if (group_id < 0 || eGroup.exists(current_group)){   
-        arrayMalloc(players.getNumOfPlayers(), numOfPlayers, Players);
+    Group current_group;
+    if (group_id >=0)
+    {
+        current_group = Group(group_id);
+        if (eGroup.exists(current_group)){
+            *Players = nullptr;
+            *numOfPlayers = 0;
+            return;
+        }
+        else{
+            if (!fGroup.exists(current_group))
+            {
+                throw ValueNotExists();
+            }
+        }
     }
-    else if (fGroup.exists(current_group)){
-        arrayMalloc(current_group.getNumOfPlayers(), numOfPlayers, Players);
-        arrayPtr<Player> my_array(*numOfPlayers, Players);
-        fGroup.get(current_group).getLevelTree().inOrder(my_array);
+    else
+    {
+        current_group = this->players;
     }
-    else{
-        throw ValueNotExists();
-    }
+    *numOfPlayers = current_group.getNumOfPlayers();
+    ID_array ids(*numOfPlayers);
+    current_group.getLevelTree().inOrder(ids);
+    *Players = ids.get_ids();
 }
 void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players) {
-    if(Players == nullptr || numOfGroups < 0){
-        throw InvalidInput();
-    }
-    int dummy = 0;
-    int* size = &dummy;
-    arrayMalloc(numOfGroups, size, Players);
-    arrayPtr<Group> my_array(numOfGroups, Players);
-    try{
-        fGroup.inOrder(my_array);
-    }
-    catch(Index& e){}
-    if(numOfGroups > my_array.getIter()){
-        throw ValueNotExists();
-    }
+//    if(Players == nullptr || numOfGroups < 0){
+//        throw InvalidInput();
+//    }
+//    int dummy = 0;
+//    int* size = &dummy;
+//    arrayMalloc(numOfGroups, size, Players);
+//    arrayPtr<Group> my_array(numOfGroups, Players);
+//    try{
+//        fGroup.inOrder(my_array);
+//    }
+//    catch(Index& e){}
+//    if(numOfGroups > my_array.getIter()){
+//        throw ValueNotExists();
+//    }
 }
+
