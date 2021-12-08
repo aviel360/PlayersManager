@@ -22,9 +22,10 @@ public:
     void setLevelTree(AVLTree<Player>& tree);
     void setIDTree(AVLTree<Player>& tree);
     void insertPlayer(int PlayerID, int _groupID, int Level = 0);
-    void insertPlayer(std::shared_ptr<Player> player);
+    void insertPlayer(std::shared_ptr<Player>& player);
     void removePlayer(int PlayerID);
-    std::shared_ptr<Player> getPlayer(int PlayerID);
+    void setPlayerLevel(int _player, int _level);
+    std::shared_ptr<Player>& getPlayer(int PlayerID);
     bool playerExists(int PlayerID);
     int getStrongestPlayer();
     int getNumOfPlayers();

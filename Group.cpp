@@ -12,10 +12,12 @@
         updateStrongest(PlayerID, Level);
         numOfPlayers++;
     }
-    void Group::insertPlayer(std::shared_ptr<Player> player){
-        playersID.find(*player);
+    void Group::insertPlayer(std::shared_ptr<Player>& player){
+        playersID.insert(player);
         Player _playerLevel((*player).getLevel(), (*player).getGroupID(), (*player).getPlayerID(), (*player).getLevel());
         playersLevel.insert(_playerLevel);
+        updateStrongest((*player).getPlayerID(), (*player).getLevel());
+        numOfPlayers++;
     }
     void Group::removePlayer(int PlayerID){
         Player _player = *getPlayer(PlayerID);
@@ -30,7 +32,7 @@
 
         numOfPlayers--;
     }
-    std::shared_ptr<Player> Group::getPlayer(int PlayerID){
+    std::shared_ptr<Player>& Group::getPlayer(int PlayerID){
         Player _player(PlayerID, -1, PlayerID);
         return playersID.getPtr(_player);
     }
@@ -59,6 +61,10 @@
         strongestPlayerID = old_level < strongestPlayerLevel ? 
                             PlayerID : PlayerID < strongestPlayerID ? PlayerID : strongestPlayerID;
     }
+    void Group::setPlayerLevel(int player_id, int _level){
+        (*getPlayer(player_id)).setLevel(_level);
+        updateStrongest(player_id, _level);
+    }
     int Group::getReturn() const {
         return this->groupID;
     }
@@ -69,10 +75,10 @@
         return this->playersID;
     }
     void Group::setLevelTree(AVLTree<Player>& tree) {
-        this->playersLevel.setSource(tree.getSource());
+        this->playersLevel = tree;
     }
     void Group::setIDTree(AVLTree<Player>& tree) {
-       this->playersID.setSource(tree.getSource());
+       this->playersID = tree;
     }
     bool operator>(const Group& group_a, const Group& group_b){
         return group_b < group_a;

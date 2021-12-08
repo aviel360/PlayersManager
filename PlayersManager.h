@@ -94,13 +94,13 @@ public:
         }
         (*arr)[this->iter] = player_id;
     }
-    void operator () (std::shared_ptr<Player> player)
+    void operator () (std::shared_ptr<Player>& player)
     {
         insert((*player).getPlayerID());
         this->insertT(player);
         this->iter++;
     }
-    void operator () (std::shared_ptr<Group> group)
+    void operator () (std::shared_ptr<Group>& group)
     {
         insert((*group).getStrongestPlayer());
         this->insertT(group);
@@ -113,7 +113,7 @@ class arrayMerge : public array<std::shared_ptr<Player>> {
 public:
     arrayMerge( int _size, int _groupID) : array<std::shared_ptr<Player>>(_size), groupID(_groupID) {}
     ~arrayMerge(){}
-    void operator() (std::shared_ptr<Player> player)
+    void operator() (std::shared_ptr<Player>& player)
     {
         insertT(player);
         (*player).setGroupID(groupID);
@@ -131,7 +131,7 @@ public:
             my_array[i] = data[i];
         }
     }
-    void operator () (std::shared_ptr<Player> p)
+    void operator () (std::shared_ptr<Player>& p)
     {
         if ((iter + 1) > size)
         {

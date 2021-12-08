@@ -71,8 +71,8 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
         AVLTree<Player> playerLevelTree = AVLTree<Player>();
         playerIDTree.createEmptyTree(n1+n2);
         playerLevelTree.createEmptyTree(n1+n2);
-        g2.setIDTree(createMergeTree(g1.getIDTree(), g2.getIDTree(), n1, n2, replace_id, playerIDTree));
-        g2.setLevelTree(createMergeTree(g1.getLevelTree(), g2.getLevelTree(), n1, n2, replace_id, playerLevelTree));
+        fGroup.get(g2).setIDTree(createMergeTree(g1.getIDTree(), g2.getIDTree(), n1, n2, replace_id, playerIDTree));
+        fGroup.get(g2).setLevelTree(createMergeTree(g1.getLevelTree(), g2.getLevelTree(), n1, n2, replace_id, playerLevelTree));
         fGroup.remove(g1);
     }
 }
@@ -120,8 +120,7 @@ void PlayersManager::increaseLevel(const int player_id, const int level_increase
         throw InvalidInput();
     }
     const int level = (*players.getPlayer(player_id)).getLevel();
-    (*players.getPlayer(player_id)).setLevel(level + level_increase);
-    (*findPlayerGroup(player_id).getPlayer(player_id)).setLevel(level + level_increase);
+    findPlayerGroup(player_id).setPlayerLevel(player_id, level + level_increase);
 }
 int PlayersManager::getHighestLevel(const int group_id){
     int player_id = players.getStrongestPlayer();

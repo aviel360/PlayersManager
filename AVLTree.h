@@ -102,6 +102,38 @@ class AVLTree{
         }
         return _source;
     }
+    BTreeNode<T>* insertRecursive(std::shared_ptr<T>& value, BTreeNode<T>* _source){
+        if(_source == nullptr)
+        {
+            BTreeNode<T>* node = new BTreeNode<T>(value);
+            _source = node;
+            return _source;
+        }
+        if (*value < _source -> getValue())
+        {
+            _source -> setLChild(insertRecursive(value, _source -> goLeft())) ;
+        }
+        else if (*value > _source -> getValue()){
+            _source -> setRChild(insertRecursive(value, _source -> goRight()));
+        }
+        else {
+            return _source;
+        }
+        int new_balance = getBalance(_source);
+        if(new_balance < -1 && getBalance(_source->goRight()) < 1){
+            return RR(_source);
+        }
+        if(new_balance < -1 && getBalance(_source->goRight()) > 0){
+            return RL(_source);
+        }
+        if(new_balance > 1 &&  getBalance(_source->goLeft()) > -1){
+            return LL(_source);
+        }
+        if(new_balance > 1 && getBalance(_source->goLeft()) < 0){
+            return LR(_source);
+        }
+        return _source;
+    }
     /**
      *
      * @param value
@@ -320,6 +352,13 @@ public:
         }
         source = insertRecursive(value, source);
     }
+    void insert(std::shared_ptr<T>& value){
+        if (find(*value) != nullptr)
+        {
+            throw ValueExists();
+        }
+        source = insertRecursive(value, source);
+    }
 
     void remove(const T& value){
         if (find(value) == nullptr)
@@ -372,7 +411,7 @@ public:
         }
         return node->getValue();
     }
-    std::shared_ptr<T> getPtr(const T& _value){
+    std::shared_ptr<T>& getPtr(const T& _value){
         BTreeNode<T>* node = find(_value);
         if (node == nullptr)
         {
