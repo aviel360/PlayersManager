@@ -36,6 +36,10 @@ void PlayersManager::removePlayer(const int player_id) {
         throw InvalidInput();
     }
     findPlayerGroup(player_id).removePlayer(player_id);
+    if(players.getNumOfPlayers() == 1){
+        eGroup.insert(findPlayerGroup(player_id));
+        fGroup.remove(findPlayerGroup(player_id));
+    }
     players.removePlayer(player_id);
 }
 
@@ -147,30 +151,23 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
     if (Players == nullptr || numOfPlayers == nullptr || group_id == 0){
         throw InvalidInput();
     }
-    Group current_group;
-    if (group_id >=0)
-    {
-        current_group = Group(group_id);
-        if (eGroup.exists(current_group)){
-            *Players = nullptr;
-            *numOfPlayers = 0;
-            return;
-        }
-        else{
-            if (!fGroup.exists(current_group))
-            {
-                throw ValueNotExists();
-            }
-        }
+    Group current_group = Group(group_id);
+    if(eGroup.exists(current_group)){
+        arrayMalloc(0, numOfPlayers, Players);
     }
-    else
-    {
-        current_group = this->players;
+    else if (group_id < 0){   
+        arrayMalloc(players.getNumOfPlayers(), numOfPlayers, Players);
+        arrayPtr<std::shared_ptr<Player>> my_array(*numOfPlayers, Players);
+        players.getLevelTree().inOrder(my_array);
     }
-    *numOfPlayers = current_group.getNumOfPlayers();
- //   ID_array ids(*numOfPlayers);
- //   current_group.getLevelTree().inOrder(ids);
-  //  *Players = ids.get_ids();
+    else if (fGroup.exists(current_group)){
+        arrayMalloc(current_group.getNumOfPlayers(), numOfPlayers, Players);
+        arrayPtr<std::shared_ptr<Player>> my_array(*numOfPlayers, Players);
+        fGroup.get(current_group).getLevelTree().inOrder(my_array);
+    }
+    else{
+        throw ValueNotExists();
+    }
 }
 void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players) {
    if(Players == nullptr || numOfGroups < 0){
@@ -187,5 +184,15 @@ void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players)
    if(numOfGroups > my_array.getIter()){
        throw ValueNotExists();
    }
+}
+void swap(int** Players, int size){
+    int* from = new int[size];
+    for(int i = 0; i < size; i++){
+        from[i] = (*Players)[i];
+    }
+    for(int i = 0; i < size; i++){
+        (*Players)[i] = from[size - i];
+    }
+    delete[] from;
 }
 

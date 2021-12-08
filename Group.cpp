@@ -27,9 +27,10 @@
 
         strongestPlayerID = -1;
         strongestPlayerLevel = 0;
-        _player = playersLevel.getMaxValue();
-        updateStrongest(_player.getPlayerID(), _player.getLevel());
-
+        if(playersLevel.getSource() != nullptr){
+            _player = playersLevel.getMaxValue();
+            updateStrongest(_player.getPlayerID(), _player.getLevel());
+        }
         numOfPlayers--;
     }
     std::shared_ptr<Player>& Group::getPlayer(int PlayerID){

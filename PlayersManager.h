@@ -78,6 +78,9 @@ public:
     int getIter(){
         return this->iter;
     }
+    void setIter(int _iter){
+        this->iter = _iter;
+    }
 };
 
 template <class T>
@@ -96,13 +99,13 @@ public:
     }
     void operator () (std::shared_ptr<Player>& player)
     {
-        insert((*player).getPlayerID());
+        insert(player->getPlayerID());
         this->insertT(player);
         this->iter++;
     }
     void operator () (std::shared_ptr<Group>& group)
     {
-        insert((*group).getStrongestPlayer());
+        insert(group->getStrongestPlayer());
         this->insertT(group);
         this->iter++;
     }

@@ -46,6 +46,7 @@ class AVLTree{
             removeBTreeNode(node->goRight());
             removeBTreeNode(node->goLeft());
             delete node;
+            node = nullptr;
         }
     }
     /**
@@ -162,6 +163,7 @@ class AVLTree{
                     _source->setHeight();
                 }
                 delete temp;
+                temp = nullptr;
             }
             else{
                 BTreeNode<T>* temp = getMinValue(_source->goRight());
@@ -303,6 +305,7 @@ class AVLTree{
                     dad->setRChild(nullptr);
                 }
                 delete _source;
+                _source = nullptr;
                 return n-1;
             }
             reverseInOrder(_source->goLeft(), _source, n);
