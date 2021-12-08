@@ -7,7 +7,7 @@
 
 #include "BTreeNode.h"
 #include "Exceptions.h"
-#include <math.h>
+#include <cmath>
 
 template<class T>
 class AVLTree{
@@ -245,7 +245,7 @@ class AVLTree{
         }
     }
     void completeTree(BTreeNode<T>* _source, int h) {
-        if (h < 0){
+        if (h <= 0){
             return;
         }
         BTreeNode<T>* tmp1 = new BTreeNode<T>(T());
@@ -271,10 +271,9 @@ class AVLTree{
                     dad->setRChild(nullptr);
                 }
                 delete _source;
-
+                return n-1;
             }
             reverseInOrder(_source->goLeft(), _source, n);
-            return n-1;
         }
         return n;
     }
