@@ -57,7 +57,7 @@ protected:
 public:
     array<T>(int _size):  size(_size), iter(0), my_array(new T[size]) {}
     virtual ~array<T>(){}
-    void insertT(T val)
+    void insertT(T& val)
     {
         if ((iter + 1) > size)
         {
@@ -116,7 +116,7 @@ public:
     void operator() (std::shared_ptr<Player>& player)
     {
         insertT(player);
-        (*player).setGroupID(groupID);
+        player->setGroupID(groupID);
         iter++;
     }
 };

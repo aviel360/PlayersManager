@@ -22,7 +22,7 @@ void PlayersManager::addPlayer(const int player_id, const int group_id, const in
         throw InvalidInput();
     } 
     Group current_group(group_id);
-    Player current_player = Player(player_id, player_id, level);
+    Player current_player(player_id, player_id, level);
     if (eGroup.exists(current_group)) //means it's empty
     {
         fGroup.insert(current_group);

@@ -56,7 +56,7 @@ class AVLTree{
     BTreeNode<T>* copy(BTreeNode<T>* node) {
         if( node  != nullptr )
         {
-            BTreeNode<T>* base = new BTreeNode<T>(node->getValue());
+            BTreeNode<T>* base = new BTreeNode<T>(node->getPtr());
             base->setLChild(copy(node->goLeft()));
             base->setRChild(copy(node->goRight()));
             return base ;
