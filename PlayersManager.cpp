@@ -6,10 +6,7 @@
 #include "Group.h"
 #include "AVLTree.h"
 
-//PlayersManager* PlayersManager::Init() {
-//    PlayersManager* DS = new PlayersManager;
-//    return DS;
-//}
+
 PlayersManager::PlayersManager() : eGroup(), fGroup(), players(-1), strongestPlayerID(-1){} 
 void PlayersManager::addGroup(const int id) {
     if (id <= 0){
@@ -81,18 +78,17 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
 }
 AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
                                             int n2, int replace_id, AVLTree<Player>& playerTree){
-//    arrayMerge arr1(n1, replace_id);
-//    arrayMerge arr2(n2, replace_id);
-//    Player* joined = new Player[n1+n2];
-//    tree1.inOrder(arr1);
-//    tree2.inOrder(arr2);
-//    mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
-//    arrayInsert to_insert(joined, n1+n2);
-//    playerTree.inOrder(to_insert);
-//    delete[] joined;
-//    return playerTree;
+   arrayMerge arr1(n1, replace_id);
+   arrayMerge arr2(n2, replace_id);
+   std::unique_ptr<std::shared_ptr<Player>[]> joined(new std::shared_ptr<Player>[n1+n2]);
+   tree1.inOrder(arr1);
+   tree2.inOrder(arr2);
+   mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
+   arrayInsert to_insert(joined, n1+n2);
+   playerTree.inOrder(to_insert);
+   return playerTree;
 }
-void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3){
+void PlayersManager::mergeArrays(std::unique_ptr<std::shared_ptr<Player>[]>& arr1, std::unique_ptr<std::shared_ptr<Player>[]>& arr2, int n1, int n2, std::unique_ptr<std::shared_ptr<Player>[]>& arr3){
     int i = 0, j = 0, k = 0;
     while (i<n1 && j <n2){
         if (arr1[i] < arr2[j])
@@ -107,7 +103,7 @@ void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Pla
         arr3[k++] = arr2[j++];
 }
 Group& PlayersManager::findPlayerGroup(int player_id){
-    Player player = players.getPlayer(player_id);
+    Player player = *players.getPlayer(player_id);
     int groupID = player.getGroupID();
     Group _group(groupID);
     return fGroup.get(_group); 
@@ -123,9 +119,9 @@ void PlayersManager::increaseLevel(const int player_id, const int level_increase
     if (player_id <= 0 || level_increase <= 0) {
         throw InvalidInput();
     }
-    const int level = players.getPlayer(player_id).getLevel();
-    players.getPlayer(player_id).setLevel(level + level_increase);
-    findPlayerGroup(player_id).getPlayer(player_id).setLevel(level + level_increase);
+    const int level = (*players.getPlayer(player_id)).getLevel();
+    (*players.getPlayer(player_id)).setLevel(level + level_increase);
+    (*findPlayerGroup(player_id).getPlayer(player_id)).setLevel(level + level_increase);
 }
 int PlayersManager::getHighestLevel(const int group_id){
     int player_id = players.getStrongestPlayer();
@@ -173,24 +169,24 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
         current_group = this->players;
     }
     *numOfPlayers = current_group.getNumOfPlayers();
-    ID_array ids(*numOfPlayers);
-    current_group.getLevelTree().inOrder(ids);
-    *Players = ids.get_ids();
+ //   ID_array ids(*numOfPlayers);
+ //   current_group.getLevelTree().inOrder(ids);
+  //  *Players = ids.get_ids();
 }
 void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players) {
-//    if(Players == nullptr || numOfGroups < 0){
-//        throw InvalidInput();
-//    }
-//    int dummy = 0;
-//    int* size = &dummy;
-//    arrayMalloc(numOfGroups, size, Players);
-//    arrayPtr<Group> my_array(numOfGroups, Players);
-//    try{
-//        fGroup.inOrder(my_array);
-//    }
-//    catch(Index& e){}
-//    if(numOfGroups > my_array.getIter()){
-//        throw ValueNotExists();
-//    }
+   if(Players == nullptr || numOfGroups < 0){
+       throw InvalidInput();
+   }
+   int dummy = 0;
+   int* size = &dummy;
+   arrayMalloc(numOfGroups, size, Players);
+   arrayPtr<std::shared_ptr<Group>> my_array(numOfGroups, Players);
+   try{
+       fGroup.inOrder(my_array);
+   }
+   catch(Index& e){}
+   if(numOfGroups > my_array.getIter()){
+       throw ValueNotExists();
+   }
 }
 

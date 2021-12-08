@@ -240,7 +240,7 @@ class AVLTree{
         if(_source != nullptr)
         {
             inOrderRecursive(_source->goLeft(), func);
-            func(_source->getValue());
+            func(_source->getPtr());
             inOrderRecursive(_source->goRight(), func);
         }
     }
@@ -371,6 +371,14 @@ public:
             throw ValueNotExists();
         }
         return node->getValue();
+    }
+    std::shared_ptr<T> getPtr(const T& _value){
+        BTreeNode<T>* node = find(_value);
+        if (node == nullptr)
+        {
+            throw ValueNotExists();
+        }
+        return node->getPtr();
     }
         /**
      *

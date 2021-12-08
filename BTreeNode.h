@@ -1,6 +1,6 @@
 #ifndef PLAYERSMANAGER_BTREENODE_H_
 #define PLAYERSMANAGER_BTREENODE_H_
-
+#include <memory>
 #include <iostream>
 
 template <class T>
@@ -27,9 +27,9 @@ public:
     T& getValue(){
         return *(this->value);
     }
-//    std::shared_ptr<T> getValue(){
-//        return this->value;
-//    }
+    std::shared_ptr<T> getPtr(){
+        return this->value;
+    }
     void setValue(const T& _value){
         *value = _value;
     }
