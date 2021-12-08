@@ -89,7 +89,7 @@ AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree
     mergeArrays(*arr1.get(),*arr2.get(),n1,n2,joined);
     arrayInsert to_insert(joined, n1+n2);
     playerTree.inOrder(to_insert);
-    delete joined;
+    delete[] joined;
     return playerTree;
 }
 void PlayersManager::mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3){

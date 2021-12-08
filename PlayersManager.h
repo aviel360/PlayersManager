@@ -137,7 +137,8 @@ public:
     {
         if ((iter + 1) >= size)
         {
-            throw Index();
+            return;
+            //throw Index();
         }
         p = (*my_array)[iter];
         iter ++;
