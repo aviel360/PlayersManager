@@ -12,13 +12,13 @@
         updateStrongest(PlayerID, Level);
         numOfPlayers++;
     }
-    void Group::insertPlayer(Player& player){
-        playersID.insert(player);
-        Player _playerLevel(player.getLevel(), player.getGroupID(), player.getPlayerID(), player.getLevel());
+    void Group::insertPlayer(std::shared_ptr<Player> player){
+        playersID.find(*player);
+        Player _playerLevel((*player).getLevel(), (*player).getGroupID(), (*player).getPlayerID(), (*player).getLevel());
         playersLevel.insert(_playerLevel);
     }
     void Group::removePlayer(int PlayerID){
-        Player _player = getPlayer(PlayerID);
+        Player _player = *getPlayer(PlayerID);
         Player _playerLevel(_player.getLevel(), _player.getGroupID(), PlayerID, _player.getLevel());
         playersID.remove(_player);
         playersLevel.remove(_playerLevel);
@@ -30,9 +30,9 @@
 
         numOfPlayers--;
     }
-    Player& Group::getPlayer(int PlayerID){
+    std::shared_ptr<Player> Group::getPlayer(int PlayerID){
         Player _player(PlayerID, -1, PlayerID);
-        return playersID.get(_player);
+        return playersID.getPtr(_player);
     }
     bool Group::playerExists(int PlayerID){
         try{

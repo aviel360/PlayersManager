@@ -24,14 +24,13 @@ class PlayersManager{
     AVLTree<Player>& createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
                                                      int n2, int replace_id, AVLTree<Player>& playerTree);
 
-    void mergeArrays(Player* arr1, Player* arr2, int n1, int n2, Player* arr3);
+    void mergeArrays(std::unique_ptr<std::shared_ptr<Player>[]>& arr1, std::unique_ptr<std::shared_ptr<Player>[]>& arr2, int n1, int n2, std::unique_ptr<std::shared_ptr<Player>[]>& arr3);
 
 public:
 
-//    static PlayersManager* Init();
     PlayersManager();
     ~PlayersManager() = default;
-    void addGroup(const int id); //maybe void?
+    void addGroup(const int id); 
     void addPlayer(const int player_id, const int group_id, const int level);
     void removePlayer(const int player_id);
     void replaceGroup(const int group_id, const int replace_id);
@@ -39,7 +38,6 @@ public:
     int getHighestLevel(const int group_id);
     void getAllPlayersByLevel(const int group_id, int** Players, int* numOfPlayers);
     void getGroupsHighestLevel(const int numOfGroups, int** Players);
-//    void Quit();
 };
 
 template <class T>
@@ -50,32 +48,29 @@ public:
         std::cout << t << std::endl;
     }
 };
-
 template <class T>
 class array {
 protected:
     int size;
     int iter;
-    T** my_array;
+    std::unique_ptr<T[]> my_array;
 public:
-    array<T>(int _size):  size(_size), iter(0), my_array(new T*[size]) {}
-    virtual ~array<T>(){
-        delete[] my_array;
-    }
-    void insertT(T& val)
+    array<T>(int _size):  size(_size), iter(0), my_array(new T[size]) {}
+    virtual ~array<T>(){}
+    void insertT(T val)
     {
         if ((iter + 1) > size)
         {
             throw Index();
         }
-        my_array[iter] = &val;
+        my_array[iter] = val;
     }
     virtual void operator()(T& value){
         insertT(value);
         iter++;
     }
-    T** get(){
-        return this->my_array;
+    std::unique_ptr<T[]>& get(){
+        return my_array;
     }
     void clearArray(){
         iter = 0;
@@ -90,7 +85,7 @@ class arrayPtr : public array<T> {
     int** arr;
 public:
     arrayPtr<T>(int _size, int** _arr) : array<T>(_size), arr(_arr) {}
-    ~arrayPtr<T>() = default;
+    ~arrayPtr<T>(){}
     void insert(int player_id)
     {
         if ((this->iter + 1) > this->size)
@@ -99,50 +94,52 @@ public:
         }
         (*arr)[this->iter] = player_id;
     }
-    void operator () (Player& player)
+    void operator () (std::shared_ptr<Player> player)
     {
-        insert(player.getPlayerID());
+        insert((*player).getPlayerID());
         this->insertT(player);
         this->iter++;
     }
-    void operator () (Group& group)
+    void operator () (std::shared_ptr<Group> group)
     {
-        insert(group.getStrongestPlayer());
+        insert((*group).getStrongestPlayer());
         this->insertT(group);
         this->iter++;
     }
 };
 
-class arrayMerge : public array<Player> {
+class arrayMerge : public array<std::shared_ptr<Player>> {
     int groupID;
 public:
-    arrayMerge( int _size, int _groupID) : array<Player>(_size), groupID(_groupID) {}
-    ~arrayMerge() = default;
-    void operator() (Player& player)
+    arrayMerge( int _size, int _groupID) : array<std::shared_ptr<Player>>(_size), groupID(_groupID) {}
+    ~arrayMerge(){}
+    void operator() (std::shared_ptr<Player> player)
     {
         insertT(player);
-        player.setGroupID(groupID);
+        (*player).setGroupID(groupID);
         iter++;
-    } 
+    }
 };
 
 // template <class T>
- class arrayInsert : public array<Player> {
- public:
-    arrayInsert(Player* data, const int _size) : array<Player>(_size){
-        delete[] my_array;
-        *my_array = data;
-    }
-    void operator () (Player& p)
-    {
-        if ((iter + 1) >= size)
-        {
-            return;
-            //throw Index();
+class arrayInsert : public array<std::shared_ptr<Player>> {
+public:
+    ~arrayInsert(){}
+    arrayInsert(std::unique_ptr<std::shared_ptr<Player>[]>& data, const int _size) : 
+                    array<std::shared_ptr<Player>>(_size){
+        for(int i = 0; i < size; i++){
+            my_array[i] = data[i];
         }
-        p = (*my_array)[iter];
+    }
+    void operator () (std::shared_ptr<Player> p)
+    {
+        if ((iter + 1) > size)
+        {
+            throw Index();
+        }
+        p = my_array[iter];
         iter ++;
     }
- };
+};
 
 #endif //PROJNAME_PLAYERSMANAGER_H
