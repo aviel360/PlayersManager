@@ -15,7 +15,7 @@ class BTreeNode{
     }
 
 public:
-    explicit BTreeNode(const T& _value) : value(std::make_shared(_value)), r_child(nullptr), l_child(nullptr), height(0) {}
+    explicit BTreeNode(const T& _value) : value(std::make_shared<T>(_value)), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
     BTreeNode* goLeft(){
@@ -31,7 +31,7 @@ public:
         return this->value;
     }
     void setValue(const T& _value){
-        value = _value;
+        *value = _value;
     }
     void setHeight(){
         height = max(getHeight(l_child), getHeight(r_child)) + 1;
