@@ -11,7 +11,6 @@ class Group{
     int strongestPlayerID;
     int numOfPlayers;
 
-    void updateStrongest(int _playerID, int _playerLevel);
 
 public:
     Group();
@@ -25,6 +24,8 @@ public:
     void insertPlayer(std::shared_ptr<Player>& player);
     void removePlayer(int PlayerID);
     void setPlayerLevel(int _player, int _level);
+    void updateStrongest(int _playerID, int _playerLevel);
+    void setNumOfPlayers(int size);
     std::shared_ptr<Player>& getPlayer(int PlayerID);
     bool playerExists(int PlayerID);
     int getStrongestPlayer();

@@ -81,6 +81,9 @@
     void Group::setIDTree(AVLTree<Player>& tree) {
        this->playersID = tree;
     }
+    void Group::setNumOfPlayers(int size) {
+       this->numOfPlayers = size;
+    }
     bool operator>(const Group& group_a, const Group& group_b){
         return group_b < group_a;
     }

@@ -77,6 +77,9 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
         playerLevelTree.createEmptyTree(n1+n2);
         fGroup.get(g2).setIDTree(createMergeTree(g1.getIDTree(), g2.getIDTree(), n1, n2, replace_id, playerIDTree));
         fGroup.get(g2).setLevelTree(createMergeTree(g1.getLevelTree(), g2.getLevelTree(), n1, n2, replace_id, playerLevelTree));
+        Player _player = fGroup.get(g2).getLevelTree().getMaxValue();
+        fGroup.get(g2).updateStrongest(_player.getPlayerID(), _player.getLevel());
+        fGroup.get(g2).setNumOfPlayers(n1+n2);
         fGroup.remove(g1);
     }
 }
@@ -84,10 +87,10 @@ AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree
                                             int n2, int replace_id, AVLTree<Player>& playerTree){
    arrayMerge arr1(n1, replace_id);
    arrayMerge arr2(n2, replace_id);
-   std::unique_ptr<std::shared_ptr<Player>[]> joined(new std::shared_ptr<Player>[n1+n2]);
+   std::unique_ptr<std::shared_ptr<Player>[]> joined{new std::shared_ptr<Player>[n1+n2]};
    tree1.inOrder(arr1);
    tree2.inOrder(arr2);
-   mergeArrays(arr1.get(),arr2.get(),n1,n2,joined);
+   mergeArrays(arr1.getArr(),arr2.getArr(),n1,n2,joined);
    arrayInsert to_insert(joined, n1+n2);
    playerTree.inOrder(to_insert);
    return playerTree;
@@ -95,10 +98,12 @@ AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree
 void PlayersManager::mergeArrays(std::unique_ptr<std::shared_ptr<Player>[]>& arr1, std::unique_ptr<std::shared_ptr<Player>[]>& arr2, int n1, int n2, std::unique_ptr<std::shared_ptr<Player>[]>& arr3){
     int i = 0, j = 0, k = 0;
     while (i<n1 && j <n2){
-        if (arr1[i] < arr2[j])
+        if (arr1[i].get() < arr2[j].get()){
             arr3[k++] = arr1[i++];
-        else
+        }
+        else{
             arr3[k++] = arr2[j++];
+        }
     }
     while (i < n1)
         arr3[k++] = arr1[i++];

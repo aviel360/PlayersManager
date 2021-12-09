@@ -118,9 +118,12 @@ public:
     ~arrayMerge(){}
     void operator() (std::shared_ptr<Player>& player)
     {
-        insertT(player);
+        this->insertT(player);
         player->setGroupID(groupID);
         iter++;
+    }
+    std::unique_ptr<std::shared_ptr<Player>[]>& getArr(){
+        return this->get();
     }
 };
 
