@@ -211,3 +211,86 @@ AddPlayer: SUCCESS
 AddPlayer: SUCCESS
 ReplaceGroup: SUCCESS
 AddPlayer: FAILURE
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+Quit done.
+Init done.
+AddGroup: SUCCESS
+IncreaseLevel: INVALID_INPUT
+IncreaseLevel: INVALID_INPUT
+IncreaseLevel: FAILURE
+AddPlayer: SUCCESS
+IncreaseLevel: SUCCESS
+IncreaseLevel: INVALID_INPUT
+RemovePlayer: SUCCESS
+IncreaseLevel: FAILURE
+IncreaseLevel: INVALID_INPUT
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+IncreaseLevel: SUCCESS
+IncreaseLevel: INVALID_INPUT
+RemovePlayer: SUCCESS
+IncreaseLevel: FAILURE
+IncreaseLevel: INVALID_INPUT
+AddPlayer: SUCCESS
+ReplaceGroup: FAILURE
+IncreaseLevel: SUCCESS
+IncreaseLevel: FAILURE
+AddPlayer: SUCCESS
+ReplaceGroup: SUCCESS
+IncreaseLevel: SUCCESS
+Quit done.
+Init done.
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+Highest level player is: 3
+Highest level player is: 3
+GetHighestLevel: INVALID_INPUT
+GetHighestLevel: FAILURE
+RemovePlayer: SUCCESS
+Highest level player is: -1
+Highest level player is: -1
+AddPlayer: SUCCESS
+Highest level player is: 1
+AddPlayer: SUCCESS
+Highest level player is: 3
+RemovePlayer: SUCCESS
+Highest level player is: 3
+AddPlayer: SUCCESS
+Highest level player is: 3
+IncreaseLevel: SUCCESS
+Highest level player is: 3
+Highest level player is: 1
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+GetHighestLevel: FAILURE
+Highest level player is: 2
+RemovePlayer: FAILURE
+Highest level player is: 2
+RemovePlayer: SUCCESS
+GetHighestLevel: FAILURE
+Highest level player is: 3
+AddPlayer: SUCCESS
+ReplaceGroup: SUCCESS
+Highest level player is: 1
+GetHighestLevel: FAILURE
+Highest level player is: 3

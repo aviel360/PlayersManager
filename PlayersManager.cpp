@@ -5,9 +5,9 @@
 #include "PlayersManager.h"
 #include "Group.h"
 #include "AVLTree.h"
+#include <memory>
 
-
-PlayersManager::PlayersManager() : eGroup(), fGroup(), players(-1), strongestPlayerID(-1){} 
+PlayersManager::PlayersManager() : eGroup(), fGroup(), players(-1){} 
 void PlayersManager::addGroup(const int id) {
     if (id <= 0){
         throw InvalidInput();
@@ -44,17 +44,15 @@ void PlayersManager::removePlayer(const int player_id) {
 }
 
 void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
-    if (replace_id <= 0 || group_id <= 0)
+    if (replace_id <= 0 || group_id <= 0 || group_id == replace_id)
     {
         throw InvalidInput();
     }
     Group g1 = Group(group_id);
-    g1 = fGroup.get(g1);
     Group g2 = Group(replace_id);
-    g2 = fGroup.get(g2);
     if (eGroup.exists(g1)){
         if (groupExists(replace_id)){
-            eGroup.remove(g1);
+            eGroup.remove(eGroup.get(g1));
             return;
         }
         else{
@@ -63,12 +61,11 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
     }
     else if (fGroup.exists(g1)){
         if (eGroup.exists(g2)){
-            eGroup.remove(g2);
-            fGroup.insert(g2);
+            fGroup.insert(eGroup.get(g2));
+            eGroup.remove(eGroup.get(g2));
         }
-        else if (!fGroup.exists(g1)){
-            throw InvalidInput();
-        }
+        g1 = fGroup.get(g1);
+        g2 = fGroup.get(g2);
         int n1 = g1.getNumOfPlayers();
         int n2 = g2.getNumOfPlayers();
         AVLTree<Player> playerIDTree = AVLTree<Player>();
@@ -81,6 +78,9 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
         fGroup.get(g2).updateStrongest(_player.getPlayerID(), _player.getLevel());
         fGroup.get(g2).setNumOfPlayers(n1+n2);
         fGroup.remove(g1);
+    }
+    else{
+        throw ValueNotExists();
     }
 }
 AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
@@ -128,8 +128,9 @@ void PlayersManager::increaseLevel(const int player_id, const int level_increase
     if (player_id <= 0 || level_increase <= 0) {
         throw InvalidInput();
     }
-    const int level = (*players.getPlayer(player_id)).getLevel();
-    findPlayerGroup(player_id).setPlayerLevel(player_id, level + level_increase);
+    Player _player = *players.getPlayer(player_id);
+    removePlayer(player_id);
+    addPlayer(player_id, _player.getGroupID(), _player.getLevel() + level_increase);
 }
 int PlayersManager::getHighestLevel(const int group_id){
     int player_id = players.getStrongestPlayer();
@@ -190,14 +191,3 @@ void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players)
        throw ValueNotExists();
    }
 }
-void swap(int** Players, int size){
-    int* from = new int[size];
-    for(int i = 0; i < size; i++){
-        from[i] = (*Players)[i];
-    }
-    for(int i = 0; i < size; i++){
-        (*Players)[i] = from[size - i];
-    }
-    delete[] from;
-}
-

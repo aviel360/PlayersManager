@@ -15,7 +15,6 @@ class PlayersManager{
     AVLTree<Group> eGroup;
     AVLTree<Group> fGroup;
     Group players;
-    int strongestPlayerID;
 
 
     Group& findPlayerGroup(int player_id);
@@ -23,7 +22,7 @@ class PlayersManager{
     void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
     AVLTree<Player>& createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
                                                      int n2, int replace_id, AVLTree<Player>& playerTree);
-
+    void swap(int** Players, int size);
     void mergeArrays(std::unique_ptr<std::shared_ptr<Player>[]>& arr1, std::unique_ptr<std::shared_ptr<Player>[]>& arr2, int n1, int n2, std::unique_ptr<std::shared_ptr<Player>[]>& arr3);
 
 public:
@@ -65,6 +64,14 @@ public:
         }
         my_array[iter] = val;
     }
+    void insertTP(T& val)
+    {
+        if ((iter + 1) > size)
+        {
+            throw Index();
+        }
+        my_array[size - iter - 1] = val;
+    }
     virtual void operator()(T& value){
         insertT(value);
         iter++;
@@ -89,7 +96,7 @@ class arrayPtr : public array<T> {
 public:
     arrayPtr<T>(int _size, int** _arr) : array<T>(_size), arr(_arr) {}
     ~arrayPtr<T>(){}
-    void insert(int player_id)
+    void insertG(int player_id)
     {
         if ((this->iter + 1) > this->size)
         {
@@ -97,15 +104,23 @@ public:
         }
         (*arr)[this->iter] = player_id;
     }
+    void insertP(int player_id)
+    {
+        if ((this->iter + 1) > this->size)
+        {
+            throw Index();
+        }
+        (*arr)[this->size - this->iter - 1] = player_id;
+    }
     void operator () (std::shared_ptr<Player>& player)
     {
-        insert(player->getPlayerID());
-        this->insertT(player);
+        insertP(player->getPlayerID());
+        this->insertTP(player);
         this->iter++;
     }
     void operator () (std::shared_ptr<Group>& group)
     {
-        insert(group->getStrongestPlayer());
+        insertG(group->getStrongestPlayer());
         this->insertT(group);
         this->iter++;
     }

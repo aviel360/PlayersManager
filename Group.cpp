@@ -20,7 +20,7 @@
         numOfPlayers++;
     }
     void Group::removePlayer(int PlayerID){
-        Player p = Player(PlayerID,PlayerID,0);
+        Player p = Player(PlayerID,PlayerID,PlayerID,0);
         if (!playersID.exists(p))
         {
             throw ValueNotExists();
