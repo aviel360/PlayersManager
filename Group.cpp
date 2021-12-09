@@ -20,6 +20,11 @@
         numOfPlayers++;
     }
     void Group::removePlayer(int PlayerID){
+        Player p = Player(PlayerID,PlayerID,0);
+        if (!playersID.exists(p))
+        {
+            throw ValueNotExists();
+        }
         Player _player = *getPlayer(PlayerID);
         Player _playerLevel(_player.getLevel(), _player.getGroupID(), PlayerID, _player.getLevel());
         playersID.remove(_player);

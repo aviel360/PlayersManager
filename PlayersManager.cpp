@@ -166,7 +166,7 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
         players.getLevelTree().inOrder(my_array);
     }
     else if (fGroup.exists(current_group)){
-        arrayMalloc(current_group.getNumOfPlayers(), numOfPlayers, Players);
+        arrayMalloc(fGroup.get(current_group).getNumOfPlayers(), numOfPlayers, Players);
         arrayPtr<std::shared_ptr<Player>> my_array(*numOfPlayers, Players);
         fGroup.get(current_group).getLevelTree().inOrder(my_array);
     }
