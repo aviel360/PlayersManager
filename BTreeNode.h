@@ -19,6 +19,7 @@ public:
     BTreeNode(std::shared_ptr<T>& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
+    BTreeNode& operator=(const BTreeNode& node) = default;
     BTreeNode* goLeft(){
         return l_child;
     }

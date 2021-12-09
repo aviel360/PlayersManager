@@ -291,26 +291,25 @@ class AVLTree{
         completeTree(tmp2, h);
     }
 
-    int reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int n)
+    void reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int& n)
     {
-        if(_source != nullptr && n!=0)
-        {
-            n = reverseInOrder(_source->goRight(), _source, n);
-            if ( _source->goLeft() == nullptr)
+        if(n > 0 && _source != nullptr){
+            reverseInOrder(_source->goRight(), _source, n);
+            if ( _source->goLeft() == nullptr && _source->goRight() == nullptr)
             {
-                if(dad->goLeft() == _source){
-                    dad->setLChild(nullptr);
+                if(dad->goRight() == _source){
+                    dad->setRChild(nullptr);
                 }
                 else{
-                    dad->setRChild(nullptr);
+                    dad->setLChild(nullptr);
                 }
                 delete _source;
                 _source = nullptr;
-                return n-1;
+                n--;
+                return;
             }
             reverseInOrder(_source->goLeft(), _source, n);
         }
-        return n;
     }
 
 public:
@@ -443,7 +442,8 @@ public:
         int h = ceil(log2(n+1)) -1;
         insert(T());
         completeTree(source,h);
-        reverseInOrder(source, source, pow(2,h+1)-1-n);
+        int tmp = pow(2,h+1)-n-1;
+        reverseInOrder(source, source,tmp);
     }
 };
 
