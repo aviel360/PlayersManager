@@ -7,7 +7,7 @@
 
 #include "BTreeNode.h"
 #include "Exceptions.h"
-#include <math.h>
+#include <cmath>
 
 template<class T>
 class AVLTree{
@@ -46,6 +46,7 @@ class AVLTree{
             removeBTreeNode(node->goRight());
             removeBTreeNode(node->goLeft());
             delete node;
+            node = nullptr;
         }
     }
     /**
@@ -56,7 +57,7 @@ class AVLTree{
     BTreeNode<T>* copy(BTreeNode<T>* node) {
         if( node  != nullptr )
         {
-            BTreeNode<T>* base = new BTreeNode<T>(node->getValue());
+            BTreeNode<T>* base = new BTreeNode<T>(node->getPtr());
             base->setLChild(copy(node->goLeft()));
             base->setRChild(copy(node->goRight()));
             return base ;
@@ -82,6 +83,38 @@ class AVLTree{
             _source -> setLChild(insertRecursive(value, _source -> goLeft())) ;
         }
         else if (value > _source -> getValue()){
+            _source -> setRChild(insertRecursive(value, _source -> goRight()));
+        }
+        else {
+            return _source;
+        }
+        int new_balance = getBalance(_source);
+        if(new_balance < -1 && getBalance(_source->goRight()) < 1){
+            return RR(_source);
+        }
+        if(new_balance < -1 && getBalance(_source->goRight()) > 0){
+            return RL(_source);
+        }
+        if(new_balance > 1 &&  getBalance(_source->goLeft()) > -1){
+            return LL(_source);
+        }
+        if(new_balance > 1 && getBalance(_source->goLeft()) < 0){
+            return LR(_source);
+        }
+        return _source;
+    }
+    BTreeNode<T>* insertRecursive(std::shared_ptr<T>& value, BTreeNode<T>* _source){
+        if(_source == nullptr)
+        {
+            BTreeNode<T>* node = new BTreeNode<T>(value);
+            _source = node;
+            return _source;
+        }
+        if (*value < _source -> getValue())
+        {
+            _source -> setLChild(insertRecursive(value, _source -> goLeft())) ;
+        }
+        else if (*value > _source -> getValue()){
             _source -> setRChild(insertRecursive(value, _source -> goRight()));
         }
         else {
@@ -130,6 +163,7 @@ class AVLTree{
                     _source->setHeight();
                 }
                 delete temp;
+                temp = nullptr;
             }
             else{
                 BTreeNode<T>* temp = getMinValue(_source->goRight());
@@ -203,8 +237,10 @@ class AVLTree{
      * @return
      */
     BTreeNode<T>* LR(BTreeNode<T>* _source){
-        _source = rightRoll(_source);
-        return leftRoll(_source);
+        _source->goLeft()->goRight()->setLChild(_source->goLeft());
+        _source->setLChild(_source->goLeft()->goRight());
+        _source->goLeft()->goLeft()->setRChild(nullptr);
+        return rightRoll(_source);
     }
     /**
      *
@@ -220,8 +256,10 @@ class AVLTree{
      * @return
      */
     BTreeNode<T>* RL(BTreeNode<T>* _source){
-        _source = leftRoll(_source);
-        return rightRoll(_source);
+        _source->goRight()->goLeft()->setRChild(_source->goRight());
+        _source->setRChild(_source->goRight()->goLeft());
+        _source->goRight()->goRight()->setLChild(nullptr);
+        return leftRoll(_source);
     }
     /**
      *
@@ -240,12 +278,12 @@ class AVLTree{
         if(_source != nullptr)
         {
             inOrderRecursive(_source->goLeft(), func);
-            func(_source->getValue());
+            func(_source->getPtr());
             inOrderRecursive(_source->goRight(), func);
         }
     }
     void completeTree(BTreeNode<T>* _source, int h) {
-        if (h < 0){
+        if (h <= 0){
             return;
         }
         BTreeNode<T>* tmp1 = new BTreeNode<T>(T());
@@ -257,26 +295,25 @@ class AVLTree{
         completeTree(tmp2, h);
     }
 
-    int reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int n)
+    void reverseInOrder(BTreeNode<T>* _source, BTreeNode<T>* dad, int& n)
     {
-        if(_source != nullptr || n==0)
-        {
-            n = reverseInOrder(_source->goRight(), _source, n);
-            if ( _source->goLeft() == nullptr)
+        if(n > 0 && _source != nullptr){
+            reverseInOrder(_source->goRight(), _source, n);
+            if ( _source->goLeft() == nullptr && _source->goRight() == nullptr)
             {
-                if(dad->goLeft() == _source){
-                    dad->setLChild(nullptr);
-                }
-                else{
+                if(dad->goRight() == _source){
                     dad->setRChild(nullptr);
                 }
+                else{
+                    dad->setLChild(nullptr);
+                }
                 delete _source;
-
+                _source = nullptr;
+                n--;
+                return;
             }
             reverseInOrder(_source->goLeft(), _source, n);
-            return n-1;
         }
-        return n;
     }
 
 public:
@@ -316,6 +353,13 @@ public:
     }
     void insert(const T& value){
         if (find(value) != nullptr)
+        {
+            throw ValueExists();
+        }
+        source = insertRecursive(value, source);
+    }
+    void insert(std::shared_ptr<T>& value){
+        if (find(*value) != nullptr)
         {
             throw ValueExists();
         }
@@ -373,6 +417,14 @@ public:
         }
         return node->getValue();
     }
+    std::shared_ptr<T>& getPtr(const T& _value){
+        BTreeNode<T>* node = find(_value);
+        if (node == nullptr)
+        {
+            throw ValueNotExists();
+        }
+        return node->getPtr();
+    }
         /**
      *
      * @param _source
@@ -394,7 +446,8 @@ public:
         int h = ceil(log2(n+1)) -1;
         insert(T());
         completeTree(source,h);
-        reverseInOrder(source, source, pow(2,h+1)-1-n);
+        int tmp = pow(2,h+1)-n-1;
+        reverseInOrder(source, source,tmp);
     }
 };
 

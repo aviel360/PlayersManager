@@ -1,9 +1,11 @@
 #ifndef PLAYERSMANAGER_BTREENODE_H_
 #define PLAYERSMANAGER_BTREENODE_H_
+#include <memory>
+#include <iostream>
 
 template <class T>
 class BTreeNode{
-    T value;
+    std::shared_ptr<T> value;
     BTreeNode<T>* r_child;
     BTreeNode<T>* l_child;
     int height;
@@ -13,9 +15,11 @@ class BTreeNode{
     }
 
 public:
-    explicit BTreeNode(const T& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
+    explicit BTreeNode(const T& _value) : value(std::make_shared<T>(_value)), r_child(nullptr), l_child(nullptr), height(0) {}
+    BTreeNode(std::shared_ptr<T>& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
+    BTreeNode& operator=(const BTreeNode& node) = default;
     BTreeNode* goLeft(){
         return l_child;
     }
@@ -23,10 +27,13 @@ public:
         return r_child;
     }
     T& getValue(){
+        return *(this->value);
+    }
+    std::shared_ptr<T>& getPtr(){
         return this->value;
     }
     void setValue(const T& _value){
-        value = _value;
+        *value = _value;
     }
     void setHeight(){
         height = max(getHeight(l_child), getHeight(r_child)) + 1;
