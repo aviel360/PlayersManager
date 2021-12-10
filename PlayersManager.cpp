@@ -194,6 +194,7 @@ void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players)
    }
    catch(Index& e){}
    if(numOfGroups > my_array.getIter()){
+       free(*Players);
        throw ValueNotExists();
    }
 }
