@@ -237,8 +237,10 @@ class AVLTree{
      * @return
      */
     BTreeNode<T>* LR(BTreeNode<T>* _source){
-        _source = rightRoll(_source);
-        return leftRoll(_source);
+        _source->goLeft()->goRight()->setLChild(_source->goLeft());
+        _source->setLChild(_source->goLeft()->goRight());
+        _source->goLeft()->goLeft()->setRChild(nullptr);
+        return rightRoll(_source);
     }
     /**
      *
@@ -254,8 +256,10 @@ class AVLTree{
      * @return
      */
     BTreeNode<T>* RL(BTreeNode<T>* _source){
-        _source = leftRoll(_source);
-        return rightRoll(_source);
+        _source->goRight()->goLeft()->setRChild(_source->goRight());
+        _source->setRChild(_source->goRight()->goLeft());
+        _source->goRight()->goRight()->setLChild(nullptr);
+        return leftRoll(_source);
     }
     /**
      *

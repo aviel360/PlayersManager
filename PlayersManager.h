@@ -23,7 +23,7 @@ class PlayersManager{
     AVLTree<Player>& createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
                                                      int n2, int replace_id, AVLTree<Player>& playerTree);
     void swap(int** Players, int size);
-    void mergeArrays(std::unique_ptr<std::shared_ptr<Player>[]>& arr1, std::unique_ptr<std::shared_ptr<Player>[]>& arr2, int n1, int n2, std::unique_ptr<std::shared_ptr<Player>[]>& arr3);
+    void mergeArrays(std::shared_ptr<Player>* arr1, std::shared_ptr<Player>* arr2, int n1, int n2, std::shared_ptr<Player>* arr3);
 
 public:
 
@@ -52,10 +52,12 @@ class array {
 protected:
     int size;
     int iter;
-    std::unique_ptr<T[]> my_array;
+    T* my_array;
 public:
     array<T>(int _size):  size(_size), iter(0), my_array(new T[size]) {}
-    virtual ~array<T>(){}
+    virtual ~array<T>(){
+        delete[] my_array;
+    }
     void insertT(T& val)
     {
         if ((iter + 1) > size)
@@ -70,13 +72,13 @@ public:
         {
             throw Index();
         }
-        my_array[size - iter - 1] = val;
+        my_array[size - iter -1] = val;
     }
     virtual void operator()(T& value){
         insertT(value);
         iter++;
     }
-    std::unique_ptr<T[]>& get(){
+    T* get(){
         return my_array;
     }
     void clearArray(){
@@ -137,7 +139,7 @@ public:
         player->setGroupID(groupID);
         iter++;
     }
-    std::unique_ptr<std::shared_ptr<Player>[]>& getArr(){
+    std::shared_ptr<Player>* getArr(){
         return this->get();
     }
 };
@@ -146,7 +148,7 @@ public:
 class arrayInsert : public array<std::shared_ptr<Player>> {
 public:
     ~arrayInsert(){}
-    arrayInsert(std::unique_ptr<std::shared_ptr<Player>[]>& data, const int _size) : 
+    arrayInsert(std::shared_ptr<Player>* data, const int _size) : 
                     array<std::shared_ptr<Player>>(_size){
         for(int i = 0; i < size; i++){
             my_array[i] = data[i];

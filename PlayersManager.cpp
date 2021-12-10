@@ -36,7 +36,7 @@ void PlayersManager::removePlayer(const int player_id) {
         throw InvalidInput();
     }
     findPlayerGroup(player_id).removePlayer(player_id);
-    if(players.getNumOfPlayers() == 1){
+    if(findPlayerGroup(player_id).getNumOfPlayers() == 0){
         eGroup.insert(findPlayerGroup(player_id));
         fGroup.remove(findPlayerGroup(player_id));
     }
@@ -87,15 +87,21 @@ AVLTree<Player>& PlayersManager::createMergeTree(AVLTree<Player>& tree1, AVLTree
                                             int n2, int replace_id, AVLTree<Player>& playerTree){
    arrayMerge arr1(n1, replace_id);
    arrayMerge arr2(n2, replace_id);
-   std::unique_ptr<std::shared_ptr<Player>[]> joined{new std::shared_ptr<Player>[n1+n2]};
+   std::shared_ptr<Player>* joined{new std::shared_ptr<Player>[n1+n2]};
+//    for(int i = 0; i < n1+n2; i++){
+//        joined[i] = std::make_shared<Player>(Player());
+//    }
    tree1.inOrder(arr1);
    tree2.inOrder(arr2);
-   mergeArrays(arr1.getArr(),arr2.getArr(),n1,n2,joined);
+   std::shared_ptr<Player>* arrr1 = arr1.getArr();
+    std::shared_ptr<Player>* arrr2 = arr2.getArr();
+   mergeArrays(arrr1,arrr2,n1,n2,joined);
    arrayInsert to_insert(joined, n1+n2);
    playerTree.inOrder(to_insert);
+   delete[] joined;
    return playerTree;
 }
-void PlayersManager::mergeArrays(std::unique_ptr<std::shared_ptr<Player>[]>& arr1, std::unique_ptr<std::shared_ptr<Player>[]>& arr2, int n1, int n2, std::unique_ptr<std::shared_ptr<Player>[]>& arr3){
+void PlayersManager::mergeArrays(std::shared_ptr<Player>* arr1, std::shared_ptr<Player>* arr2, int n1, int n2, std::shared_ptr<Player>* arr3){
     int i = 0, j = 0, k = 0;
     while (i<n1 && j <n2){
         if (arr1[i].get() < arr2[j].get()){
@@ -147,10 +153,10 @@ int PlayersManager::getHighestLevel(const int group_id){
 void PlayersManager::arrayMalloc(int size, int* sizePtr, int** arrayPtr){
     *sizePtr = size;
     if(size == 0){
-        *arrayPtr = nullptr;
+        (*arrayPtr) = nullptr;
     }
     else{
-        *arrayPtr = (int*)malloc(sizeof(int)*size);
+        (*arrayPtr) = (int*)malloc(sizeof(int)*size);
     }
 }
 void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int* numOfPlayers) {
@@ -176,7 +182,7 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
     }
 }
 void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players) {
-   if(Players == nullptr || numOfGroups < 0){
+   if(Players == nullptr || numOfGroups <= 0){
        throw InvalidInput();
    }
    int dummy = 0;

@@ -406,7 +406,7 @@ Rank	||	Player
 and there are no more players!
 Quit done.
 Init done.
-and there are no more players!
+GetGroupsHighestLevel: INVALID_INPUT
 GetGroupsHighestLevel: INVALID_INPUT
 AddGroup: SUCCESS
 GetGroupsHighestLevel: FAILURE
@@ -430,10 +430,7 @@ GroupIndex	||	Player
 2	||	3
 and there are no more players!
 RemovePlayer: SUCCESS
-GroupIndex	||	Player
-1	||	2
-2	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 AddPlayer: SUCCESS
 ReplaceGroup: SUCCESS
 GetGroupsHighestLevel: FAILURE
@@ -485,18 +482,7 @@ GroupIndex	||	Player
 8	||	8
 9	||	9
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	3
-4	||	4
-5	||	5
-6	||	6
-7	||	7
-8	||	8
-9	||	9
-10	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
@@ -508,17 +494,7 @@ GroupIndex	||	Player
 7	||	7
 8	||	8
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	3
-4	||	4
-5	||	5
-6	||	6
-7	||	7
-8	||	8
-9	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
@@ -529,16 +505,7 @@ GroupIndex	||	Player
 6	||	6
 7	||	7
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	3
-4	||	4
-5	||	5
-6	||	6
-7	||	7
-8	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
@@ -548,15 +515,7 @@ GroupIndex	||	Player
 5	||	5
 6	||	6
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	3
-4	||	4
-5	||	5
-6	||	6
-7	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
@@ -565,14 +524,7 @@ GroupIndex	||	Player
 4	||	4
 5	||	5
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	3
-4	||	4
-5	||	5
-6	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
@@ -580,48 +532,28 @@ GroupIndex	||	Player
 3	||	3
 4	||	4
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	3
-4	||	4
-5	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
 2	||	2
 3	||	3
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	3
-4	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
 2	||	2
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	2
-3	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
 1	||	1
 and there are no more players!
-GroupIndex	||	Player
-1	||	1
-2	||	-1
-and there are no more players!
+GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
-and there are no more players!
-GroupIndex	||	Player
-1	||	-1
-and there are no more players!
+GetGroupsHighestLevel: INVALID_INPUT
+GetGroupsHighestLevel: FAILURE
 AddPlayer: SUCCESS
 AddPlayer: SUCCESS
 AddPlayer: SUCCESS
@@ -772,6 +704,6 @@ GroupIndex	||	Player
 and there are no more players!
 GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
-and there are no more players!
+GetGroupsHighestLevel: INVALID_INPUT
 GetGroupsHighestLevel: FAILURE
 Quit done.
