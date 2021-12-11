@@ -27,8 +27,8 @@ void PlayersManager::addPlayer(const int player_id, const int group_id, const in
         fGroup.insert(eGroup.get((group_id)), group_id);
         eGroup.remove(group_id);
     }
-    fGroup.get(group_id)->insertPlayer(player_id, group_id, level);
-    players.insertPlayer(fGroup.get(group_id)->getPlayer(player_id));
+    players.insertPlayer(player_id, group_id, level);
+    fGroup.get(group_id)->insertPlayer(fGroup.get(group_id)->getPlayer(player_id));
 }
 void PlayersManager::removePlayer(const int player_id) {
     if(player_id <= 0){
