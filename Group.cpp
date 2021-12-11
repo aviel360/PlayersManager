@@ -1,7 +1,7 @@
 #include "Group.h"
 #include "Exceptions.h"
-//    Group::Group() : groupID(0), playersID(), playersLevel(), strongestPlayerLevel(Level(-1,-1)),
-//                                strongestPlayerID(-1), numOfPlayers(0) {}
+   Group::Group() : groupID(0), playersID(), playersLevel(), 
+    strongestPlayer(Level(-1,-1)), numOfPlayers(0) {}
     Group::Group(int _groupID) : groupID(_groupID), playersID(), playersLevel(),
     strongestPlayer(Level(-1,-1)), numOfPlayers(0) {}
     void Group::insertPlayer(int player_id, int group_id, int level){

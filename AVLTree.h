@@ -113,7 +113,7 @@ class AVLTree{
         if(_source == nullptr){
             return nullptr;
         }
-        else if(_key < _source->getKey()){
+        if(_key < _source->getKey()){
             _source->setLChild(removeRecursive(_key, _source->goLeft()));
         }
         else if(_source->getKey() < _key){
@@ -128,14 +128,13 @@ class AVLTree{
                 }
                 else{
                     *_source = *temp;
-                    _source->setHeight();
                 }
                 delete temp;
-                temp = nullptr;
             }
             else{
                 BTreeNode<T,K>* temp = getMinValue(_source->goRight());
-                _source->setValue(temp->getValue());
+                T _value = temp->getValue()
+                _source->setValue(_value);
                 _source->setKey(temp->getKey());
                 _source->setRChild(removeRecursive(temp->getKey(), _source->goRight()));
             }

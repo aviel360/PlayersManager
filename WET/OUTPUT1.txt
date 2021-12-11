@@ -251,7 +251,7 @@ RemovePlayer: SUCCESS
 IncreaseLevel: FAILURE
 IncreaseLevel: INVALID_INPUT
 AddPlayer: SUCCESS
-ReplaceGroup: FAILURE
+ReplaceGroup: SUCCESS
 IncreaseLevel: SUCCESS
 IncreaseLevel: FAILURE
 AddPlayer: SUCCESS
@@ -388,7 +388,13 @@ Rank	||	Player
 5	||	2
 and there are no more players!
 AddGroup: SUCCESS
-ReplaceGroup: FAILURE
+ReplaceGroup: SUCCESS
+Rank	||	Player
+1	||	5
+2	||	4
+3	||	3
+4	||	6
+5	||	2
 and there are no more players!
 RemovePlayer: FAILURE
 Rank	||	Player

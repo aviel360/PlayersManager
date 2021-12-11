@@ -49,28 +49,35 @@ class array {
 protected:
     int size;
     int iter;
-    T* my_array;
+    std::shared_ptr<T>* my_array;
     K* keys;
 public:
-    array<T, K>(int _size):  size(_size), iter(0), my_array(new T[size]), keys(new K[size]) {}
+    array<T, K>(int _size):  size(_size), iter(0), my_array(new std::shared_ptr<T>[size]), keys(new K[size]) {
+        for(int i = 0; i < size; i++){
+            my_array[i] = std::make_shared<T>(T());
+            keys[i] = K();
+        }
+    }
     virtual ~array<T, K>(){
         delete[] my_array;
         delete[] keys;
     }
-    void insertT(T& val, K& key, int iter)
+    void insertT(std::shared_ptr<T>& val, K& key, int iter)
     {
         if ((iter + 1) > size)
         {
             throw Index();
         }
-        my_array[iter] = val;
+        std::shared_ptr<T> _value = val;
+        my_array[iter] = _value;
         keys[iter] = key;
     }
-    virtual void operator()(T& value, K& key){
-        insertT(value, key, iter);
+    virtual void operator()(std::shared_ptr<T>& value, K& key){
+        std::shared_ptr<T> _value = value;
+        insertT(_value, key, iter);
         iter++;
     }
-    T* getArr(){
+    std::shared_ptr<T>* getArr(){
         return my_array;
     }
     K* getKeys(){
@@ -112,10 +119,10 @@ public:
 };
 
 template<class K>
-class arrayMerge : public array<std::shared_ptr<Player>, K> {
+class arrayMerge : public array<Player, K> {
     int groupID;
 public:
-    arrayMerge<K>( int _size, int _groupID) : array<std::shared_ptr<Player>, K>(_size), groupID(_groupID) {}
+    arrayMerge<K>( int _size, int _groupID) : array<Player, K>(_size), groupID(_groupID) {}
     ~arrayMerge<K>(){}
     void operator() (std::shared_ptr<Player>& player, K& key)
     {
@@ -127,10 +134,10 @@ public:
 };
 
 template <class K>
-class arrayInsert : public array<std::shared_ptr<Player>, K> {
+class arrayInsert : public array<Player, K> {
 public:
     ~arrayInsert<K>(){}
-    arrayInsert<K>(std::shared_ptr<Player>* data, K* keys, const int _size) : array<std::shared_ptr<Player>, K>(_size){
+    arrayInsert<K>(std::shared_ptr<Player>* data, K* keys, const int _size) : array<Player, K>(_size){
         for(int i = 0; i < this->size; i++){
             this->my_array[i] = data[i];
             this->keys[i] = keys[i];

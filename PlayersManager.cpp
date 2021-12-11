@@ -63,8 +63,8 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
     else if (fGroup.exists(group_id)){
         std::shared_ptr<Group> g1 = fGroup.get(group_id);
         if (eGroup.exists(replace_id)){
-            std::shared_ptr<Group> g2 = eGroup.get(group_id);
-            fGroup.insert(g1, replace_id);
+            std::shared_ptr<Group> g2 = eGroup.get(replace_id);
+            fGroup.insert(g2, replace_id);
             eGroup.remove(replace_id);
         }
         std::shared_ptr<Group> g2 = fGroup.get(replace_id);
@@ -179,13 +179,13 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
     }
     else if (group_id < 0){   
         arrayMalloc(players.getNumOfPlayers(), numOfPlayers, Players);
-        arrayPtr<std::shared_ptr<Player>, Level> my_array(*numOfPlayers, Players);
+        arrayPtr<Player, Level> my_array(*numOfPlayers, Players);
         players.getLevelTree().inOrder(my_array);
     }
     else if (fGroup.exists(group_id)){
         std::shared_ptr<Group> current_group = fGroup.get(group_id);
         arrayMalloc(current_group->getNumOfPlayers(), numOfPlayers, Players);
-        arrayPtr<std::shared_ptr<Player>, Level> my_array(*numOfPlayers, Players);
+        arrayPtr<Player, Level> my_array(*numOfPlayers, Players);
         current_group->getLevelTree().inOrder(my_array);
     }
     else{
@@ -199,7 +199,7 @@ void PlayersManager::getGroupsHighestLevel(const int numOfGroups, int** Players)
    int dummy = 0;
    int* size = &dummy;
    arrayMalloc(numOfGroups, size, Players);
-   arrayPtr<std::shared_ptr<Group>, int> my_array(numOfGroups, Players);
+   arrayPtr<Group, int> my_array(numOfGroups, Players);
    try{
        fGroup.inOrder(my_array);
    }
