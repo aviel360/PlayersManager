@@ -29,13 +29,13 @@ struct Level{
 class Player{
     int groupID;
     int PlayerID;
-    Level Level;
+    Level PlayerLevel;
 
 public:
     Player();
     Player(int group_id, int player_id, int _level);
     Player(const Player& player) = default;
-    Player& operator=(const Player& player) = default;
+    Player& operator=(const Player& player) = delete;
     ~Player() = default;
 
   //  void setLevel(int _level);

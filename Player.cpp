@@ -1,6 +1,6 @@
 #include "Player.h"
-    Player::Player() : groupID(-1), PlayerID(-1), Level(-1, -1) {}
-    Player::Player(int _groupID, int _PlayerId, int _Level) : groupID(_groupID), PlayerID(_PlayerId), Level(_Level, _PlayerId) {}
+    Player::Player() : groupID(-1), PlayerID(-1), PlayerLevel(-1, -1) {}
+    Player::Player(int _groupID, int _PlayerId, int _Level) : groupID(_groupID), PlayerID(_PlayerId), PlayerLevel(_Level, _PlayerId) {}
 //    void Player::setLevel(const int _Level){
 //        this->Level = _Level;
 //    }
@@ -8,7 +8,7 @@
     Level::Level(int key) : PlayerLevel(key), PlayerID(key) {}
     Level::Level(int _level, int player_id) : PlayerLevel(_level), PlayerID(player_id) {}
     Level& Player::getLevel(){
-        return this->Level;
+        return this->PlayerLevel;
     }
     int Player::getPlayerID() const{
         return this->PlayerID;

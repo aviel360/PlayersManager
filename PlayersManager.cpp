@@ -63,6 +63,7 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
     else if (fGroup.exists(group_id)){
         std::shared_ptr<Group> g1 = fGroup.get(group_id);
         if (eGroup.exists(replace_id)){
+            std::shared_ptr<Group> g2 = eGroup.get(group_id);
             fGroup.insert(g1, replace_id);
             eGroup.remove(replace_id);
         }
@@ -92,9 +93,9 @@ AVLTree<std::shared_ptr<Player>, T>& PlayersManager::createMergeTree(AVLTree<std
    arrayMerge<T> arr2(n2, replace_id);
    auto joinedValue = new std::shared_ptr<Player>[n1+n2];
    T* joinedKey = new T[n1+n2];
-//    for(int i = 0; i < n1+n2; i++){
-//        joined[i] = std::make_shared<Player>(Player());
-//    }
+   for(int i = 0; i < n1+n2; i++){
+       joinedValue[i] = std::make_shared<Player>(Player());
+   }
    tree1.inOrder(arr1);
    tree2.inOrder(arr2);
    mergeArrays<T>(arr1.getArr(),arr2.getArr(), arr1.getKeys(), arr2.getKeys(),n1,n2,joinedValue, joinedKey);

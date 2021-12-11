@@ -55,6 +55,7 @@ public:
     array<T, K>(int _size):  size(_size), iter(0), my_array(new T[size]), keys(new K[size]) {}
     virtual ~array<T, K>(){
         delete[] my_array;
+        delete[] keys;
     }
     void insertT(T& val, K& key, int iter)
     {
@@ -118,7 +119,8 @@ public:
     ~arrayMerge<K>(){}
     void operator() (std::shared_ptr<Player>& player, K& key)
     {
-        this->insertT(player, key, this->iter);
+        std::shared_ptr<Player> _player = player;
+        this->insertT(_player, key, this->iter);
         player->setGroupID(groupID);
         this->iter++;
     }
@@ -140,7 +142,8 @@ public:
         {
             throw Index();
         }
-        p = this->my_array[this->iter];
+        std::shared_ptr<Player> _player = this->my_array[this->iter];
+        p = _player;
         key = this->keys[this->iter];
         this->iter ++;
     }
