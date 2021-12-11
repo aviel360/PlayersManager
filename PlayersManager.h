@@ -94,13 +94,13 @@ class arrayPtr : public array<T, K> {
 public:
     arrayPtr<T, K>(int _size, int** _arr) : array<T, K>(_size), arr(_arr) {}
     ~arrayPtr<T, K>(){}
-    void insert(int player_id, int iter)
+    void insert(int player_id, int _iter)
     {
         if ((this->iter + 1) > this->size)
         {
             throw Index();
         }
-        (*arr)[this->size - this->iter - 1] = player_id;
+        (*arr)[_iter] = player_id;
     }
     void operator () (std::shared_ptr<Player>& player, Level level)
     {

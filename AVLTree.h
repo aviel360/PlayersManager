@@ -133,7 +133,7 @@ class AVLTree{
             }
             else{
                 BTreeNode<T,K>* temp = getMinValue(_source->goRight());
-                T _value = temp->getValue()
+                T _value = temp->getValue();
                 _source->setValue(_value);
                 _source->setKey(temp->getKey());
                 _source->setRChild(removeRecursive(temp->getKey(), _source->goRight()));
