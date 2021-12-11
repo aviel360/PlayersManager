@@ -21,14 +21,17 @@ void PlayersManager::addGroup(int id) {
 void PlayersManager::addPlayer(const int player_id, const int group_id, const int level) {
     if (player_id <= 0 || group_id <= 0 || level < 0) {
         throw InvalidInput();
-    } 
+    }
+    if(!groupExists(group_id)){
+        throw ValueNotExists();
+    }
     if (eGroup.exists(group_id)) //means it's empty
     {
         fGroup.insert(eGroup.get((group_id)), group_id);
         eGroup.remove(group_id);
     }
     players.insertPlayer(player_id, group_id, level);
-    fGroup.get(group_id)->insertPlayer(fGroup.get(group_id)->getPlayer(player_id));
+    fGroup.get(group_id)->insertPlayer(players.getPlayer(player_id));
 }
 void PlayersManager::removePlayer(const int player_id) {
     if(player_id <= 0){

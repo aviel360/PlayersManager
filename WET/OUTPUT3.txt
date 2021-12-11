@@ -201,20 +201,20 @@ IncreaseLevel: SUCCESS
 IncreaseLevel: FAILURE
 ReplaceGroup: FAILURE
 GroupIndex	||	Player
-1	||	469
-2	||	217
-3	||	1176
-4	||	1310
-5	||	481
-6	||	1028
-7	||	1090
-8	||	1252
-9	||	185
-10	||	358
-11	||	830
-12	||	938
-13	||	1634
-14	||	1226
+1	||	1226
+2	||	1634
+3	||	938
+4	||	830
+5	||	358
+6	||	185
+7	||	1252
+8	||	1090
+9	||	1028
+10	||	481
+11	||	1310
+12	||	1176
+13	||	217
+14	||	469
 and there are no more players!
 ReplaceGroup: SUCCESS
 Rank	||	Player
@@ -389,32 +389,32 @@ Rank	||	Player
 169	||	1993
 and there are no more players!
 GroupIndex	||	Player
-1	||	481
-2	||	1028
-3	||	1090
-4	||	1252
+1	||	1226
+2	||	1634
+3	||	938
+4	||	830
 5	||	358
-6	||	830
-7	||	938
-8	||	1634
-9	||	1226
+6	||	1252
+7	||	1090
+8	||	1028
+9	||	481
 and there are no more players!
 RemovePlayer: FAILURE
 GetAllPlayersByLevel: FAILURE
 GroupIndex	||	Player
-1	||	1252
-2	||	358
-3	||	830
-4	||	938
-5	||	1634
-6	||	1226
+1	||	1226
+2	||	1634
+3	||	938
+4	||	830
+5	||	358
+6	||	1252
 and there are no more players!
 GetHighestLevel: FAILURE
 AddPlayer: FAILURE
 Highest level player is: 361
 GroupIndex	||	Player
-1	||	1634
-2	||	1226
+1	||	1226
+2	||	1634
 and there are no more players!
 IncreaseLevel: SUCCESS
 Rank	||	Player
@@ -433,17 +433,17 @@ and there are no more players!
 IncreaseLevel: SUCCESS
 ReplaceGroup: FAILURE
 GroupIndex	||	Player
-1	||	1176
-2	||	1310
-3	||	481
-4	||	1028
-5	||	1090
+1	||	1226
+2	||	1634
+3	||	938
+4	||	830
+5	||	358
 6	||	1252
-7	||	358
-8	||	830
-9	||	938
-10	||	1634
-11	||	1226
+7	||	1090
+8	||	1028
+9	||	481
+10	||	1310
+11	||	1176
 and there are no more players!
 RemovePlayer: SUCCESS
 ReplaceGroup: SUCCESS
@@ -456,11 +456,11 @@ ReplaceGroup: SUCCESS
 Highest level player is: 830
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	358
-2	||	830
+1	||	1028
+2	||	1634
 3	||	938
-4	||	1634
-5	||	1028
+4	||	830
+5	||	358
 and there are no more players!
 GetHighestLevel: FAILURE
 GetGroupsHighestLevel: INVALID_INPUT
@@ -469,25 +469,25 @@ IncreaseLevel: SUCCESS
 IncreaseLevel: FAILURE
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	361
-2	||	283
-3	||	612
-4	||	1196
-5	||	217
-6	||	1176
-7	||	1310
-8	||	481
-9	||	1090
-10	||	358
-11	||	830
-12	||	505
-13	||	1634
-14	||	1028
+1	||	1028
+2	||	1634
+3	||	505
+4	||	830
+5	||	358
+6	||	1090
+7	||	481
+8	||	1310
+9	||	1176
+10	||	217
+11	||	1196
+12	||	612
+13	||	283
+14	||	361
 and there are no more players!
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	1634
-2	||	1028
+1	||	1028
+2	||	1634
 and there are no more players!
 AddPlayer: FAILURE
 IncreaseLevel: SUCCESS
@@ -495,12 +495,12 @@ ReplaceGroup: FAILURE
 GetHighestLevel: FAILURE
 AddGroup: FAILURE
 GroupIndex	||	Player
-1	||	1090
-2	||	358
-3	||	830
-4	||	505
-5	||	1634
-6	||	1028
+1	||	1028
+2	||	1634
+3	||	505
+4	||	830
+5	||	358
+6	||	1090
 and there are no more players!
 IncreaseLevel: SUCCESS
 Highest level player is: 612
@@ -529,43 +529,43 @@ Rank	||	Player
 18	||	1359
 and there are no more players!
 GroupIndex	||	Player
-1	||	1090
-2	||	358
-3	||	830
-4	||	505
-5	||	1634
-6	||	1028
+1	||	1028
+2	||	1634
+3	||	505
+4	||	830
+5	||	358
+6	||	1090
 and there are no more players!
 GetHighestLevel: FAILURE
 AddGroup: FAILURE
 GroupIndex	||	Player
-1	||	481
-2	||	1090
-3	||	358
+1	||	1028
+2	||	1634
+3	||	505
 4	||	830
-5	||	505
-6	||	1634
-7	||	1028
+5	||	358
+6	||	1090
+7	||	481
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 RemovePlayer: SUCCESS
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	361
-2	||	283
-3	||	612
-4	||	1196
-5	||	217
-6	||	1176
-7	||	1310
-8	||	481
-9	||	1090
-10	||	358
-11	||	830
-12	||	299
-13	||	1634
-14	||	1051
+1	||	1051
+2	||	1634
+3	||	299
+4	||	830
+5	||	358
+6	||	1090
+7	||	481
+8	||	1310
+9	||	1176
+10	||	217
+11	||	1196
+12	||	612
+13	||	283
+14	||	361
 and there are no more players!
 Highest level player is: 612
 IncreaseLevel: SUCCESS
@@ -573,12 +573,12 @@ RemovePlayer: FAILURE
 IncreaseLevel: FAILURE
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	1090
-2	||	358
-3	||	830
-4	||	299
-5	||	1634
-6	||	1051
+1	||	1051
+2	||	1634
+3	||	299
+4	||	830
+5	||	358
+6	||	1090
 and there are no more players!
 Rank	||	Player
 1	||	358
@@ -591,13 +591,13 @@ Rank	||	Player
 8	||	1377
 and there are no more players!
 GroupIndex	||	Player
-1	||	481
-2	||	1090
-3	||	358
+1	||	1051
+2	||	1634
+3	||	299
 4	||	830
-5	||	299
-6	||	1634
-7	||	1051
+5	||	358
+6	||	1090
+7	||	481
 and there are no more players!
 IncreaseLevel: SUCCESS
 AddGroup: FAILURE
@@ -608,11 +608,11 @@ Highest level player is: 674
 IncreaseLevel: SUCCESS
 Highest level player is: 1176
 GroupIndex	||	Player
-1	||	358
-2	||	830
+1	||	1051
+2	||	1634
 3	||	299
-4	||	1634
-5	||	1051
+4	||	830
+5	||	358
 and there are no more players!
 AddPlayer: FAILURE
 AddGroup: FAILURE
@@ -622,22 +622,22 @@ AddGroup: SUCCESS
 IncreaseLevel: SUCCESS
 Highest level player is: 1310
 GroupIndex	||	Player
-1	||	830
-2	||	1078
-3	||	1634
-4	||	1051
+1	||	1051
+2	||	1634
+3	||	1078
+4	||	830
 and there are no more players!
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	1176
-2	||	1310
-3	||	481
-4	||	1090
+1	||	1051
+2	||	1634
+3	||	1078
+4	||	830
 5	||	358
-6	||	830
-7	||	1078
-8	||	1634
-9	||	1051
+6	||	1090
+7	||	481
+8	||	1310
+9	||	1176
 and there are no more players!
 AddPlayer: FAILURE
 IncreaseLevel: SUCCESS
@@ -679,18 +679,18 @@ IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	674
-2	||	1196
-3	||	217
-4	||	1176
-5	||	1310
-6	||	481
-7	||	1090
-8	||	358
-9	||	830
-10	||	1078
-11	||	199
-12	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	358
+6	||	1090
+7	||	481
+8	||	1310
+9	||	1176
+10	||	217
+11	||	1196
+12	||	674
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
@@ -711,18 +711,18 @@ Rank	||	Player
 and there are no more players!
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	674
-2	||	1196
-3	||	217
-4	||	1176
-5	||	1310
-6	||	481
-7	||	1090
-8	||	358
-9	||	830
-10	||	1078
-11	||	199
-12	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	358
+6	||	1090
+7	||	481
+8	||	1310
+9	||	1176
+10	||	217
+11	||	1196
+12	||	674
 and there are no more players!
 ReplaceGroup: SUCCESS
 IncreaseLevel: SUCCESS
@@ -748,35 +748,35 @@ Rank	||	Player
 16	||	180
 and there are no more players!
 GroupIndex	||	Player
-1	||	1196
-2	||	217
-3	||	1176
-4	||	481
-5	||	1090
-6	||	358
-7	||	830
-8	||	1078
-9	||	199
-10	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	358
-2	||	830
+1	||	1051
+2	||	199
 3	||	1078
-4	||	199
-5	||	1051
+4	||	830
+5	||	358
+6	||	1090
+7	||	481
+8	||	1176
+9	||	217
+10	||	1196
 and there are no more players!
 GroupIndex	||	Player
-1	||	1196
-2	||	217
-3	||	1176
-4	||	481
-5	||	1090
-6	||	358
-7	||	830
-8	||	1078
-9	||	199
-10	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	358
+and there are no more players!
+GroupIndex	||	Player
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	358
+6	||	1090
+7	||	481
+8	||	1176
+9	||	217
+10	||	1196
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
@@ -797,23 +797,23 @@ Rank	||	Player
 12	||	1860
 and there are no more players!
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	674
-2	||	1196
-3	||	217
-4	||	1176
-5	||	481
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	358
 6	||	1090
-7	||	358
-8	||	830
-9	||	1078
-10	||	199
-11	||	1051
+7	||	481
+8	||	1176
+9	||	217
+10	||	1196
+11	||	674
 and there are no more players!
 Rank	||	Player
 1	||	1310
@@ -833,52 +833,51 @@ Rank	||	Player
 15	||	1961
 16	||	362
 17	||	1696
-18	||	1921
-19	||	9
-20	||	874
+18	||	9
+19	||	874
 and there are no more players!
 ReplaceGroup: SUCCESS
 RemovePlayer: FAILURE
 GroupIndex	||	Player
-1	||	481
-2	||	1176
-3	||	1090
-4	||	358
-5	||	830
-6	||	1078
-7	||	199
-8	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	674
-2	||	1196
-3	||	481
-4	||	1176
-5	||	1090
-6	||	358
-7	||	830
-8	||	1078
-9	||	199
-10	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
+4	||	830
+5	||	358
+6	||	1090
+7	||	1176
+8	||	481
+and there are no more players!
+GroupIndex	||	Player
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	358
+6	||	1090
+7	||	1176
+8	||	481
+9	||	1196
+10	||	674
+and there are no more players!
+GroupIndex	||	Player
+1	||	1051
+2	||	199
+3	||	1078
 and there are no more players!
 ReplaceGroup: SUCCESS
 GroupIndex	||	Player
-1	||	1310
-2	||	358
-3	||	674
-4	||	1196
-5	||	481
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	1090
 6	||	1176
-7	||	1090
-8	||	830
-9	||	1078
-10	||	199
-11	||	1051
+7	||	481
+8	||	1196
+9	||	674
+10	||	358
+11	||	1310
 and there are no more players!
 IncreaseLevel: FAILURE
 ReplaceGroup: FAILURE
@@ -901,9 +900,8 @@ Rank	||	Player
 15	||	1961
 16	||	362
 17	||	1696
-18	||	1921
-19	||	9
-20	||	874
+18	||	9
+19	||	874
 and there are no more players!
 Rank	||	Player
 1	||	1051
@@ -924,14 +922,14 @@ Rank	||	Player
 16	||	1359
 and there are no more players!
 GroupIndex	||	Player
-1	||	830
-2	||	1078
-3	||	199
-4	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
 and there are no more players!
 GroupIndex	||	Player
-1	||	199
-2	||	1051
+1	||	1051
+2	||	199
 and there are no more players!
 ReplaceGroup: SUCCESS
 AddPlayer: SUCCESS
@@ -943,49 +941,49 @@ IncreaseLevel: SUCCESS
 AddPlayer: FAILURE
 Highest level player is: 674
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 ReplaceGroup: FAILURE
 AddPlayer: FAILURE
 RemovePlayer: SUCCESS
 ReplaceGroup: FAILURE
 GroupIndex	||	Player
-1	||	1196
-2	||	481
-3	||	1176
-4	||	1257
-5	||	830
-6	||	1078
-7	||	199
-8	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
+5	||	1257
+6	||	1176
+7	||	481
+8	||	1196
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 RemovePlayer: SUCCESS
 AddGroup: FAILURE
 GroupIndex	||	Player
-1	||	830
-2	||	1078
-3	||	199
-4	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	830
 and there are no more players!
 Highest level player is: 674
 Highest level player is: 1051
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 Highest level player is: 1051
 AddGroup: FAILURE
 GroupIndex	||	Player
-1	||	1257
-2	||	830
+1	||	1051
+2	||	199
 3	||	1078
-4	||	199
-5	||	1051
+4	||	830
+5	||	1257
 and there are no more players!
 IncreaseLevel: SUCCESS
 ReplaceGroup: SUCCESS
@@ -999,23 +997,23 @@ GroupIndex	||	Player
 and there are no more players!
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 AddGroup: FAILURE
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	358
-2	||	674
-3	||	1196
-4	||	481
+1	||	1051
+2	||	199
+3	||	1078
+4	||	736
 5	||	1257
-6	||	736
-7	||	1078
-8	||	199
-9	||	1051
+6	||	481
+7	||	1196
+8	||	674
+9	||	358
 and there are no more players!
 RemovePlayer: FAILURE
 GetHighestLevel: FAILURE
@@ -1189,14 +1187,14 @@ Rank	||	Player
 159	||	1993
 and there are no more players!
 GroupIndex	||	Player
-1	||	1196
-2	||	481
-3	||	770
-4	||	1257
-5	||	287
-6	||	1078
-7	||	199
-8	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	287
+5	||	1257
+6	||	-1
+7	||	481
+8	||	1196
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
@@ -1375,12 +1373,12 @@ IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 AddGroup: FAILURE
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	1176
-4	||	1078
-5	||	199
-6	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	1176
+5	||	1257
+6	||	-1
 and there are no more players!
 Highest level player is: 757
 RemovePlayer: SUCCESS
@@ -1393,25 +1391,25 @@ Highest level player is: 757
 Highest level player is: 757
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	1196
-2	||	481
-3	||	770
-4	||	1257
-5	||	1176
-6	||	1078
-7	||	199
-8	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	1176
+5	||	1257
+6	||	-1
+7	||	481
+8	||	1196
 and there are no more players!
 GetGroupsHighestLevel: INVALID_INPUT
 AddGroup: FAILURE
 GroupIndex	||	Player
-1	||	481
-2	||	770
-3	||	1257
+1	||	1051
+2	||	199
+3	||	1078
 4	||	1176
-5	||	1078
-6	||	199
-7	||	1051
+5	||	1257
+6	||	-1
+7	||	481
 and there are no more players!
 GetGroupsHighestLevel: INVALID_INPUT
 IncreaseLevel: SUCCESS
@@ -1427,68 +1425,68 @@ RemovePlayer: SUCCESS
 Highest level player is: 481
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	199
-2	||	1051
+1	||	1051
+2	||	199
 and there are no more players!
 IncreaseLevel: FAILURE
 GroupIndex	||	Player
-1	||	1176
-2	||	1078
-3	||	199
-4	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	1176
 and there are no more players!
 ReplaceGroup: SUCCESS
 GroupIndex	||	Player
-1	||	481
-2	||	770
-3	||	1257
+1	||	1051
+2	||	199
+3	||	1078
 4	||	1176
-5	||	1078
-6	||	199
-7	||	1051
+5	||	1257
+6	||	-1
+7	||	481
 and there are no more players!
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	1176
-2	||	1078
-3	||	199
-4	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	1176
 and there are no more players!
 RemovePlayer: SUCCESS
 Highest level player is: 757
 AddPlayer: FAILURE
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 GroupIndex	||	Player
-1	||	481
-2	||	770
-3	||	1257
+1	||	1051
+2	||	199
+3	||	1078
 4	||	1176
-5	||	1078
-6	||	199
-7	||	1051
+5	||	1257
+6	||	-1
+7	||	481
 and there are no more players!
 IncreaseLevel: SUCCESS
 RemovePlayer: SUCCESS
 IncreaseLevel: FAILURE
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	1176
-4	||	1078
-5	||	199
-6	||	1051
+1	||	1051
+2	||	199
+3	||	1078
+4	||	1176
+5	||	1257
+6	||	-1
 and there are no more players!
 GetGroupsHighestLevel: INVALID_INPUT
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: FAILURE
@@ -1499,20 +1497,20 @@ and there are no more players!
 IncreaseLevel: SUCCESS
 ReplaceGroup: FAILURE
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 RemovePlayer: SUCCESS
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	1078
+1	||	1051
 2	||	199
-3	||	1051
+3	||	1078
 and there are no more players!
 GroupIndex	||	Player
-1	||	199
-2	||	1051
+1	||	1051
+2	||	199
 and there are no more players!
 ReplaceGroup: SUCCESS
 IncreaseLevel: SUCCESS
@@ -1522,42 +1520,42 @@ GetAllPlayersByLevel: FAILURE
 IncreaseLevel: SUCCESS
 AddPlayer: FAILURE
 GroupIndex	||	Player
-1	||	1196
-2	||	1078
-3	||	770
-4	||	1257
-5	||	1657
-6	||	199
+1	||	199
+2	||	1657
+3	||	1257
+4	||	-1
+5	||	1078
+6	||	1196
 and there are no more players!
 AddGroup: FAILURE
 GroupIndex	||	Player
-1	||	1257
+1	||	199
 2	||	1657
-3	||	199
+3	||	1257
 and there are no more players!
 AddGroup: FAILURE
 GetGroupsHighestLevel: INVALID_INPUT
 GroupIndex	||	Player
-1	||	1078
-2	||	770
+1	||	199
+2	||	1657
 3	||	1257
-4	||	1657
-5	||	199
+4	||	-1
+5	||	1078
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: FAILURE
 GroupIndex	||	Player
-1	||	1257
+1	||	199
 2	||	1657
-3	||	199
+3	||	1257
 and there are no more players!
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	1078
-2	||	770
+1	||	199
+2	||	1657
 3	||	1257
-4	||	1657
-5	||	199
+4	||	-1
+5	||	1078
 and there are no more players!
 Highest level player is: 1657
 RemovePlayer: SUCCESS
@@ -1721,42 +1719,42 @@ Rank	||	Player
 147	||	1993
 and there are no more players!
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	1657
-4	||	199
+1	||	199
+2	||	1657
+3	||	1257
+4	||	-1
 and there are no more players!
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	1657
-4	||	199
+1	||	199
+2	||	1657
+3	||	1257
+4	||	-1
 and there are no more players!
-Highest level player is: 770
+Highest level player is: -1
 IncreaseLevel: FAILURE
 RemovePlayer: SUCCESS
 ReplaceGroup: SUCCESS
 GroupIndex	||	Player
-1	||	1078
-2	||	770
+1	||	1634
+2	||	1657
 3	||	1257
-4	||	1657
-5	||	1634
+4	||	-1
+5	||	1078
 and there are no more players!
 AddGroup: SUCCESS
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	1657
-2	||	1634
+1	||	1634
+2	||	1657
 and there are no more players!
 RemovePlayer: SUCCESS
 RemovePlayer: FAILURE
 GetGroupsHighestLevel: INVALID_INPUT
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	1657
-4	||	1634
+1	||	1634
+2	||	1657
+3	||	1257
+4	||	-1
 and there are no more players!
 ReplaceGroup: FAILURE
 RemovePlayer: SUCCESS
@@ -1765,20 +1763,20 @@ GroupIndex	||	Player
 1	||	1634
 and there are no more players!
 AddGroup: SUCCESS
-Highest level player is: 770
+Highest level player is: -1
 GroupIndex	||	Player
-1	||	1257
+1	||	1634
 2	||	1657
-3	||	1634
+3	||	1257
 and there are no more players!
 IncreaseLevel: SUCCESS
 Highest level player is: 1657
 RemovePlayer: SUCCESS
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	1257
+1	||	1634
 2	||	1657
-3	||	1634
+3	||	1257
 and there are no more players!
 ReplaceGroup: SUCCESS
 Highest level player is: 674
@@ -1788,11 +1786,11 @@ RemovePlayer: SUCCESS
 RemovePlayer: FAILURE
 ReplaceGroup: SUCCESS
 GroupIndex	||	Player
-1	||	1078
-2	||	770
+1	||	1657
+2	||	674
 3	||	1257
-4	||	674
-5	||	1657
+4	||	-1
+5	||	1078
 and there are no more players!
 AddGroup: SUCCESS
 IncreaseLevel: SUCCESS
@@ -1978,109 +1976,109 @@ Rank	||	Player
 and there are no more players!
 ReplaceGroup: FAILURE
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	674
-4	||	1051
+1	||	1051
+2	||	674
+3	||	1257
+4	||	-1
 and there are no more players!
 Highest level player is: 674
 GroupIndex	||	Player
-1	||	1257
+1	||	1051
 2	||	674
-3	||	1051
+3	||	1257
 and there are no more players!
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	674
-4	||	1051
+1	||	1051
+2	||	674
+3	||	1257
+4	||	-1
 and there are no more players!
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	674
-4	||	1051
-and there are no more players!
-AddPlayer: FAILURE
-AddPlayer: FAILURE
-AddPlayer: FAILURE
-GroupIndex	||	Player
-1	||	1257
+1	||	1051
 2	||	674
-3	||	191
-4	||	1051
+3	||	1257
+4	||	-1
+and there are no more players!
+AddPlayer: FAILURE
+AddPlayer: FAILURE
+AddPlayer: FAILURE
+GroupIndex	||	Player
+1	||	1051
+2	||	-1
+3	||	674
+4	||	1257
 and there are no more players!
 AddPlayer: FAILURE
 GroupIndex	||	Player
-1	||	938
-2	||	770
-3	||	1257
-4	||	674
-5	||	191
-6	||	1051
+1	||	1051
+2	||	-1
+3	||	674
+4	||	1257
+5	||	-1
+6	||	938
 and there are no more players!
 AddGroup: FAILURE
 RemovePlayer: SUCCESS
 GroupIndex	||	Player
-1	||	938
-2	||	770
-3	||	1257
-4	||	674
-5	||	191
-6	||	1051
+1	||	1051
+2	||	-1
+3	||	674
+4	||	1257
+5	||	-1
+6	||	938
 and there are no more players!
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 IncreaseLevel: FAILURE
 IncreaseLevel: FAILURE
 GroupIndex	||	Player
-1	||	770
-2	||	1257
+1	||	1051
+2	||	-1
 3	||	674
-4	||	191
-5	||	1051
+4	||	1257
+5	||	-1
 and there are no more players!
 GetGroupsHighestLevel: INVALID_INPUT
 GroupIndex	||	Player
-1	||	191
-2	||	1051
+1	||	1051
+2	||	-1
 and there are no more players!
 RemovePlayer: SUCCESS
 AddGroup: SUCCESS
 GroupIndex	||	Player
-1	||	938
-2	||	770
-3	||	1257
-4	||	674
-5	||	191
-6	||	1051
+1	||	1051
+2	||	-1
+3	||	674
+4	||	1257
+5	||	-1
+6	||	938
 and there are no more players!
 Highest level player is: -1
 GroupIndex	||	Player
-1	||	938
-2	||	770
-3	||	1257
-4	||	674
-5	||	191
-6	||	1051
+1	||	1051
+2	||	-1
+3	||	674
+4	||	1257
+5	||	-1
+6	||	938
 and there are no more players!
 ReplaceGroup: FAILURE
 Highest level player is: 1257
 IncreaseLevel: FAILURE
 GroupIndex	||	Player
-1	||	674
-2	||	191
-3	||	1051
+1	||	1051
+2	||	-1
+3	||	674
 and there are no more players!
 RemovePlayer: FAILURE
 RemovePlayer: FAILURE
 Highest level player is: 1051
 GroupIndex	||	Player
-1	||	1257
-2	||	674
-3	||	191
-4	||	1051
+1	||	1051
+2	||	-1
+3	||	674
+4	||	1257
 and there are no more players!
 ReplaceGroup: FAILURE
 AddGroup: FAILURE
@@ -2090,16 +2088,16 @@ GetGroupsHighestLevel: INVALID_INPUT
 AddPlayer: FAILURE
 GetAllPlayersByLevel: FAILURE
 GroupIndex	||	Player
-1	||	1723
-2	||	612
-3	||	191
-4	||	1051
+1	||	1051
+2	||	-1
+3	||	612
+4	||	-1
 and there are no more players!
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	612
-2	||	191
-3	||	1051
+1	||	1051
+2	||	-1
+3	||	612
 and there are no more players!
 IncreaseLevel: SUCCESS
 RemovePlayer: FAILURE
@@ -2109,22 +2107,22 @@ AddPlayer: FAILURE
 IncreaseLevel: FAILURE
 Highest level player is: 1196
 GroupIndex	||	Player
-1	||	612
-2	||	191
-3	||	1051
+1	||	1051
+2	||	-1
+3	||	612
 and there are no more players!
 ReplaceGroup: FAILURE
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 RemovePlayer: SUCCESS
-Highest level player is: 191
+Highest level player is: -1
 AddGroup: SUCCESS
 GroupIndex	||	Player
-1	||	1257
-2	||	1723
+1	||	1051
+2	||	-1
 3	||	612
-4	||	191
-5	||	1051
+4	||	-1
+5	||	1257
 and there are no more players!
 Rank	||	Player
 1	||	1051
@@ -2266,1459 +2264,3 @@ Rank	||	Player
 and there are no more players!
 RemovePlayer: SUCCESS
 IncreaseLevel: SUCCESS
-ReplaceGroup: SUCCESS
-IncreaseLevel: FAILURE
-AddPlayer: FAILURE
-ReplaceGroup: FAILURE
-AddGroup: SUCCESS
-Highest level player is: 1051
-GroupIndex	||	Player
-1	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-Highest level player is: 1051
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-RemovePlayer: SUCCESS
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-IncreaseLevel: FAILURE
-GroupIndex	||	Player
-1	||	612
-2	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-Rank	||	Player
-1	||	1257
-2	||	78
-3	||	1216
-4	||	1981
-5	||	1090
-6	||	1034
-7	||	1739
-8	||	1710
-9	||	1252
-10	||	300
-11	||	695
-12	||	620
-13	||	1985
-and there are no more players!
-IncreaseLevel: FAILURE
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-AddGroup: SUCCESS
-AddGroup: FAILURE
-ReplaceGroup: FAILURE
-IncreaseLevel: SUCCESS
-AddPlayer: FAILURE
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	880
-2	||	770
-3	||	1257
-4	||	191
-5	||	612
-6	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-RemovePlayer: SUCCESS
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-RemovePlayer: SUCCESS
-IncreaseLevel: SUCCESS
-ReplaceGroup: FAILURE
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-Rank	||	Player
-1	||	1051
-2	||	612
-3	||	880
-4	||	1176
-5	||	1657
-6	||	757
-7	||	938
-8	||	1078
-9	||	1310
-10	||	674
-11	||	1196
-12	||	358
-13	||	283
-14	||	287
-15	||	475
-16	||	481
-17	||	770
-18	||	1226
-19	||	1257
-20	||	78
-21	||	669
-22	||	1028
-23	||	1216
-24	||	1566
-25	||	284
-26	||	469
-27	||	736
-28	||	994
-29	||	1252
-30	||	1360
-31	||	1484
-32	||	1540
-33	||	1739
-34	||	1921
-35	||	1975
-36	||	185
-37	||	361
-38	||	558
-39	||	830
-40	||	1045
-41	||	1308
-42	||	1399
-43	||	1634
-44	||	1688
-45	||	672
-46	||	867
-47	||	897
-48	||	1037
-49	||	1060
-50	||	1090
-51	||	1135
-52	||	1199
-53	||	1488
-54	||	1520
-55	||	1674
-56	||	40
-57	||	161
-58	||	164
-59	||	373
-60	||	851
-61	||	1024
-62	||	1034
-63	||	1456
-64	||	1584
-65	||	1830
-66	||	1837
-67	||	1949
-68	||	1981
-69	||	3
-70	||	127
-71	||	136
-72	||	1195
-73	||	1494
-74	||	1710
-75	||	1958
-76	||	49
-77	||	70
-78	||	101
-79	||	180
-80	||	368
-81	||	460
-82	||	737
-83	||	882
-84	||	896
-85	||	986
-86	||	1027
-87	||	1071
-88	||	1321
-89	||	1341
-90	||	340
-91	||	470
-92	||	1274
-93	||	1324
-94	||	1331
-95	||	1553
-96	||	1993
-97	||	99
-98	||	300
-99	||	383
-100	||	511
-101	||	695
-102	||	1076
-103	||	1211
-104	||	1243
-105	||	1302
-106	||	1359
-107	||	1403
-108	||	1427
-109	||	1849
-110	||	75
-111	||	191
-112	||	482
-113	||	508
-114	||	543
-115	||	700
-116	||	1061
-117	||	1282
-118	||	1377
-119	||	1723
-120	||	1860
-121	||	1867
-122	||	37
-123	||	116
-124	||	362
-125	||	620
-126	||	1985
-127	||	9
-128	||	303
-129	||	402
-130	||	849
-131	||	874
-132	||	972
-and there are no more players!
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-GetGroupsHighestLevel: INVALID_INPUT
-ReplaceGroup: SUCCESS
-IncreaseLevel: SUCCESS
-IncreaseLevel: FAILURE
-AddGroup: FAILURE
-RemovePlayer: SUCCESS
-GetAllPlayersByLevel: FAILURE
-ReplaceGroup: FAILURE
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-and there are no more players!
-AddGroup: FAILURE
-Highest level player is: 1196
-GroupIndex	||	Player
-1	||	612
-2	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-Rank	||	Player
-1	||	1051
-2	||	612
-3	||	880
-4	||	1176
-5	||	1657
-6	||	757
-7	||	938
-8	||	1078
-9	||	1310
-10	||	1196
-11	||	358
-12	||	283
-13	||	287
-14	||	475
-15	||	481
-16	||	770
-17	||	1226
-18	||	1257
-19	||	78
-20	||	669
-21	||	1028
-22	||	1216
-23	||	1566
-24	||	284
-25	||	469
-26	||	736
-27	||	994
-28	||	1252
-29	||	1360
-30	||	1484
-31	||	1540
-32	||	1739
-33	||	1921
-34	||	1975
-35	||	185
-36	||	361
-37	||	558
-38	||	830
-39	||	1045
-40	||	1308
-41	||	1399
-42	||	1634
-43	||	1688
-44	||	672
-45	||	867
-46	||	897
-47	||	1037
-48	||	1060
-49	||	1090
-50	||	1135
-51	||	1199
-52	||	1488
-53	||	1520
-54	||	1674
-55	||	40
-56	||	161
-57	||	164
-58	||	373
-59	||	851
-60	||	1024
-61	||	1034
-62	||	1456
-63	||	1584
-64	||	1830
-65	||	1837
-66	||	1949
-67	||	1981
-68	||	3
-69	||	127
-70	||	136
-71	||	1195
-72	||	1494
-73	||	1710
-74	||	1958
-75	||	1985
-76	||	49
-77	||	70
-78	||	101
-79	||	180
-80	||	368
-81	||	460
-82	||	737
-83	||	882
-84	||	896
-85	||	986
-86	||	1027
-87	||	1071
-88	||	1321
-89	||	1341
-90	||	340
-91	||	470
-92	||	1274
-93	||	1324
-94	||	1331
-95	||	1553
-96	||	1993
-97	||	99
-98	||	300
-99	||	383
-100	||	511
-101	||	695
-102	||	1076
-103	||	1211
-104	||	1243
-105	||	1302
-106	||	1359
-107	||	1403
-108	||	1427
-109	||	1849
-110	||	75
-111	||	191
-112	||	482
-113	||	508
-114	||	543
-115	||	700
-116	||	1061
-117	||	1282
-118	||	1377
-119	||	1723
-120	||	1860
-121	||	1867
-122	||	37
-123	||	116
-124	||	362
-125	||	620
-126	||	9
-127	||	303
-128	||	402
-129	||	849
-130	||	874
-131	||	972
-and there are no more players!
-AddGroup: SUCCESS
-AddGroup: SUCCESS
-RemovePlayer: SUCCESS
-GetGroupsHighestLevel: INVALID_INPUT
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	1051
-and there are no more players!
-and there are no more players!
-Rank	||	Player
-1	||	1051
-2	||	612
-3	||	880
-4	||	1176
-5	||	1657
-6	||	757
-7	||	938
-8	||	1078
-9	||	1310
-10	||	1196
-11	||	358
-12	||	283
-13	||	287
-14	||	475
-15	||	481
-16	||	770
-17	||	1226
-18	||	1257
-19	||	78
-20	||	669
-21	||	1028
-22	||	1216
-23	||	1566
-24	||	284
-25	||	469
-26	||	736
-27	||	994
-28	||	1252
-29	||	1360
-30	||	1484
-31	||	1540
-32	||	1739
-33	||	1921
-34	||	1975
-35	||	185
-36	||	361
-37	||	558
-38	||	830
-39	||	1045
-40	||	1308
-41	||	1399
-42	||	1634
-43	||	1688
-44	||	672
-45	||	867
-46	||	897
-47	||	1037
-48	||	1060
-49	||	1090
-50	||	1135
-51	||	1199
-52	||	1488
-53	||	1520
-54	||	1674
-55	||	40
-56	||	161
-57	||	164
-58	||	373
-59	||	851
-60	||	1024
-61	||	1034
-62	||	1456
-63	||	1584
-64	||	1830
-65	||	1837
-66	||	1949
-67	||	1981
-68	||	3
-69	||	127
-70	||	136
-71	||	1195
-72	||	1494
-73	||	1710
-74	||	1958
-75	||	1985
-76	||	49
-77	||	70
-78	||	101
-79	||	180
-80	||	460
-81	||	737
-82	||	882
-83	||	896
-84	||	986
-85	||	1027
-86	||	1071
-87	||	1321
-88	||	1341
-89	||	340
-90	||	470
-91	||	482
-92	||	1274
-93	||	1324
-94	||	1331
-95	||	1553
-96	||	1993
-97	||	99
-98	||	300
-99	||	383
-100	||	511
-101	||	695
-102	||	1076
-103	||	1211
-104	||	1243
-105	||	1302
-106	||	1359
-107	||	1403
-108	||	1427
-109	||	1849
-110	||	75
-111	||	191
-112	||	508
-113	||	543
-114	||	700
-115	||	1061
-116	||	1282
-117	||	1377
-118	||	1723
-119	||	1860
-120	||	1867
-121	||	37
-122	||	116
-123	||	362
-124	||	620
-125	||	9
-126	||	303
-127	||	402
-128	||	849
-129	||	874
-130	||	972
-and there are no more players!
-ReplaceGroup: FAILURE
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-GetGroupsHighestLevel: INVALID_INPUT
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-Rank	||	Player
-1	||	1051
-2	||	612
-3	||	880
-4	||	358
-5	||	1176
-6	||	1657
-7	||	757
-8	||	938
-9	||	1078
-10	||	1310
-11	||	1196
-12	||	283
-13	||	287
-14	||	475
-15	||	481
-16	||	770
-17	||	1226
-18	||	1257
-19	||	78
-20	||	669
-21	||	1028
-22	||	1216
-23	||	1566
-24	||	284
-25	||	469
-26	||	736
-27	||	994
-28	||	1252
-29	||	1360
-30	||	1484
-31	||	1540
-32	||	1739
-33	||	1921
-34	||	1975
-35	||	185
-36	||	361
-37	||	558
-38	||	830
-39	||	1045
-40	||	1308
-41	||	1399
-42	||	1634
-43	||	1688
-44	||	672
-45	||	867
-46	||	897
-47	||	1037
-48	||	1060
-49	||	1090
-50	||	1135
-51	||	1199
-52	||	1488
-53	||	1520
-54	||	1674
-55	||	40
-56	||	161
-57	||	164
-58	||	373
-59	||	851
-60	||	1024
-61	||	1034
-62	||	1456
-63	||	1584
-64	||	1830
-65	||	1837
-66	||	1949
-67	||	1981
-68	||	3
-69	||	127
-70	||	136
-71	||	511
-72	||	1195
-73	||	1494
-74	||	1710
-75	||	1958
-76	||	1985
-77	||	49
-78	||	70
-79	||	101
-80	||	180
-81	||	460
-82	||	737
-83	||	882
-84	||	896
-85	||	986
-86	||	1027
-87	||	1061
-88	||	1071
-89	||	1321
-90	||	1341
-91	||	340
-92	||	470
-93	||	482
-94	||	1274
-95	||	1324
-96	||	1331
-97	||	1553
-98	||	1993
-99	||	99
-100	||	300
-101	||	303
-102	||	383
-103	||	695
-104	||	1076
-105	||	1211
-106	||	1243
-107	||	1302
-108	||	1359
-109	||	1403
-110	||	1427
-111	||	1849
-112	||	75
-113	||	191
-114	||	508
-115	||	543
-116	||	700
-117	||	1282
-118	||	1377
-119	||	1723
-120	||	1860
-121	||	1867
-122	||	37
-123	||	116
-124	||	362
-125	||	620
-126	||	9
-127	||	402
-128	||	849
-129	||	874
-130	||	972
-and there are no more players!
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-AddPlayer: SUCCESS
-IncreaseLevel: FAILURE
-IncreaseLevel: SUCCESS
-IncreaseLevel: FAILURE
-IncreaseLevel: SUCCESS
-ReplaceGroup: INVALID_INPUT
-Highest level player is: 1051
-IncreaseLevel: SUCCESS
-AddGroup: SUCCESS
-Rank	||	Player
-1	||	1196
-2	||	1566
-3	||	469
-4	||	1360
-5	||	185
-6	||	1308
-7	||	1135
-8	||	164
-9	||	1024
-10	||	1949
-11	||	101
-12	||	1553
-and there are no more players!
-IncreaseLevel: FAILURE
-ReplaceGroup: FAILURE
-GetHighestLevel: FAILURE
-IncreaseLevel: FAILURE
-Highest level player is: 1051
-RemovePlayer: SUCCESS
-ReplaceGroup: SUCCESS
-Highest level player is: 1051
-RemovePlayer: FAILURE
-RemovePlayer: SUCCESS
-Rank	||	Player
-1	||	1257
-2	||	78
-3	||	1216
-4	||	1252
-5	||	1981
-6	||	1090
-7	||	1034
-8	||	1739
-9	||	1710
-10	||	1985
-11	||	300
-12	||	695
-13	||	620
-and there are no more players!
-GroupIndex	||	Player
-1	||	612
-2	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-IncreaseLevel: FAILURE
-GroupIndex	||	Player
-1	||	1630
-2	||	770
-3	||	1257
-4	||	191
-5	||	612
-6	||	1051
-and there are no more players!
-AddGroup: FAILURE
-IncreaseLevel: FAILURE
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-AddPlayer: FAILURE
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-IncreaseLevel: FAILURE
-ReplaceGroup: SUCCESS
-AddGroup: FAILURE
-Rank	||	Player
-1	||	1051
-2	||	612
-3	||	880
-4	||	358
-5	||	1176
-6	||	1657
-7	||	757
-8	||	938
-9	||	1078
-10	||	1310
-11	||	1196
-12	||	185
-13	||	283
-14	||	287
-15	||	475
-16	||	481
-17	||	770
-18	||	1226
-19	||	1257
-20	||	1484
-21	||	78
-22	||	669
-23	||	1028
-24	||	1216
-25	||	1566
-26	||	1584
-27	||	284
-28	||	469
-29	||	736
-30	||	994
-31	||	1252
-32	||	1360
-33	||	1739
-34	||	1830
-35	||	1921
-36	||	1975
-37	||	361
-38	||	558
-39	||	830
-40	||	1045
-41	||	1308
-42	||	1399
-43	||	1634
-44	||	1688
-45	||	672
-46	||	867
-47	||	897
-48	||	1037
-49	||	1060
-50	||	1090
-51	||	1135
-52	||	1199
-53	||	1488
-54	||	1520
-55	||	1674
-56	||	40
-57	||	161
-58	||	164
-59	||	373
-60	||	851
-61	||	1024
-62	||	1034
-63	||	1456
-64	||	1837
-65	||	1949
-66	||	1981
-67	||	3
-68	||	127
-69	||	136
-70	||	511
-71	||	1195
-72	||	1494
-73	||	1630
-74	||	1710
-75	||	1958
-76	||	1985
-77	||	49
-78	||	70
-79	||	101
-80	||	180
-81	||	460
-82	||	737
-83	||	882
-84	||	896
-85	||	986
-86	||	1027
-87	||	1061
-88	||	1071
-89	||	1321
-90	||	1341
-91	||	340
-92	||	470
-93	||	482
-94	||	1274
-95	||	1324
-96	||	1331
-97	||	1553
-98	||	1993
-99	||	99
-100	||	300
-101	||	303
-102	||	383
-103	||	695
-104	||	1076
-105	||	1211
-106	||	1243
-107	||	1302
-108	||	1359
-109	||	1403
-110	||	1427
-111	||	1849
-112	||	75
-113	||	508
-114	||	543
-115	||	700
-116	||	972
-117	||	1282
-118	||	1377
-119	||	1723
-120	||	1860
-121	||	1867
-122	||	37
-123	||	116
-124	||	362
-125	||	620
-126	||	9
-127	||	402
-128	||	849
-129	||	874
-and there are no more players!
-GetHighestLevel: FAILURE
-Highest level player is: 1051
-GetHighestLevel: FAILURE
-RemovePlayer: SUCCESS
-GroupIndex	||	Player
-1	||	612
-2	||	1051
-and there are no more players!
-IncreaseLevel: FAILURE
-IncreaseLevel: SUCCESS
-GetGroupsHighestLevel: INVALID_INPUT
-Highest level player is: 1051
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-IncreaseLevel: FAILURE
-GroupIndex	||	Player
-1	||	1630
-2	||	770
-3	||	1257
-4	||	191
-5	||	612
-6	||	1051
-and there are no more players!
-AddGroup: FAILURE
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-RemovePlayer: SUCCESS
-IncreaseLevel: SUCCESS
-RemovePlayer: FAILURE
-AddGroup: FAILURE
-Rank	||	Player
-1	||	1051
-2	||	880
-3	||	1176
-4	||	1657
-5	||	938
-6	||	1078
-7	||	287
-8	||	475
-9	||	481
-10	||	1226
-11	||	1634
-12	||	669
-13	||	1028
-14	||	1584
-15	||	736
-16	||	994
-17	||	1830
-18	||	1921
-19	||	1975
-20	||	830
-21	||	1045
-22	||	1688
-23	||	1860
-24	||	867
-25	||	1060
-26	||	1199
-27	||	1488
-28	||	1520
-29	||	1674
-30	||	40
-31	||	373
-32	||	1456
-33	||	136
-34	||	358
-35	||	511
-36	||	1195
-37	||	1494
-38	||	1958
-39	||	1993
-40	||	70
-41	||	737
-42	||	896
-43	||	1027
-44	||	1061
-45	||	1071
-46	||	1657
-47	||	340
-48	||	470
-49	||	1211
-50	||	1274
-51	||	1324
-52	||	1331
-53	||	99
-54	||	1211
-55	||	1302
-56	||	1359
-57	||	1403
-58	||	75
-59	||	508
-60	||	543
-61	||	700
-62	||	972
-63	||	1403
-64	||	1860
-65	||	1867
-66	||	37
-67	||	116
-68	||	402
-69	||	849
-70	||	1723
-and there are no more players!
-RemovePlayer: FAILURE
-AddGroup: SUCCESS
-ReplaceGroup: FAILURE
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	770
-2	||	1257
-3	||	191
-4	||	612
-5	||	1051
-and there are no more players!
-IncreaseLevel: FAILURE
-AddGroup: SUCCESS
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-AddGroup: FAILURE
-ReplaceGroup: SUCCESS
-GroupIndex	||	Player
-1	||	612
-2	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-GetHighestLevel: FAILURE
-Rank	||	Player
-1	||	1051
-2	||	612
-3	||	880
-4	||	1176
-5	||	358
-6	||	1657
-7	||	757
-8	||	938
-9	||	1078
-10	||	1310
-11	||	1196
-12	||	185
-13	||	283
-14	||	287
-15	||	475
-16	||	481
-17	||	770
-18	||	1226
-19	||	1257
-20	||	1484
-21	||	1634
-22	||	78
-23	||	669
-24	||	1028
-25	||	1216
-26	||	1399
-27	||	1566
-28	||	1584
-29	||	70
-30	||	469
-31	||	736
-32	||	994
-33	||	1252
-34	||	1360
-35	||	1739
-36	||	1830
-37	||	1921
-38	||	1975
-39	||	361
-40	||	558
-41	||	830
-42	||	1045
-43	||	1308
-44	||	1688
-45	||	1710
-46	||	672
-47	||	867
-48	||	897
-49	||	1037
-50	||	1060
-51	||	1090
-52	||	1135
-53	||	1199
-54	||	1488
-55	||	1520
-56	||	1674
-57	||	40
-58	||	161
-59	||	164
-60	||	373
-61	||	851
-62	||	1024
-63	||	1034
-64	||	1456
-65	||	1837
-66	||	1949
-67	||	3
-68	||	127
-69	||	136
-70	||	511
-71	||	1195
-72	||	1494
-73	||	1630
-74	||	1958
-75	||	1985
-76	||	1993
-77	||	49
-78	||	101
-79	||	180
-80	||	460
-81	||	737
-82	||	882
-83	||	896
-84	||	986
-85	||	1027
-86	||	1061
-87	||	1071
-88	||	1321
-89	||	1341
-90	||	303
-91	||	340
-92	||	470
-93	||	482
-94	||	1274
-95	||	1324
-96	||	1331
-97	||	1553
-98	||	99
-99	||	300
-100	||	383
-101	||	695
-102	||	1076
-103	||	1211
-104	||	1243
-105	||	1302
-106	||	1359
-107	||	1403
-108	||	1427
-109	||	1849
-110	||	75
-111	||	508
-112	||	543
-113	||	700
-114	||	972
-115	||	1282
-116	||	1377
-117	||	1723
-118	||	1860
-119	||	1867
-120	||	37
-121	||	116
-122	||	362
-123	||	620
-124	||	9
-125	||	402
-126	||	849
-127	||	874
-and there are no more players!
-AddPlayer: FAILURE
-GroupIndex	||	Player
-1	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-IncreaseLevel: SUCCESS
-AddGroup: SUCCESS
-Rank	||	Player
-1	||	358
-2	||	757
-3	||	1310
-4	||	283
-5	||	770
-6	||	1484
-7	||	1399
-8	||	1739
-9	||	361
-10	||	558
-11	||	672
-12	||	897
-13	||	1037
-14	||	161
-15	||	303
-16	||	851
-17	||	1837
-18	||	127
-19	||	49
-20	||	460
-21	||	882
-22	||	986
-23	||	1341
-24	||	482
-25	||	383
-26	||	1243
-27	||	1849
-28	||	1282
-29	||	1377
-30	||	1723
-31	||	362
-32	||	1921
-33	||	9
-34	||	874
-and there are no more players!
-Highest level player is: 1051
-IncreaseLevel: SUCCESS
-GetGroupsHighestLevel: INVALID_INPUT
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-Highest level player is: 180
-IncreaseLevel: FAILURE
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-Rank	||	Player
-1	||	1051
-2	||	612
-3	||	880
-4	||	1176
-5	||	358
-6	||	1657
-7	||	757
-8	||	938
-9	||	1078
-10	||	1310
-11	||	1196
-12	||	185
-13	||	283
-14	||	287
-15	||	475
-16	||	481
-17	||	770
-18	||	1226
-19	||	1257
-20	||	1484
-21	||	1634
-22	||	78
-23	||	669
-24	||	1028
-25	||	1216
-26	||	1399
-27	||	1566
-28	||	1584
-29	||	70
-30	||	469
-31	||	736
-32	||	994
-33	||	1252
-34	||	1360
-35	||	1674
-36	||	1739
-37	||	1830
-38	||	1921
-39	||	1975
-40	||	361
-41	||	558
-42	||	672
-43	||	830
-44	||	1045
-45	||	1308
-46	||	1688
-47	||	1710
-48	||	867
-49	||	897
-50	||	1037
-51	||	1060
-52	||	1090
-53	||	1135
-54	||	1199
-55	||	1488
-56	||	1520
-57	||	40
-58	||	161
-59	||	164
-60	||	303
-61	||	373
-62	||	851
-63	||	1024
-64	||	1034
-65	||	1456
-66	||	1837
-67	||	1949
-68	||	3
-69	||	127
-70	||	136
-71	||	511
-72	||	1195
-73	||	1494
-74	||	1630
-75	||	1958
-76	||	1985
-77	||	1993
-78	||	49
-79	||	101
-80	||	180
-81	||	460
-82	||	737
-83	||	882
-84	||	896
-85	||	986
-86	||	1027
-87	||	1061
-88	||	1071
-89	||	1321
-90	||	1341
-91	||	340
-92	||	470
-93	||	482
-94	||	1274
-95	||	1324
-96	||	1331
-97	||	1553
-98	||	75
-99	||	99
-100	||	300
-101	||	383
-102	||	695
-103	||	1076
-104	||	1211
-105	||	1243
-106	||	1302
-107	||	1359
-108	||	1403
-109	||	1427
-110	||	1849
-111	||	508
-112	||	543
-113	||	700
-114	||	972
-115	||	1282
-116	||	1377
-117	||	1723
-118	||	1860
-119	||	1867
-120	||	37
-121	||	116
-122	||	362
-123	||	620
-124	||	9
-125	||	402
-126	||	849
-127	||	874
-and there are no more players!
-Rank	||	Player
-1	||	191
-2	||	1723
-and there are no more players!
-GroupIndex	||	Player
-1	||	612
-2	||	1051
-and there are no more players!
-GroupIndex	||	Player
-1	||	1630
-2	||	770
-3	||	1257
-4	||	191
-5	||	612
-6	||	1051
-and there are no more players!
-IncreaseLevel: SUCCESS
-GroupIndex	||	Player
-1	||	191
-2	||	612
-3	||	1051
-and there are no more players!
-Highest level player is: 358
-Highest level player is: 191
-GetGroupsHighestLevel: INVALID_INPUT
-GetGroupsHighestLevel: INVALID_INPUT
-IncreaseLevel: FAILURE
-AddGroup: FAILURE
-IncreaseLevel: FAILURE
-IncreaseLevel: SUCCESS
-AddPlayer: SUCCESS
-AddPlayer: FAILURE
-GroupIndex	||	Player
-1	||	1257
-2	||	191
-3	||	612
-4	||	1051
-5	||	682
-and there are no more players!
-AddGroup: FAILURE
-Rank	||	Player
-1	||	1196
-2	||	185
-3	||	1566
-4	||	469
-5	||	1360
-6	||	1308
-7	||	1135
-8	||	164
-9	||	1024
-10	||	1949
-11	||	101
-12	||	1553
-and there are no more players!
-GroupIndex	||	Player
-1	||	1051
-2	||	682
-and there are no more players!
-GroupIndex	||	Player
-1	||	612
-2	||	1051
-3	||	682
-and there are no more players!
-GetGroupsHighestLevel: INVALID_INPUT
-Highest level player is: 682

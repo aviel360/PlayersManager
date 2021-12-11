@@ -1,0 +1,232 @@
+Init done.
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+AddGroup: INVALID_INPUT
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+AddGroup: SUCCESS
+RemovePlayer: SUCCESS
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+AddGroup: FAILURE
+AddPlayer: SUCCESS
+ReplaceGroup: FAILURE
+AddGroup: SUCCESS
+IncreaseLevel: SUCCESS
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+RemovePlayer: SUCCESS
+RemovePlayer: FAILURE
+AddPlayer: FAILURE
+IncreaseLevel: FAILURE
+RemovePlayer: FAILURE
+AddPlayer: SUCCESS
+ReplaceGroup: SUCCESS
+AddPlayer: SUCCESS
+IncreaseLevel: FAILURE
+IncreaseLevel: SUCCESS
+RemovePlayer: INVALID_INPUT
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+GroupIndex	||	Player
+1	||	1506055037
+2	||	363206685
+and there are no more players!
+RemovePlayer: SUCCESS
+AddGroup: INVALID_INPUT
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+AddPlayer: INVALID_INPUT
+GetGroupsHighestLevel: FAILURE
+IncreaseLevel: SUCCESS
+AddPlayer: SUCCESS
+IncreaseLevel: INVALID_INPUT
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+AddPlayer: FAILURE
+RemovePlayer: SUCCESS
+RemovePlayer: SUCCESS
+GetAllPlayersByLevel: INVALID_INPUT
+ReplaceGroup: SUCCESS
+and there are no more players!
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+IncreaseLevel: FAILURE
+RemovePlayer: FAILURE
+AddPlayer: SUCCESS
+GroupIndex	||	Player
+1	||	-1
+and there are no more players!
+RemovePlayer: FAILURE
+IncreaseLevel: SUCCESS
+IncreaseLevel: SUCCESS
+AddPlayer: SUCCESS
+AddPlayer: FAILURE
+AddGroup: SUCCESS
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+GroupIndex	||	Player
+1	||	1174378379
+and there are no more players!
+GetAllPlayersByLevel: FAILURE
+GroupIndex	||	Player
+1	||	1174378379
+and there are no more players!
+ReplaceGroup: SUCCESS
+ReplaceGroup: FAILURE
+RemovePlayer: SUCCESS
+GetGroupsHighestLevel: FAILURE
+ReplaceGroup: SUCCESS
+GetGroupsHighestLevel: FAILURE
+RemovePlayer: FAILURE
+RemovePlayer: FAILURE
+AddPlayer: SUCCESS
+AddGroup: SUCCESS
+RemovePlayer: SUCCESS
+ReplaceGroup: SUCCESS
+AddPlayer: FAILURE
+AddPlayer: SUCCESS
+AddPlayer: INVALID_INPUT
+RemovePlayer: SUCCESS
+AddPlayer: SUCCESS
+RemovePlayer: SUCCESS
+AddPlayer: SUCCESS
+GetGroupsHighestLevel: FAILURE
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+IncreaseLevel: FAILURE
+ReplaceGroup: SUCCESS
+RemovePlayer: FAILURE
+and there are no more players!
+AddPlayer: FAILURE
+AddPlayer: SUCCESS
+GroupIndex	||	Player
+1	||	711421346
+and there are no more players!
+RemovePlayer: SUCCESS
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+Highest level player is: -1
+RemovePlayer: FAILURE
+AddGroup: SUCCESS
+GetGroupsHighestLevel: FAILURE
+ReplaceGroup: SUCCESS
+IncreaseLevel: FAILURE
+IncreaseLevel: FAILURE
+AddPlayer: SUCCESS
+RemovePlayer: SUCCESS
+ReplaceGroup: SUCCESS
+and there are no more players!
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+AddPlayer: FAILURE
+AddPlayer: SUCCESS
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+Highest level player is: 592998801
+ReplaceGroup: SUCCESS
+Rank	||	Player
+1	||	592998801
+and there are no more players!
+AddGroup: SUCCESS
+IncreaseLevel: SUCCESS
+AddGroup: INVALID_INPUT
+AddGroup: SUCCESS
+IncreaseLevel: SUCCESS
+IncreaseLevel: INVALID_INPUT
+Rank	||	Player
+1	||	592998801
+2	||	721025834
+and there are no more players!
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+Highest level player is: 592998801
+RemovePlayer: SUCCESS
+AddGroup: INVALID_INPUT
+IncreaseLevel: SUCCESS
+RemovePlayer: SUCCESS
+GetGroupsHighestLevel: FAILURE
+AddGroup: SUCCESS
+RemovePlayer: FAILURE
+AddPlayer: SUCCESS
+IncreaseLevel: SUCCESS
+ReplaceGroup: SUCCESS
+IncreaseLevel: SUCCESS
+Highest level player is: -1
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+AddPlayer: INVALID_INPUT
+Highest level player is: 893521361
+IncreaseLevel: SUCCESS
+ReplaceGroup: FAILURE
+GetGroupsHighestLevel: INVALID_INPUT
+GroupIndex	||	Player
+1	||	328721618
+and there are no more players!
+AddPlayer: SUCCESS
+ReplaceGroup: SUCCESS
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+AddPlayer: SUCCESS
+AddPlayer: SUCCESS
+IncreaseLevel: SUCCESS
+AddPlayer: INVALID_INPUT
+RemovePlayer: SUCCESS
+AddPlayer: SUCCESS
+AddGroup: SUCCESS
+IncreaseLevel: SUCCESS
+Highest level player is: -1
+ReplaceGroup: SUCCESS
+AddGroup: FAILURE
+RemovePlayer: SUCCESS
+IncreaseLevel: SUCCESS
+AddPlayer: INVALID_INPUT
+IncreaseLevel: SUCCESS
+ReplaceGroup: SUCCESS
+IncreaseLevel: SUCCESS
+GroupIndex	||	Player
+1	||	1939082079
+2	||	893521361
+and there are no more players!
+IncreaseLevel: SUCCESS
+IncreaseLevel: SUCCESS
+RemovePlayer: SUCCESS
+ReplaceGroup: SUCCESS
+AddGroup: SUCCESS
+IncreaseLevel: SUCCESS
+IncreaseLevel: SUCCESS
+Rank	||	Player
+1	||	893521361
+2	||	1939082079
+and there are no more players!
+IncreaseLevel: SUCCESS
+ReplaceGroup: SUCCESS
+IncreaseLevel: SUCCESS
+GroupIndex	||	Player
+1	||	1939082079
+2	||	893521361
+and there are no more players!
+RemovePlayer: SUCCESS
+RemovePlayer: FAILURE
+IncreaseLevel: SUCCESS
+GroupIndex	||	Player
+1	||	1939082079
+and there are no more players!
+Highest level player is: 1939082079
+AddPlayer: SUCCESS
+AddPlayer: FAILURE
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+AddGroup: SUCCESS
+RemovePlayer: SUCCESS
+IncreaseLevel: FAILURE
+ReplaceGroup: SUCCESS
+AddPlayer: INVALID_INPUT
+Highest level player is: -1
+GetGroupsHighestLevel: FAILURE
+ReplaceGroup: FAILURE
+RemovePlayer: FAILURE
+IncreaseLevel: FAILURE
+IncreaseLevel: FAILURE

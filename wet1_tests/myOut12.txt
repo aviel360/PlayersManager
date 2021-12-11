@@ -1,0 +1,44 @@
+Init done.
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+AddPlayer: FAILURE
+AddGroup: SUCCESS
+AddPlayer: SUCCESS
+AddGroup: SUCCESS
+IncreaseLevel: SUCCESS
+AddGroup: SUCCESS
+AddGroup: SUCCESS
+AddPlayer: FAILURE
+AddGroup: INVALID_INPUT
+AddPlayer: SUCCESS
+RemovePlayer: SUCCESS
+Highest level player is: 537465495
+IncreaseLevel: INVALID_INPUT
+AddPlayer: SUCCESS
+RemovePlayer: FAILURE
+AddPlayer: SUCCESS
+AddPlayer: SUCCESS
+AddPlayer: SUCCESS
+IncreaseLevel: FAILURE
+AddGroup: SUCCESS
+RemovePlayer: SUCCESS
+AddGroup: SUCCESS
+RemovePlayer: SUCCESS
+AddPlayer: SUCCESS
+RemovePlayer: INVALID_INPUT
+AddPlayer: SUCCESS
+AddGroup: SUCCESS
+IncreaseLevel: SUCCESS
+AddGroup: SUCCESS
+AddPlayer: FAILURE
+ReplaceGroup: SUCCESS
+AddGroup: INVALID_INPUT
+IncreaseLevel: SUCCESS
+IncreaseLevel: SUCCESS
+RemovePlayer: SUCCESS
+AddGroup: FAILURE
+Highest level player is: -1
+AddGroup: SUCCESS
+Highest level player is: 621204917
+AddPlayer: SUCCESS
+ReplaceGroup: FAILURE
