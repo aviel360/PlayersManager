@@ -307,9 +307,9 @@ ReplaceGroup: SUCCESS
 AddPlayer: FAILURE
 AddPlayer: FAILURE
 GroupIndex	||	Player
-1	||	-1
-2	||	553533045
-3	||	1792310426
+1	||	553533045
+2	||	1792310426
+3	||	2099223597
 and there are no more players!
 ReplaceGroup: SUCCESS
 IncreaseLevel: SUCCESS
@@ -671,3 +671,10 @@ IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 IncreaseLevel: SUCCESS
 AddPlayer: FAILURE
+ReplaceGroup: SUCCESS
+AddPlayer: SUCCESS
+Highest level player is: 1269470436
+and there are no more players!
+ReplaceGroup: SUCCESS
+RemovePlayer: SUCCESS
+Quit done.

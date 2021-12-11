@@ -155,10 +155,10 @@ ReplaceGroup: SUCCESS
 GetHighestLevel: FAILURE
 AddPlayer: FAILURE
 GroupIndex	||	Player
-1	||	-1
+1	||	255657309
 and there are no more players!
 GroupIndex	||	Player
-1	||	-1
+1	||	255657309
 and there are no more players!
 ReplaceGroup: SUCCESS
 AddPlayer: SUCCESS

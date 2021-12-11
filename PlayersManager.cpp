@@ -7,29 +7,27 @@
 #include "AVLTree.h"
 #include <memory>
 
-PlayersManager::PlayersManager() : eGroup(), fGroup(), players(-1){} 
+PlayersManager::PlayersManager() : allGroup(), fGroup(), players(-1){} 
 void PlayersManager::addGroup(int id) {
     if (id <= 0){
         throw InvalidInput();
     }
-    if(groupExists(id)){
+    if(allGroup.exists(id)){
         throw ValueExists();
     }
     std::shared_ptr<Group> group = std::make_shared<Group>(id);
-    eGroup.insert(group, id);
+    allGroup.insert(group, id);
 }
 void PlayersManager::addPlayer(const int player_id, const int group_id, const int level) {
     if (player_id <= 0 || group_id <= 0 || level < 0) {
         throw InvalidInput();
     }
-    if(!groupExists(group_id)){
+    if(!allGroup.exists(group_id)){
         throw ValueNotExists();
     }
     players.insertPlayer(player_id, group_id, level);
-    if (eGroup.exists(group_id)) //means it's empty
-    {
-        fGroup.insert(eGroup.get((group_id)), group_id);
-        eGroup.remove(group_id);
+    if (!fGroup.exists(group_id)){
+        fGroup.insert(allGroup.get(group_id), group_id);
     }
     fGroup.get(group_id)->insertPlayer(players.getPlayer(player_id));
 }
@@ -41,7 +39,6 @@ void PlayersManager::removePlayer(const int player_id) {
     std::shared_ptr<Group> current_group = fGroup.get(group_id);
     current_group->removePlayer(player_id);
     if(current_group->getNumOfPlayers() == 0){
-        eGroup.insert(current_group, group_id);
         fGroup.remove(group_id);
     }
     players.removePlayer(player_id);
@@ -54,21 +51,17 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
     }
   //  std::shared_ptr<Group> g1 = Group(group_id);
  //   Group g2 = Group(replace_id);
-    if (eGroup.exists(group_id)){
-        if (groupExists(replace_id)){
-            eGroup.remove(group_id);
-            return;
-        }
-        else{
-            throw ValueNotExists();
-        }
+    if (!allGroup.exists(group_id) || !allGroup.exists(replace_id)){
+        throw ValueNotExists();
     }
-    else if (fGroup.exists(group_id)){
+    else if(!fGroup.exists(group_id)){
+        allGroup.remove(group_id);
+    }
+    else{
         std::shared_ptr<Group> g1 = fGroup.get(group_id);
-        if (eGroup.exists(replace_id)){
-            std::shared_ptr<Group> g2 = eGroup.get(replace_id);
+        if (!fGroup.exists(replace_id)){
+            std::shared_ptr<Group> g2 = allGroup.get(replace_id);
             fGroup.insert(g2, replace_id);
-            eGroup.remove(replace_id);
         }
         std::shared_ptr<Group> g2 = fGroup.get(replace_id);
         int n1 = g1->getNumOfPlayers();
@@ -83,9 +76,7 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
         g2->updateStrongest(_player->getLevel());
         g2->setNumOfPlayers(n1+n2);
         fGroup.remove(group_id);
-    }
-    else{
-        throw ValueNotExists();
+        allGroup.remove(group_id);
     }
 }
 template<class T>
@@ -137,12 +128,12 @@ int PlayersManager::findPlayerGroup(int player_id){
     std::shared_ptr<Player> player = players.getPlayer(player_id);
     return player->getGroupID();
 }
-bool PlayersManager::groupExists(const int group_id){
-    if (!eGroup.exists(group_id) && !fGroup.exists(group_id)){
-        return false;
-    }
-    return true;
-}
+// bool PlayersManager::groupExists(const int group_id){
+//     if (!allGroup.exists(group_id)){
+//         return false;
+//     }
+//     return true;
+// }
 void PlayersManager::increaseLevel(const int player_id, const int level_increase) {
     if (player_id <= 0 || level_increase <= 0) {
         throw InvalidInput();
@@ -157,10 +148,15 @@ int PlayersManager::getHighestLevel(const int group_id){
     if(group_id < 0){
         return players.getStrongestPlayer().PlayerID;
     }
-    if(eGroup.exists(group_id)){
+    else if (!allGroup.exists(group_id)){
+        throw ValueNotExists(); 
+    }
+    else if(fGroup.exists(group_id)){
+        return fGroup.get(group_id)->getStrongestPlayer().PlayerID;;
+    }
+    else{    
         return -1;
     }
-    return fGroup.get(group_id)->getStrongestPlayer().PlayerID;
 }
 
 void PlayersManager::arrayMalloc(int size, int* sizePtr, int** arrayPtr){
@@ -177,19 +173,21 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
         throw InvalidInput();
     }
    // Group current_group = Group(group_id);
-    if(eGroup.exists(group_id)){
-        arrayMalloc(0, numOfPlayers, Players);
-    }
-    else if (group_id < 0){   
+    if (group_id < 0){   
         arrayMalloc(players.getNumOfPlayers(), numOfPlayers, Players);
         arrayPtr<Player, Level> my_array(*numOfPlayers, Players);
         players.getLevelTree().inOrder(my_array);
     }
-    else if (fGroup.exists(group_id)){
-        std::shared_ptr<Group> current_group = fGroup.get(group_id);
-        arrayMalloc(current_group->getNumOfPlayers(), numOfPlayers, Players);
-        arrayPtr<Player, Level> my_array(*numOfPlayers, Players);
-        current_group->getLevelTree().inOrder(my_array);
+    else if(allGroup.exists(group_id)){
+        if(fGroup.exists(group_id)){
+            std::shared_ptr<Group> current_group = fGroup.get(group_id);
+            arrayMalloc(current_group->getNumOfPlayers(), numOfPlayers, Players);
+            arrayPtr<Player, Level> my_array(*numOfPlayers, Players);
+            current_group->getLevelTree().inOrder(my_array);
+        }
+        else{
+            arrayMalloc(0, numOfPlayers, Players);
+        }
     }
     else{
         throw ValueNotExists();

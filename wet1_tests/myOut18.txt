@@ -32,7 +32,7 @@ and there are no more players!
 IncreaseLevel: SUCCESS
 AddPlayer: FAILURE
 GroupIndex	||	Player
-1	||	-1
+1	||	1116139834
 and there are no more players!
 RemovePlayer: INVALID_INPUT
 AddPlayer: SUCCESS

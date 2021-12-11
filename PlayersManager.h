@@ -12,13 +12,13 @@
 #include "Exceptions.h"
 
 class PlayersManager{
-    AVLTree<std::shared_ptr<Group>, int> eGroup;
+    AVLTree<std::shared_ptr<Group>, int> allGroup;
     AVLTree<std::shared_ptr<Group>, int> fGroup;
     Group players;
 
 
     int findPlayerGroup(int player_id);
-    bool groupExists(const int group_id);
+ //   bool groupExists(const int group_id);
     static void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
     template<class T>
     AVLTree<std::shared_ptr<Player>, T>& createMergeTree(AVLTree<std::shared_ptr<Player>, T>& tree1,

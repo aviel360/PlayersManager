@@ -156,7 +156,7 @@ Rank	||	Player
 and there are no more players!
 RemovePlayer: FAILURE
 GroupIndex	||	Player
-1	||	-1
+1	||	345793568
 and there are no more players!
 AddGroup: SUCCESS
 AddPlayer: FAILURE

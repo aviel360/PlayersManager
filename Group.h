@@ -16,7 +16,7 @@ public:
     Group();
     Group(int _groupID);
     Group(const Group& _group) = default;
-    Group& operator=(const Group& _group) = default;
+    Group& operator=(const Group& _group) = delete;
     ~Group() = default;
     void setLevelTree(AVLTree<std::shared_ptr<Player>, Level>& tree);
     void setIDTree(AVLTree<std::shared_ptr<Player>, int>& tree);

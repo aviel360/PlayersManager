@@ -320,8 +320,8 @@ ReplaceGroup: SUCCESS
 AddPlayer: SUCCESS
 Highest level player is: -1
 GroupIndex	||	Player
-1	||	-1
-2	||	423450213
+1	||	423450213
+2	||	1378592250
 and there are no more players!
 AddGroup: SUCCESS
 RemovePlayer: SUCCESS

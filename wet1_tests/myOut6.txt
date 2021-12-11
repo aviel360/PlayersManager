@@ -69,7 +69,7 @@ IncreaseLevel: SUCCESS
 IncreaseLevel: INVALID_INPUT
 IncreaseLevel: SUCCESS
 GroupIndex	||	Player
-1	||	-1
+1	||	1823762916
 and there are no more players!
 IncreaseLevel: SUCCESS
 AddPlayer: SUCCESS
@@ -441,7 +441,7 @@ AddGroup: SUCCESS
 GetAllPlayersByLevel: FAILURE
 AddPlayer: FAILURE
 GroupIndex	||	Player
-1	||	-1
+1	||	2030153995
 and there are no more players!
 Highest level player is: 2030153995
 IncreaseLevel: SUCCESS
