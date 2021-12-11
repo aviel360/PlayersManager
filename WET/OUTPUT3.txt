@@ -229,7 +229,7 @@ RemovePlayer: SUCCESS
 RemovePlayer: SUCCESS
 RemovePlayer: SUCCESS
 RemovePlayer: SUCCESS
-RemovePlayer: SUCCESS
+RemovePlayer: FAILURE
 RemovePlayer: SUCCESS
 Quit done.
 Init done.
@@ -307,13 +307,13 @@ GetHighestLevel: FAILURE
 Highest level player is: 9
 GetHighestLevel: FAILURE
 Highest level player is: 9
-RemovePlayer: SUCCESS
-Highest level player is: 3
+RemovePlayer: FAILURE
+Highest level player is: 9
 GetHighestLevel: FAILURE
-Highest level player is: 3
+Highest level player is: 9
 RemovePlayer: FAILURE
 RemovePlayer: SUCCESS
-Highest level player is: -1
+Highest level player is: 9
 Quit done.
 Init done.
 AddGroup: SUCCESS
@@ -373,11 +373,11 @@ Rank	||	Player
 and there are no more players!
 ReplaceGroup: SUCCESS
 Rank	||	Player
-1	||	6
-2	||	5
-3	||	4
-4	||	3
-5	||	2
+1	||	5
+2	||	4
+3	||	3
+4	||	2
+5	||	6
 and there are no more players!
 GetAllPlayersByLevel: FAILURE
 Rank	||	Player
@@ -390,11 +390,11 @@ and there are no more players!
 AddGroup: SUCCESS
 ReplaceGroup: SUCCESS
 Rank	||	Player
-1	||	6
-2	||	5
-3	||	4
-4	||	3
-5	||	2
+1	||	5
+2	||	4
+3	||	3
+4	||	2
+5	||	6
 and there are no more players!
 RemovePlayer: FAILURE
 Rank	||	Player
@@ -666,9 +666,24 @@ and there are no more players!
 RemovePlayer: SUCCESS
 GetGroupsHighestLevel: FAILURE
 GroupIndex	||	Player
-1	||	8
+1	||	7
 and there are no more players!
-RemovePlayer: SUCCESS
+RemovePlayer: FAILURE
+GetGroupsHighestLevel: FAILURE
+GroupIndex	||	Player
+1	||	7
+and there are no more players!
+RemovePlayer: FAILURE
+GetGroupsHighestLevel: FAILURE
+GroupIndex	||	Player
+1	||	7
+and there are no more players!
+RemovePlayer: FAILURE
+GetGroupsHighestLevel: FAILURE
+GroupIndex	||	Player
+1	||	7
+and there are no more players!
+RemovePlayer: FAILURE
 GetGroupsHighestLevel: FAILURE
 GroupIndex	||	Player
 1	||	7
@@ -676,34 +691,22 @@ and there are no more players!
 RemovePlayer: SUCCESS
 GetGroupsHighestLevel: FAILURE
 GroupIndex	||	Player
-1	||	6
+1	||	7
 and there are no more players!
-RemovePlayer: SUCCESS
+RemovePlayer: FAILURE
 GetGroupsHighestLevel: FAILURE
 GroupIndex	||	Player
-1	||	5
+1	||	7
 and there are no more players!
-RemovePlayer: SUCCESS
-GetGroupsHighestLevel: FAILURE
+RemovePlayer: FAILURE
 GroupIndex	||	Player
-1	||	4
-and there are no more players!
-RemovePlayer: SUCCESS
-GetGroupsHighestLevel: FAILURE
-GroupIndex	||	Player
-1	||	3
-and there are no more players!
-RemovePlayer: SUCCESS
-GetGroupsHighestLevel: FAILURE
-GroupIndex	||	Player
-1	||	2
-and there are no more players!
-RemovePlayer: SUCCESS
-GroupIndex	||	Player
-1	||	1
+1	||	7
 and there are no more players!
 GetGroupsHighestLevel: FAILURE
 RemovePlayer: SUCCESS
 GetGroupsHighestLevel: INVALID_INPUT
-GetGroupsHighestLevel: FAILURE
+GroupIndex	||	Player
+1	||	7
+and there are no more players!
+
 Quit done.
