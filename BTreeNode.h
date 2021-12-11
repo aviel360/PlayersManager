@@ -3,11 +3,12 @@
 #include <memory>
 #include <iostream>
 
-template <class T>
+template <class T, class K>
 class BTreeNode{
-    std::shared_ptr<T> value;
-    BTreeNode<T>* r_child;
-    BTreeNode<T>* l_child;
+    T value;
+    K key;
+    BTreeNode<T,K>* r_child;
+    BTreeNode<T,K>* l_child;
     int height;
 
     int max(const int x, const int y){
@@ -15,8 +16,8 @@ class BTreeNode{
     }
 
 public:
-    explicit BTreeNode(const T& _value) : value(std::make_shared<T>(_value)), r_child(nullptr), l_child(nullptr), height(0) {}
-    BTreeNode(std::shared_ptr<T>& _value) : value(_value), r_child(nullptr), l_child(nullptr), height(0) {}
+    explicit BTreeNode(const T& _value, const K& _key) : value(_value), key(_key), r_child(nullptr), l_child(nullptr), height(0) {}
+   // BTreeNode(std::shared_ptr<T>& _value, const K& k) : value(_value), key(k), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
     BTreeNode& operator=(const BTreeNode& node) = default;
@@ -27,13 +28,19 @@ public:
         return r_child;
     }
     T& getValue(){
-        return *(this->value);
-    }
-    std::shared_ptr<T>& getPtr(){
         return this->value;
     }
+    K& getKey() {
+        return this->key;
+    }
+//    std::shared_ptr<T>& getPtr(){
+//        return this->value;
+//    }
     void setValue(const T& _value){
-        *value = _value;
+        value = _value;
+    }
+    void setKey(const K& _key) {
+        key = _key;
     }
     void setHeight(){
         height = max(getHeight(l_child), getHeight(r_child)) + 1;

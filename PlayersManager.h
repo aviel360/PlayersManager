@@ -12,18 +12,23 @@
 #include "Exceptions.h"
 
 class PlayersManager{
-    AVLTree<Group> eGroup;
-    AVLTree<Group> fGroup;
+    AVLTree<std::shared_ptr<Group>, int> allGroup;
+    AVLTree<std::shared_ptr<Group>, int> fGroup;
     Group players;
 
 
-    Group& findPlayerGroup(int player_id);
-    bool groupExists(const int group_id);
-    void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
-    AVLTree<Player>& createMergeTree(AVLTree<Player>& tree1, AVLTree<Player>& tree2, int n1,
-                                                     int n2, int replace_id, AVLTree<Player>& playerTree);
-    void swap(int** Players, int size);
-    void mergeArrays(std::shared_ptr<Player>* arr1, std::shared_ptr<Player>* arr2, int n1, int n2, std::shared_ptr<Player>* arr3);
+    int findPlayerGroup(int player_id);
+ //   bool groupExists(const int group_id);
+    static void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
+    template<class T>
+    AVLTree<std::shared_ptr<Player>, T>& createMergeTree(AVLTree<std::shared_ptr<Player>, T>& tree1,
+                        AVLTree<std::shared_ptr<Player>, T>& tree2, int n1, int n2, int replace_id,
+                        AVLTree<std::shared_ptr<Player>, T>& playerTree);
+ //   void swap(int** Players, int size);
+    template<class T>
+    void mergeArrays(std::shared_ptr<Player>* arr1, std::shared_ptr<Player>* arr2,
+                     T* keys1, T* keys2, int n1, int n2,
+                     std::shared_ptr<Player>* arr3, T* keys3);
 
 public:
 
@@ -39,129 +44,115 @@ public:
     void getGroupsHighestLevel(const int numOfGroups, int** Players);
 };
 
-template <class T>
-class print {
-public:
-    void operator () (const T& t)
-    {
-        std::cout << t << std::endl;
-    }
-};
-template <class T>
+template <class T, class K>
 class array {
 protected:
     int size;
     int iter;
-    T* my_array;
+    std::shared_ptr<T>* my_array;
+    K* keys;
 public:
-    array<T>(int _size):  size(_size), iter(0), my_array(new T[size]) {}
-    virtual ~array<T>(){
+    array<T, K>(int _size):  size(_size), iter(0), my_array(new std::shared_ptr<T>[size]), keys(new K[size]) {
+        for(int i = 0; i < size; i++){
+            my_array[i] = std::make_shared<T>(T());
+            keys[i] = K();
+        }
+    }
+    virtual ~array<T, K>(){
         delete[] my_array;
+        delete[] keys;
     }
-    void insertT(T& val)
+    void insertT(std::shared_ptr<T>& val, K& key, int iter)
     {
         if ((iter + 1) > size)
         {
             throw Index();
         }
-        my_array[iter] = val;
+        std::shared_ptr<T> _value = val;
+        my_array[iter] = _value;
+        keys[iter] = key;
     }
-    void insertTP(T& val)
-    {
-        if ((iter + 1) > size)
-        {
-            throw Index();
-        }
-        my_array[size - iter -1] = val;
-    }
-    virtual void operator()(T& value){
-        insertT(value);
+    virtual void operator()(std::shared_ptr<T>& value, K& key){
+        std::shared_ptr<T> _value = value;
+        insertT(_value, key, iter);
         iter++;
     }
-    T* get(){
+    std::shared_ptr<T>* getArr(){
         return my_array;
     }
-    void clearArray(){
-        iter = 0;
+    K* getKeys(){
+        return keys;
     }
     int getIter(){
         return this->iter;
     }
-    void setIter(int _iter){
-        this->iter = _iter;
-    }
 };
 
-template <class T>
-class arrayPtr : public array<T> {
+template <class T, class K>
+class arrayPtr : public array<T, K> {
     int** arr;
 public:
-    arrayPtr<T>(int _size, int** _arr) : array<T>(_size), arr(_arr) {}
-    ~arrayPtr<T>(){}
-    void insertG(int player_id)
+    arrayPtr<T, K>(int _size, int** _arr) : array<T, K>(_size), arr(_arr) {}
+    ~arrayPtr<T, K>(){}
+    void insert(int player_id, int _iter)
     {
         if ((this->iter + 1) > this->size)
         {
             throw Index();
         }
-        (*arr)[this->iter] = player_id;
+        (*arr)[_iter] = player_id;
     }
-    void insertP(int player_id)
+    void operator () (std::shared_ptr<Player>& player, Level level)
     {
-        if ((this->iter + 1) > this->size)
-        {
-            throw Index();
-        }
-        (*arr)[this->size - this->iter - 1] = player_id;
-    }
-    void operator () (std::shared_ptr<Player>& player)
-    {
-        insertP(player->getPlayerID());
-        this->insertTP(player);
+        std::shared_ptr<Player> _player = player;
+        insert(player->getPlayerID(), this->size - this->iter - 1);
+        this->insertT(_player, level, this->size - this->iter - 1);
         this->iter++;
     }
-    void operator () (std::shared_ptr<Group>& group)
+    void operator () (std::shared_ptr<Group>& group, int group_id)
     {
-        insertG(group->getStrongestPlayer());
-        this->insertT(group);
+        std::shared_ptr<Group> _group = group;
+        insert(group->getStrongestPlayer().PlayerID, this->iter);
+        this->insertT(_group, group_id, this->iter);
         this->iter++;
     }
 };
 
-class arrayMerge : public array<std::shared_ptr<Player>> {
+template<class K>
+class arrayMerge : public array<Player, K> {
     int groupID;
 public:
-    arrayMerge( int _size, int _groupID) : array<std::shared_ptr<Player>>(_size), groupID(_groupID) {}
-    ~arrayMerge(){}
-    void operator() (std::shared_ptr<Player>& player)
+    arrayMerge<K>( int _size, int _groupID) : array<Player, K>(_size), groupID(_groupID) {}
+    ~arrayMerge<K>(){}
+    void operator() (std::shared_ptr<Player>& player, K& key)
     {
-        this->insertT(player);
+        std::shared_ptr<Player> _player = player;
+        this->insertT(_player, key, this->iter);
         player->setGroupID(groupID);
-        iter++;
-    }
-    std::shared_ptr<Player>* getArr(){
-        return this->get();
+        this->iter++;
     }
 };
 
-// template <class T>
-class arrayInsert : public array<std::shared_ptr<Player>> {
+template <class K>
+class arrayInsert : public array<Player, K> {
 public:
-    ~arrayInsert(){}
-    arrayInsert(std::shared_ptr<Player>* data, const int _size) : 
-                    array<std::shared_ptr<Player>>(_size){
-        for(int i = 0; i < size; i++){
-            my_array[i] = data[i];
+    ~arrayInsert<K>(){}
+    arrayInsert<K>(std::shared_ptr<Player>* data, K* keys, const int _size) : array<Player, K>(_size){
+        for(int i = 0; i < this->size; i++){
+            this->my_array[i] = data[i];
+            this->keys[i] = keys[i];
         }
     }
-    void operator () (std::shared_ptr<Player>& p)
+    void operator () (std::shared_ptr<Player>& p, K& key)
     {
-        if ((iter + 1) > size)
+        if ((this->iter + 1) > this->size)
         {
             throw Index();
         }
-        p = my_array[iter];
-        iter ++;
+        std::shared_ptr<Player> _player = this->my_array[this->iter];
+        p = _player;
+        key = this->keys[this->iter];
+        this->iter ++;
     }
 };
 

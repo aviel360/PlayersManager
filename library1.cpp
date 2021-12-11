@@ -56,6 +56,9 @@ StatusType RemovePlayer(void *DS, int PlayerID){
     try{
         ((PlayersManager*)DS)->removePlayer(PlayerID);
     }
+    catch(InvalidInput& e){
+        return INVALID_INPUT;
+    }
     catch(ValueNotExists& e){
         return FAILURE;
     }
