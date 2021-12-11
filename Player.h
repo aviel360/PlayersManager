@@ -38,25 +38,11 @@ public:
     Player& operator=(const Player& player) = delete;
     ~Player() = default;
 
-  //  void setLevel(int _level);
     void setGroupID(int group_id);
     class Level& getLevel();
     int getPlayerID() const;
     int getGroupID() const;
-//    friend bool operator==(const Player& player_a, const Player& player_b){
-//        return player_a.PlayerID == player_b.PlayerID;
-//    }
-//    friend bool operator<(const Player& player_a, const Player& player_b){
-//        if(player_a.PlayerID == player_b.PlayerID){
-//            return false;
-//        }
-//        return player_a.key == player_b.key ? player_a.PlayerID > player_b.PlayerID : player_a.key < player_b.key;
-//    }
 };
-//    bool operator>(const Player& player_a, const Player& player_b);
-//    bool operator<=(const Player& player_a, const Player& player_b);
-//    bool operator>=(const Player& player_a, const Player& player_b);
-//    bool operator!=(const Player& player_a, const Player& player_b);
 
 
 #endif

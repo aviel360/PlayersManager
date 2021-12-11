@@ -17,7 +17,6 @@ class BTreeNode{
 
 public:
     explicit BTreeNode(const T& _value, const K& _key) : value(_value), key(_key), r_child(nullptr), l_child(nullptr), height(0) {}
-   // BTreeNode(std::shared_ptr<T>& _value, const K& k) : value(_value), key(k), r_child(nullptr), l_child(nullptr), height(0) {}
     ~BTreeNode() = default;
     BTreeNode(const BTreeNode& node) = default;
     BTreeNode& operator=(const BTreeNode& node) = default;
@@ -33,9 +32,6 @@ public:
     K& getKey() {
         return this->key;
     }
-//    std::shared_ptr<T>& getPtr(){
-//        return this->value;
-//    }
     void setValue(const T& _value){
         value = _value;
     }

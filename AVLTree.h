@@ -301,10 +301,6 @@ public:
     BTreeNode<T,K>* getSource(){
         return this->source;
     }
-//    void setSource(BTreeNode<T,K>* other){
-//        removeBTreeNode(source);
-//        source = other;
-//    }
     void insert(const T& _value, const K& _key){
         if (find(_key) != nullptr)
         {
@@ -358,14 +354,6 @@ public:
         }
         return node->getValue();
     }
-//    std::shared_ptr<T>& getValue(const K& _key){
-//        BTreeNode<T,K>* node = find(_key);
-//        if (node == nullptr)
-//        {
-//            throw ValueNotExists();
-//        }
-//        return node->getValue();
-//    }
         /**
      *
      * @param _source

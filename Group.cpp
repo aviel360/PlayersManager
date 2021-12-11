@@ -21,14 +21,12 @@
         numOfPlayers++;
     }
     void Group::removePlayer(int player_id){
-      //  Player p = Player(PlayerID,PlayerID,PlayerID,0);
         if (!playersID.exists(player_id))
         {
             throw ValueNotExists();
         }
         std::shared_ptr<Player> _player = playersID.get(player_id);
         Level level = _player->getLevel();
-     //   Player _playerLevel(_player.getLevel(), _player.getGroupID(), PlayerID, _player.getLevel());
         playersID.remove(player_id);
         playersLevel.remove(level);
         strongestPlayer = Level(-1,-1);
@@ -38,16 +36,6 @@
         }
         numOfPlayers--;
     }
-//    bool Group::playerExists(int PlayerID){
-//        try{
-//            getPlayer(PlayerID);
-//        }
-//        catch(ValueNotExists& e){
-//            return false;
-//        }
-//        return true;
-//    }
-    
     Level& Group::getStrongestPlayer(){
         return this->strongestPlayer;
     }
@@ -63,10 +51,6 @@
     std::shared_ptr<Player>& Group::getPlayer(int PlayerID){
         return playersID.get(PlayerID);
     }
-//    void Group::setPlayerLevel(int player_id, int _level){
-//        (*getPlayer(player_id)).setLevel(_level);
-//        updateStrongest(player_id, _level);
-//    }
     AVLTree<std::shared_ptr<Player>, Level>& Group::getLevelTree() {
         return this->playersLevel;
     }
@@ -82,15 +66,3 @@
     void Group::setNumOfPlayers(int size) {
        this->numOfPlayers = size;
     }
-//    bool operator>(const Group& group_a, const Group& group_b){
-//        return group_b < group_a;
-//    }
-//    bool operator<=(const Group& group_a, const Group& group_b){
-//        return !(group_a > group_b);
-//    }
-//    bool operator>=(const Group& group_a, const Group& group_b){
-//        return !(group_a < group_b);
-//    }
-//    bool operator!=(const Group& group_a, const Group& group_b){
-//        return !(group_a == group_b);
-//    }

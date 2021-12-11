@@ -1,5 +1,5 @@
 //
-// Created by Sofia Blyufer on 29/11/2021.
+// Created by Sofia Blyufer and Aviel Cohen on 29/11/2021.
 //
 
 #ifndef PROJNAME_PLAYERSMANAGER_H
@@ -18,13 +18,11 @@ class PlayersManager{
 
 
     int findPlayerGroup(int player_id);
- //   bool groupExists(const int group_id);
     static void arrayMalloc(int size, int* sizePtr, int** arrayPtr);
     template<class T>
     AVLTree<std::shared_ptr<Player>, T>& createMergeTree(AVLTree<std::shared_ptr<Player>, T>& tree1,
                         AVLTree<std::shared_ptr<Player>, T>& tree2, int n1, int n2, int replace_id,
                         AVLTree<std::shared_ptr<Player>, T>& playerTree);
- //   void swap(int** Players, int size);
     template<class T>
     void mergeArrays(std::shared_ptr<Player>* arr1, std::shared_ptr<Player>* arr2,
                      T* keys1, T* keys2, int n1, int n2,

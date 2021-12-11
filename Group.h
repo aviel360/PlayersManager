@@ -11,7 +11,6 @@ class Group{
     Level strongestPlayer;
     int numOfPlayers;
 
-
 public:
     Group();
     Group(int _groupID);
@@ -23,30 +22,12 @@ public:
     void insertPlayer(int PlayerID, int _groupID, int _level);
     void insertPlayer(std::shared_ptr<Player>& player);
     void removePlayer(int PlayerID);
-   // void setPlayerLevel(int _player, int _level);
     void updateStrongest(Level& level);
     void setNumOfPlayers(int size);
     std::shared_ptr<Player>& getPlayer(int PlayerID);
-  //  bool playerExists(int PlayerID);
     Level& getStrongestPlayer();
     int getNumOfPlayers();
-   // int getReturn() const;
-  //  void replacePlayers(AVLTree<std::shared_ptr<Player>>& tree);
     AVLTree<std::shared_ptr<Player>, Level>& getLevelTree();
     AVLTree<std::shared_ptr<Player>, int>& getIDTree();
-
-//    friend bool operator==(const Group& group_a, const Group& group_b){
-//        return group_a.groupID == group_b.groupID;
-//    }
-//    friend bool operator<(const Group& group_a, const Group& group_b){
-//        return group_a.groupID < group_b.groupID;
-//    }
-
 };
-//    bool operator>(const Group& group_a, const Group& group_b);
-//    bool operator<=(const Group& group_a, const Group& group_b);
-//    bool operator>=(const Group& group_a, const Group& group_b);
-//    bool operator!=(const Group& group_a, const Group& group_b);
-//
-
 #endif

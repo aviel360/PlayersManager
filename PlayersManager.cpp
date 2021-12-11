@@ -49,8 +49,6 @@ void PlayersManager::replaceGroup(const int group_id, const int replace_id) {
     {
         throw InvalidInput();
     }
-  //  std::shared_ptr<Group> g1 = Group(group_id);
- //   Group g2 = Group(replace_id);
     if (!allGroup.exists(group_id) || !allGroup.exists(replace_id)){
         throw ValueNotExists();
     }
@@ -128,12 +126,6 @@ int PlayersManager::findPlayerGroup(int player_id){
     std::shared_ptr<Player> player = players.getPlayer(player_id);
     return player->getGroupID();
 }
-// bool PlayersManager::groupExists(const int group_id){
-//     if (!allGroup.exists(group_id)){
-//         return false;
-//     }
-//     return true;
-// }
 void PlayersManager::increaseLevel(const int player_id, const int level_increase) {
     if (player_id <= 0 || level_increase <= 0) {
         throw InvalidInput();
@@ -141,8 +133,11 @@ void PlayersManager::increaseLevel(const int player_id, const int level_increase
     std::shared_ptr<Player> current_player = players.getPlayer(player_id);
     Level level = current_player->getLevel();
     int group_id = current_player->getGroupID();
-    removePlayer(player_id);
-    addPlayer(level.PlayerID, group_id, level.PlayerLevel + level_increase);
+    std::shared_ptr<Group> current_group = fGroup.get(group_id);
+    current_group->removePlayer(player_id);
+    players.removePlayer(player_id);
+    players.insertPlayer(level.PlayerID, group_id, level.PlayerLevel);
+    current_group->insertPlayer(players.getPlayer(player_id));
 }
 int PlayersManager::getHighestLevel(const int group_id){
     if(group_id < 0){
@@ -172,7 +167,6 @@ void PlayersManager::getAllPlayersByLevel(const int group_id, int** Players, int
     if (Players == nullptr || numOfPlayers == nullptr || group_id == 0){
         throw InvalidInput();
     }
-   // Group current_group = Group(group_id);
     if (group_id < 0){   
         arrayMalloc(players.getNumOfPlayers(), numOfPlayers, Players);
         arrayPtr<Player, Level> my_array(*numOfPlayers, Players);
