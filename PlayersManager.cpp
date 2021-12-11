@@ -25,12 +25,12 @@ void PlayersManager::addPlayer(const int player_id, const int group_id, const in
     if(!groupExists(group_id)){
         throw ValueNotExists();
     }
+    players.insertPlayer(player_id, group_id, level);
     if (eGroup.exists(group_id)) //means it's empty
     {
         fGroup.insert(eGroup.get((group_id)), group_id);
         eGroup.remove(group_id);
     }
-    players.insertPlayer(player_id, group_id, level);
     fGroup.get(group_id)->insertPlayer(players.getPlayer(player_id));
 }
 void PlayersManager::removePlayer(const int player_id) {
